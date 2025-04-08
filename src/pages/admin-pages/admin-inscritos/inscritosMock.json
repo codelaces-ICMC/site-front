@@ -1,0 +1,6 @@
+[
+    { "id": 1, "nome": "Juliana Cardoso", "evento": "Palestra Winx", "data": "10/04/2025" },
+    { "id": 2, "nome": "Carlos Lima", "evento": "Hackathon WiT", "data": "15/04/2025" },
+    { "id": 3, "nome": "Mariana Oliveira", "evento": "Parceria Hackathon", "data": "20/04/2025" }
+  ]
+  
