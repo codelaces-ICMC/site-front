@@ -79,7 +79,7 @@ const EventInfo: React.FC = () => {
         </HeaderContainer>
       )}
       <div className="card-event">
-        <AltInfoEvent infos={event_infos} />
+        <InfoEvent infos={event_infos} />
         
       </div>
       <FooterBranco />
