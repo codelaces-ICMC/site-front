@@ -100,6 +100,12 @@ const About: React.FC = () => {
                 <h2>Site</h2>
               </a>
             </Col>
+            <Col className="anchor-icon">
+              <a className="icon-target" href="#about-RH">
+                <i className="bi bi-person-workspace"></i>
+                <h2>RH</h2>
+              </a>
+            </Col>
           </Row>
           <Row className="listing">
             <Col>
@@ -152,6 +158,18 @@ const About: React.FC = () => {
                   de criar a identidade visual. Organizada a partir de 3
                   subdivisões: FrontEnd, BackEnd e Design, busca integrar o
                   conhecimento de todas para tornar o site cada vez melhor.{" "}
+                </p>
+              </div>
+            </Col>
+            <hr />
+            <Col>
+              <div className="anchor" id="about-RH">
+                <h1>RH</h1>
+                <p>
+                  O RH organiza a participação das integrantes para o
+                  certificado das horas de extensão e também lida com os
+                  feedbacks, promovendo um ambiente colaborativo e de constante
+                  aprimoramento.
                 </p>
               </div>
             </Col>
