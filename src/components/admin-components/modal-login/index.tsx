@@ -11,6 +11,7 @@ export default function ModalLogin() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChangeEmail = (event: any) => {
     setEmail(event.target.value);
@@ -32,12 +33,17 @@ export default function ModalLogin() {
       console.error("Erro ao enviar a solicitação POST:", error);
       const err = error?.response?.data?.error
 
-      if (err) 
-        Swal.fire({
-          title: err.title,
-          text: err.message,
-          confirmButtonText: 'OK',
-        })
+        if (err.code === "401") { // Adição do erro relacionado ao login
+          setErrorMessage("E-mail ou senha incorretos. Tente novamente <3.");
+
+        }
+        else {
+          Swal.fire({
+            title: err.title,
+            text: err.message,
+            confirmButtonText: 'OK',
+          })
+        }
     }
   };
 
@@ -72,6 +78,9 @@ export default function ModalLogin() {
                 onChange={handleChangeSenha}
                 placeholder="Entre com sua senha"
               />
+              {errorMessage && (
+                <p className="error-message">{errorMessage}</p>
+              )}
             </div>
             <button className="modal-btn" type="submit">
               Log In{" "}
