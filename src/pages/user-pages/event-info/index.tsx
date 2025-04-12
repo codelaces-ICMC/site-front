@@ -5,8 +5,8 @@ import { getWebEvent } from "api/web/events/{eventId}/get";
 import HeaderBranco from "components/user-components/cell-phone-window/header";
 import FooterBranco from "components/user-components/computer-window/footer-branco";
 import Header from "components/user-components/computer-window/header";
-// import InfoEvent from "components/user-components/computer-window/info-event";
-import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
+import InfoEvent from "components/user-components/computer-window/info-event";
+// import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
 import GlobalStyles from "styles/GlobalStyles";
 import { Container, HeaderContainer } from "./style";
 
