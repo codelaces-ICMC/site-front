@@ -65,6 +65,7 @@ const EventInfo: React.FC = () => {
         activities: evento.activities,
       }))
     : [];
+
   return (
     <Container>
       <GlobalStyles />
@@ -79,6 +80,7 @@ const EventInfo: React.FC = () => {
       )}
       <div className="card-event">
         <AltInfoEvent infos={event_infos} />
+        
       </div>
       <FooterBranco />
     </Container>

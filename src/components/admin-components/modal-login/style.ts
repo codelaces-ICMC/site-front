@@ -74,6 +74,13 @@ export const Container = styled.div`
     justify-content: center;
   }
 
+  .error-message {
+    color: var(--cor-vermelho);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
   @media screen and (max-width: 1600px) {
     .main-div {
       width: 50vw;

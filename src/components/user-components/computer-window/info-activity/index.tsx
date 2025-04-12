@@ -110,6 +110,8 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                     value={name}
                     onChange={handleChangeName}
                     placeholder="Entre com seu nome completo"
+                    required
+
                   />
                 </div>
                 <div className="sub-item">
@@ -120,6 +122,7 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                     value={email}
                     onChange={handleChangeEmail}
                     placeholder="Entre com seu email"
+                    required
                   />
                 </div>
               </div>
