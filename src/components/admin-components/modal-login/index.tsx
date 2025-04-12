@@ -33,7 +33,7 @@ export default function ModalLogin() {
       console.error("Erro ao enviar a solicitação POST:", error);
       const err = error?.response?.data?.error
 
-        if (err.code === "401") { // Adição do erro relacionado ao login
+        if (err.code === 401) {
           setErrorMessage("E-mail ou senha incorretos. Tente novamente <3.");
 
         }
