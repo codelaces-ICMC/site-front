@@ -5,6 +5,13 @@ import { postSubscribeUser } from "api/web/events/{eventId}/activities/{acitivit
 import { useParams } from "react-router-dom";
 import InfoProps from "../../props/props-info-activity";
 import { Container } from "./style";
+import Swal from "sweetalert2";
+import { useForm } from 'react-hook-form';
+
+type FormInputs = {
+  name: string;
+  email: string;
+};
 
 const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const { eventId, activityId } = useParams();
@@ -12,6 +19,14 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<FormInputs>();
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -29,14 +44,33 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
         email,
       });
       setSubmitted(true);
-    } catch (error) {
+      return 200;
+
+    } catch (error: any) {
       console.error("Erro ao enviar a solicitação POST:", error);
+      const err = error?.response?.data?.error;
+
+            if (err.code === 409) {
+              // Erro relacionado à inscrição (ex: e-mail já cadastrado)
+              setError("email", {
+                type: "manual",
+                message: "Você já está inscrita(o)! Esperamos você lá <3",
+              });
+            } else {
+              // Outros erros
+              Swal.fire({
+                title: err?.title || "Erro",
+                text: err?.message || "Algo deu errado. Tente novamente <3.",
+                confirmButtonText: "OK",
+              });
+            }
     }
   };
 
   useEffect(() => {
     if (submitted) {
       // Limpar campos após submissão bem-sucedida
+      // Usar resert() para limpar os campos
       setName("");
       setEmail("");
     }
@@ -105,22 +139,38 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                 <div className="sub-item">
                   <h2 className="modal-text">Nome Completo</h2>
                   <input
-                    className="modal-input"
+                    className={` modal-input ${errors.name ? 'error' : ''}`}
                     type="text"
                     value={name}
-                    onChange={handleChangeName}
+                    //onChange={handleChangeName}
                     placeholder="Entre com seu nome completo"
+                    {...register("name", {
+                      required: "Esse campo é obrigatório.",
+                      minLength: {
+                        value: 3,
+                        message: "O nome deve ter no mínimo 3 caracteres",
+                      },
+                    })}
                   />
+                  {errors.name && <p className="error-message">{errors.name.message}</p>}
                 </div>
                 <div className="sub-item">
                   <h2 className="modal-text">Email</h2>
                   <input
-                    className="modal-input"
+                    className={` modal-input ${errors.email ? 'error' : ''}`}
                     type="text"
                     value={email}
-                    onChange={handleChangeEmail}
+                    //onChange={handleChangeEmail}
                     placeholder="Entre com seu email"
+                    {...register("email", {
+                      required: "Esse campo é obrigatório.",
+                      pattern: {
+                        value: /^\S+@\S+$/i,
+                        message: "Formato de e-mail inválido",
+                      },
+                    })}
                   />
+                  {errors.email && <p className="error-message">{errors.email.message}</p>}
                 </div>
               </div>
               <div className="class-btn">

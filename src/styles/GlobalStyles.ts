@@ -6,6 +6,7 @@ export default createGlobalStyle`
         --cor-roxo: #6B549F;
         --cor-roxo-claro: #A296C3;
         --cor-rosa: #D662AF;
+        --cor-vermelho:rgb(198, 93, 104);
         --amarelo: #F3E838;
         --cor-branco: #F2F2F2;
         --cor-preto: #0D0D0D;
