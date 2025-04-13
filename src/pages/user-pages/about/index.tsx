@@ -103,7 +103,7 @@ const About: React.FC = () => {
             <Col className="anchor-icon">
               <a className="icon-target" href="#about-RH">
                 <i className="bi bi-person-workspace"></i>
-                <h2>RH</h2>
+                <h2>Gestão</h2>
               </a>
             </Col>
           </Row>
