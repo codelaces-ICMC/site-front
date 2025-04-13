@@ -164,9 +164,9 @@ const About: React.FC = () => {
             <hr />
             <Col>
               <div className="anchor" id="about-RH">
-                <h1>RH</h1>
+                <h1>Gestão de Pessoas</h1>
                 <p>
-                  O RH organiza a participação das integrantes para o
+                  A Gestão de Pessoas organiza a participação das integrantes para o
                   certificado das horas de extensão e também lida com os
                   feedbacks, promovendo um ambiente colaborativo e de constante
                   aprimoramento.
