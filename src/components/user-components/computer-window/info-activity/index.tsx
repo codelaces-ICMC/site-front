@@ -121,12 +121,8 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                     type='text'
                     value={name}
                     onChange={handleChangeName}
-<<<<<<< Updated upstream
-                    placeholder="Entre com seu nome completo"
-=======
                     placeholder='Entre com seu nome completo'
                     required
->>>>>>> Stashed changes
                   />
                 </div>
                 <div className='sub-item'>
@@ -136,12 +132,8 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                     type='text'
                     value={email}
                     onChange={handleChangeEmail}
-<<<<<<< Updated upstream
-                    placeholder="Entre com seu email"
-=======
                     placeholder='Entre com seu email'
                     required
->>>>>>> Stashed changes
                   />
                 </div>
               </div>

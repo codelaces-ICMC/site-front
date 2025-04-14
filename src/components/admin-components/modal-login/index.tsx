@@ -8,16 +8,11 @@ import { Container } from './style'
 export default function ModalLogin() {
   const navigate = useNavigate()
 
-<<<<<<< Updated upstream
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-=======
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
->>>>>>> Stashed changes
+
 
   const handleChangeEmail = (event: any) => {
     setEmail(event.target.value)
@@ -39,22 +34,16 @@ export default function ModalLogin() {
       console.error('Erro ao enviar a solicitação POST:', error)
       const err = error?.response?.data?.error
 
-<<<<<<< Updated upstream
-      if (err) 
-=======
+
       if (err.code === 401) {
         setErrorMessage('E-mail ou senha incorretos. Tente novamente <3.')
       } else {
->>>>>>> Stashed changes
         Swal.fire({
           title: err.title,
           text: err.message,
           confirmButtonText: 'OK',
         })
-<<<<<<< Updated upstream
-=======
       }
->>>>>>> Stashed changes
     }
   }
 
@@ -89,20 +78,18 @@ export default function ModalLogin() {
                 onChange={handleChangeSenha}
                 placeholder='Entre com sua senha'
               />
-<<<<<<< Updated upstream
-=======
               {errorMessage && <p className='error-message'>{errorMessage}</p>}
->>>>>>> Stashed changes
+
+              {errorMessage && (
+                <p className="error-message">{errorMessage}</p>
+              )}
             </div>
             <button className='modal-btn' type='submit'>
               Log In{' '}
             </button>
           </form>
-<<<<<<< Updated upstream
-          <p className="modal-p">WOMEN IN TECH - ICMC/USP 2024</p>
-=======
-          <p className='modal-p'>WIT - ICMC/USP 2025</p>
->>>>>>> Stashed changes
+
+          <p className="modal-p">WIT - ICMC/USP 2025</p>
         </div>
       </div>
     </Container>

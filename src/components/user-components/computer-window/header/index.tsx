@@ -18,11 +18,13 @@ export default function Header() {
 <<<<<<< Updated upstream
     return (
         <Container>
-            <a href="/"><h1>W<span>i</span>T</h1></a>
+            <a href="/"><h1>WIT</h1></a>
             <div className="menu">
                 <li><a href="/about">SOBRE</a></li>
                 <li>|</li>
                 <li><a href="/events">EVENTOS</a></li>
+                <li>|</li>
+                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScFG2eJNnNmaBTBIw7bVEzZWeGpx1c4FWGLbhsWNlHYkWNcWw/viewform">PROCESSO SELETIVO</a></li>
             </div>
         </Container>
     );

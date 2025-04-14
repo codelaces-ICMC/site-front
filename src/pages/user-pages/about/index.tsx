@@ -45,31 +45,33 @@ const About: React.FC = () => {
               <div className='about-text'>
                 <h1>Sobre</h1>
                 <p>
-                  O WIT é um grupo de extensão do{' '}
-                  <a
-                    href='https://www.icmc.usp.br/'
-                    target='_blank'
+                  O WIT é um grupo de extensão do {" "} 
+                  <a 
+                    href="https://www.icmc.usp.br/" 
+                    target="_blank" 
                     style={{
-                      display: 'inline',
-                      textDecoration: 'underline',
-                      color: '#1a0dab',
-                      whiteSpace: 'nowrap',
+                      display: 'inline', 
+                      textDecoration: 'underline', 
+                      color: '#1a0dab', 
+                      whiteSpace: 'nowrap'
                     }}
-                    className='hiperlink-a'
-                    rel='noreferrer'
+                    className="hiperlink-a"
                   >
-                    ICMC
-                  </a>{' '}
-                  que tem como objetivo realizar eventos, integração, reuniões e
-                  debates com a finalidade de discutir a falta de
-                  representatividade feminina nas áreas de ciência e tecnologia,
-                  de forma empoderada e nos conectando com outras mulheres,
-                  assim incentivamos mais mulheres a ingressarem e permanecerem
-                  na área.
+                     ICMC
+                  </a> 
+                  {" "} que tem como objetivo realizar eventos, integração, reuniões e debates com a finalidade de 
+                  discutir a falta de representatividade feminina nas áreas de ciência e
+                  tecnologia, de forma empoderada e nos conectando com outras
+                  mulheres, assim incentivamos mais mulheres a ingressarem e
+                  permanecerem na área.
                 </p>
               </div>
               <div>
-                <img width='700rem' src={ImageAbout} alt='Banner do WIT' />
+                <img
+                  width="700rem"
+                  src={ImageAbout}
+                  alt="Banner do WIT"
+                />
               </div>
             </Col>
           </Row>
@@ -98,13 +100,19 @@ const About: React.FC = () => {
                 <h2>Site</h2>
               </a>
             </Col>
+            <Col className="anchor-icon">
+              <a className="icon-target" href="#about-RH">
+                <i className="bi bi-person-workspace"></i>
+                <h2>Gestão</h2>
+              </a>
+            </Col>
           </Row>
           <Row className='listing'>
             <Col>
               <div className='anchor' id='about-event'>
                 <h1>EVENTOS</h1>
                 <p>
-                  Realização do planejamento e organização de atividades do WiT
+                  Realização do planejamento e organização de atividades do WIT
                   de modo interno e externo ao grupo, cronogramas de eventos,
                   comunicação com palestrantes, empresas, parcerias com outros
                   grupos de extensão e comunidades, responsável pela integração
@@ -118,9 +126,9 @@ const About: React.FC = () => {
               <div className='anchor' id='about-fin'>
                 <h1>FINANCEIRO</h1>
                 <p>
-                  Realização do planejamento e organização de atividades do WiT,
+                  Realização do planejamento e organização de atividades do WIT,
                   controle, gerenciamento de gastos com eventos e coffee break,
-                  organização de vendas de produtos do WiT, além de promover uma
+                  organização de vendas de produtos do WIT, além de promover uma
                   comunicação para patrocínios e gerenciar documentações
                   envolvendo financeiramente o grupo.
                 </p>
@@ -131,7 +139,7 @@ const About: React.FC = () => {
               <div className='anchor' id='about-mkt'>
                 <h1>MARKETING</h1>
                 <p>
-                  Realização do planejamento e divulgação de atividades do WiT
+                  Realização do planejamento e divulgação de atividades do WIT
                   de modo interno e externo ao grupo, organização de cronogramas
                   de postagens, processos de entrada, criação de artes, produção
                   de textos e identidade visual, além de realizar a comunicação
@@ -145,11 +153,23 @@ const About: React.FC = () => {
               <div className='anchor' id='about-site'>
                 <h1>SITE</h1>
                 <p>
-                  Criação, planejamento e organização do site WiT, de forma a
+                  Criação, planejamento e organização do site WIT, de forma a
                   agregar conhecimentos e estudos aos membros responsáveis, além
                   de criar a identidade visual. Organizada a partir de 3
                   subdivisões: FrontEnd, BackEnd e Design, busca integrar o
                   conhecimento de todas para tornar o site cada vez melhor.{' '}
+                </p>
+              </div>
+            </Col>
+            <hr />
+            <Col>
+              <div className="anchor" id="about-RH">
+                <h1>Gestão de Pessoas</h1>
+                <p>
+                  A Gestão de Pessoas organiza a participação das integrantes para o
+                  certificado das horas de extensão e também lida com os
+                  feedbacks, promovendo um ambiente colaborativo e de constante
+                  aprimoramento.
                 </p>
               </div>
             </Col>

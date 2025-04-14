@@ -88,7 +88,7 @@ const HomeHackathon: React.FC = () => {
             <HeaderCellPhone/>
           </HeaderContainer>
         )}
-        <img className ='banner-home' src={BannerImage} alt="Banner do Women in Tech"/>
+        <img className ='banner-home' src={BannerImage} alt="Banner do WIT"/>
         <div className='main-infos'>
           <h1 className ='title'>TEMA</h1>
           <h2 className ='theme'>Soluções para combate à violência de gênero</h2>
@@ -164,9 +164,9 @@ const HomeHackathon: React.FC = () => {
           <div className='fotos-and-video'>
             <VideoEntrevista/>
             <div className='fotos'>
-              <img src={Hackathon1} className="image-hack" alt="Integrante do Women In Tech posando para a foto fazendo sinal de V com as maõs, ela está de sobretudo cinza e sentada em uma cadeira de escrivaninha durante o evento"/>
-              <img src={Hackathon2} className="image-hack" alt="Duas integrantes do Women In Tech sorrindo para a camera enquanto estão sentadas nas cadeiras de escravinha durante o evento"/>
-              <img src={Hackathon3} className="image-hack" alt="Integrante do Women In Tech explicando algo para as participantes. Todos estão de pé. As participantes estão fazendo um semi-circulo ao redor da integrante para ouvir melhor a explicação"/>
+              <img src={Hackathon1} className="image-hack" alt="Integrante do WIT posando para a foto fazendo sinal de V com as maõs, ela está de sobretudo cinza e sentada em uma cadeira de escrivaninha durante o evento"/>
+              <img src={Hackathon2} className="image-hack" alt="Duas integrantes do WIT sorrindo para a camera enquanto estão sentadas nas cadeiras de escravinha durante o evento"/>
+              <img src={Hackathon3} className="image-hack" alt="Integrante do WIT explicando algo para as participantes. Todos estão de pé. As participantes estão fazendo um semi-circulo ao redor da integrante para ouvir melhor a explicação"/>
               <img src={Hackathon4} className="image-hack" alt="Todas as participantes e membros da organização estão posando para a foto. Algumas meninas estão em pé e outras ajoelhadas ou sentadas. Atrás das meninas há um parede escrito Gente normal não muda o mundo"/>
               <img src={Hackathon5} className="image-hack" alt="Mentora da hackathon dando dicas para uma equipe. A equipe consiste em 3 mulheres, todas com notebook aberto em cima da mesa. "/>
               <img src={Hackathon6} className="image-hack" alt="Vencedoras da hackathon juntas com as juradas. Atrás delas tem a projeção de um slide com o símbolo da nossa hackathon, uma mulher com cabelo afro, ósculos escuros e brincos argolas, na cor roxa e branco."/>
