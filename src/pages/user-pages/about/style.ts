@@ -98,12 +98,9 @@ export const Custom = styled.div`
     margin-right: 8vw;
   }
 
-<<<<<<< Updated upstream
-=======
   .hiperlink-a {
   }
 
->>>>>>> Stashed changes
   @media screen and (max-width: 800px) {
     img {
       height: 0;

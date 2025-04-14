@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-<<<<<<< Updated upstream
-import { getWebEvent } from "api/web/events/{eventId}/get";
-import HeaderBranco from "components/user-components/cell-phone-window/header";
-import FooterBranco from "components/user-components/computer-window/footer-branco";
-import Header from "components/user-components/computer-window/header";
-// import InfoEvent from "components/user-components/computer-window/info-event";
-import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
-import GlobalStyles from "styles/GlobalStyles";
-import { Container, HeaderContainer } from "./style";
-=======
 import { getWebEvent } from 'api/web/events/{eventId}/get'
 import HeaderBranco from 'components/user-components/cell-phone-window/header'
 import FooterBranco from 'components/user-components/computer-window/footer-branco'
@@ -19,7 +9,6 @@ import InfoEvent from 'components/user-components/computer-window/info-event'
 // import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
 import GlobalStyles from 'styles/GlobalStyles'
 import { Container, HeaderContainer } from './style'
->>>>>>> Stashed changes
 
 import Activities from '../../../components/user-components/props/props-info-activity'
 
@@ -75,12 +64,8 @@ const EventInfo: React.FC = () => {
         link_fotos: evento.galleryURL,
         activities: evento.activities,
       }))
-<<<<<<< Updated upstream
-    : [];
-=======
     : []
 
->>>>>>> Stashed changes
   return (
     <Container>
       <GlobalStyles />
@@ -93,13 +78,8 @@ const EventInfo: React.FC = () => {
           <HeaderBranco />
         </HeaderContainer>
       )}
-<<<<<<< Updated upstream
-      <div className="card-event">
-        <AltInfoEvent infos={event_infos} />
-=======
       <div className='card-event'>
         <InfoEvent infos={event_infos} />
->>>>>>> Stashed changes
       </div>
       <FooterBranco />
     </Container>

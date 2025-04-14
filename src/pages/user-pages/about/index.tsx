@@ -45,22 +45,6 @@ const About: React.FC = () => {
               <div className='about-text'>
                 <h1>Sobre</h1>
                 <p>
-<<<<<<< Updated upstream
-                  O Women in Tech tem como objetivo realizar eventos,
-                  integração, reuniões e debates com a finalidade de discutir a
-                  falta de representatividade feminina nas áreas de ciência e
-                  tecnologia, de forma empoderada e nos conectando com outras
-                  mulheres, assim incentivamos mais mulheres a ingressarem e
-                  permanecerem na área.
-                </p>
-              </div>
-              <div>
-                <img
-                  width="700rem"
-                  src={ImageAbout}
-                  alt="Banner do Women in Tech"
-                />
-=======
                   O WIT é um grupo de extensão do{' '}
                   <a
                     href='https://www.icmc.usp.br/'
@@ -72,6 +56,7 @@ const About: React.FC = () => {
                       whiteSpace: 'nowrap',
                     }}
                     className='hiperlink-a'
+                    rel='noreferrer'
                   >
                     ICMC
                   </a>{' '}
@@ -85,7 +70,6 @@ const About: React.FC = () => {
               </div>
               <div>
                 <img width='700rem' src={ImageAbout} alt='Banner do WIT' />
->>>>>>> Stashed changes
               </div>
             </Col>
           </Row>

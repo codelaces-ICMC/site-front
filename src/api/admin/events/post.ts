@@ -8,9 +8,9 @@ interface Event {
   endDate: string
   description?: string
   cover?: string
-  coffeValue?: number
+  coffeeValue?: number
   coffeePaymentLink?: string
-  driveGaleryLink?: string
+  driveGalleryLink?: string
 }
 
 const postAdminEvents = async (event: Event) => {
@@ -23,9 +23,9 @@ const postAdminEvents = async (event: Event) => {
       endDate: event.endDate,
       description: event.description,
       cover: event.cover,
-      coffeValue: event.coffeValue,
+      coffeValue: event.coffeeValue,
       coffeePaymentLink: event.coffeePaymentLink,
-      driveGaleryLink: event.driveGaleryLink,
+      driveGaleryLink: event.driveGalleryLink,
     })
     return response.data
   } catch (error) {

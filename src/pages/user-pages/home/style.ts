@@ -38,7 +38,7 @@ export const Container = styled.div`
     text-align: center;
   }
 
-  .selective-btn: hover {
+  .selective-btn:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
   }

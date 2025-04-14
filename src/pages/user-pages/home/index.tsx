@@ -24,27 +24,6 @@ const Home: React.FC = () => {
   }, [])
 
   return (
-<<<<<<< Updated upstream
-      <Container>
-          <GlobalStyles/>
-          {windowWidth > 900 ? (
-              <HeaderContainer>
-                  <Header/>
-              </HeaderContainer>
-          ) : (
-              <HeaderContainer>
-                  <HeaderCellPhone/>
-              </HeaderContainer>
-          )}
-          <img className='banner-home' src={BannerImage} alt="Banner do Women in Tech"/>
-          <h1 className='selective-title'>Fiquem de olho nas nossas redes sociais e na seção de eventos para saber mais! 💜</h1>
-          <FooterContainer>
-              <Footer/>
-          </FooterContainer>
-      </Container>
-  );
-};
-=======
     <Container>
       <GlobalStyles />
       {windowWidth > 900 ? (
@@ -60,8 +39,8 @@ const Home: React.FC = () => {
       <h1 className='selective-title'>Ficou interessada?</h1>
       <p className='selective-text'>
         Então, não perca a chance de se inscrever no nosso processo seletivo! É
-        fácil, basta clicar em "PROCESSO SELETIVO" no topo da página e você será
-        direcionado para nosso formulário de inscrição. 💜
+        fácil, basta clicar em &quot;PROCESSO SELETIVO&quot; no topo da página e
+        você será direcionado para nosso formulário de inscrição. 💜
       </p>
       <FooterContainer>
         <Footer />
@@ -69,6 +48,5 @@ const Home: React.FC = () => {
     </Container>
   )
 }
->>>>>>> Stashed changes
 
 export default Home
