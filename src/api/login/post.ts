@@ -1,26 +1,25 @@
-import axios from "axios";
+import axios from 'axios'
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
 
 interface User {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const postAdminLogin = async (user: User) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!;
+  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
     const response = await axios.post(baseURL + `/login`, {
       password: user.password,
       email: user.email,
-    });
-    return response.data;
+    })
+    return response.data
   } catch (error) {
-    console.error("[postAdminLogin] error: ", error);
-    throw error;
+    console.error('[postAdminLogin] error: ', error)
+    throw error
   }
-};
+}
 
-export { postAdminLogin };
-
+export { postAdminLogin }
