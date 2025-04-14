@@ -28,7 +28,7 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   return (
     <Container>
       {infos.map(event => (
-        <div className='main-div'>
+        <div className='main-div' key={event.id}>
           <div className='column' id='first-column'>
             <p id='first-p'>
               <span>EVENTO: </span>

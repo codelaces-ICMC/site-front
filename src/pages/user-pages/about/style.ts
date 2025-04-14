@@ -98,8 +98,7 @@ export const Custom = styled.div`
     margin-right: 8vw;
   }
 
-
-  .hiperlink-a{
+  .hiperlink-a {
   }
 
   @media screen and (max-width: 800px) {

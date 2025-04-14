@@ -45,33 +45,31 @@ const About: React.FC = () => {
               <div className='about-text'>
                 <h1>Sobre</h1>
                 <p>
-                  O WIT é um grupo de extensão do {" "} 
-                  <a 
-                    href="https://www.icmc.usp.br/" 
-                    target="_blank" 
+                  O WIT é um grupo de extensão do{' '}
+                  <a
+                    href='https://www.icmc.usp.br/'
+                    target='_blank'
                     style={{
-                      display: 'inline', 
-                      textDecoration: 'underline', 
-                      color: '#1a0dab', 
-                      whiteSpace: 'nowrap'
+                      display: 'inline',
+                      textDecoration: 'underline',
+                      color: '#1a0dab',
+                      whiteSpace: 'nowrap',
                     }}
-                    className="hiperlink-a"
+                    className='hiperlink-a'
+                    rel='noreferrer'
                   >
-                     ICMC
-                  </a> 
-                  {" "} que tem como objetivo realizar eventos, integração, reuniões e debates com a finalidade de 
-                  discutir a falta de representatividade feminina nas áreas de ciência e
-                  tecnologia, de forma empoderada e nos conectando com outras
-                  mulheres, assim incentivamos mais mulheres a ingressarem e
-                  permanecerem na área.
+                    ICMC
+                  </a>{' '}
+                  que tem como objetivo realizar eventos, integração, reuniões e
+                  debates com a finalidade de discutir a falta de
+                  representatividade feminina nas áreas de ciência e tecnologia,
+                  de forma empoderada e nos conectando com outras mulheres,
+                  assim incentivamos mais mulheres a ingressarem e permanecerem
+                  na área.
                 </p>
               </div>
               <div>
-                <img
-                  width="700rem"
-                  src={ImageAbout}
-                  alt="Banner do WIT"
-                />
+                <img width='700rem' src={ImageAbout} alt='Banner do WIT' />
               </div>
             </Col>
           </Row>
@@ -100,9 +98,9 @@ const About: React.FC = () => {
                 <h2>Site</h2>
               </a>
             </Col>
-            <Col className="anchor-icon">
-              <a className="icon-target" href="#about-RH">
-                <i className="bi bi-person-workspace"></i>
+            <Col className='anchor-icon'>
+              <a className='icon-target' href='#about-RH'>
+                <i className='bi bi-person-workspace'></i>
                 <h2>Gestão</h2>
               </a>
             </Col>
@@ -163,11 +161,11 @@ const About: React.FC = () => {
             </Col>
             <hr />
             <Col>
-              <div className="anchor" id="about-RH">
-                <h1>Gestão de Pessoas</h1>
+              <div className='anchor' id='about-RH'>
+                <h1>GESTÃO DE PESSOAS</h1>
                 <p>
-                  A Gestão de Pessoas organiza a participação das integrantes para o
-                  certificado das horas de extensão e também lida com os
+                  A Gestão de Pessoas organiza a participação das integrantes
+                  para o certificado das horas de extensão e também lida com os
                   feedbacks, promovendo um ambiente colaborativo e de constante
                   aprimoramento.
                 </p>

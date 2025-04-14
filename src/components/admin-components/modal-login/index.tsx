@@ -13,7 +13,6 @@ export default function ModalLogin() {
   const [submitted, setSubmitted] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-
   const handleChangeEmail = (event: any) => {
     setEmail(event.target.value)
   }
@@ -33,7 +32,6 @@ export default function ModalLogin() {
     } catch (error: any) {
       console.error('Erro ao enviar a solicitação POST:', error)
       const err = error?.response?.data?.error
-
 
       if (err.code === 401) {
         setErrorMessage('E-mail ou senha incorretos. Tente novamente <3.')
@@ -80,16 +78,14 @@ export default function ModalLogin() {
               />
               {errorMessage && <p className='error-message'>{errorMessage}</p>}
 
-              {errorMessage && (
-                <p className="error-message">{errorMessage}</p>
-              )}
+              {errorMessage && <p className='error-message'>{errorMessage}</p>}
             </div>
             <button className='modal-btn' type='submit'>
               Log In{' '}
             </button>
           </form>
 
-          <p className="modal-p">WIT - ICMC/USP 2025</p>
+          <p className='modal-p'>WIT - ICMC/USP 2025</p>
         </div>
       </div>
     </Container>

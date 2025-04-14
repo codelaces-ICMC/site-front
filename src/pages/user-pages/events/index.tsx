@@ -23,8 +23,7 @@ const Events: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        let data
-        data = await getWebEvents(search)
+        const data = await getWebEvents(search)
         setWebEvents(data)
       } catch (err) {
         console.error(err)
@@ -37,16 +36,16 @@ const Events: React.FC = () => {
     setSearch(newText)
   }
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch()
-    }
-  }
+  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'Enter') {
+  //     handleSearch()
+  //   }
+  // }
 
-  const handleSearch = () => {
-    console.log('Realizar pesquisa...')
-    // A pesquisa será acionada automaticamente através do useEffect com base na mudança do estado de 'search'
-  }
+  // const handleSearch = () => {
+  //   console.log('Realizar pesquisa...')
+  //   // A pesquisa será acionada automaticamente através do useEffect com base na mudança do estado de 'search'
+  // }
 
   const cards_data = webEvents.map(evento => ({
     key: evento.eventId,

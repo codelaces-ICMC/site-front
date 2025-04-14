@@ -10,7 +10,7 @@ export default function Header() {
 
   const isEventsPage = currentPage === '/admin/events'
   const isActivitiesPage = currentPage === '/admin/activities'
-  const isCertificatesPage = currentPage === '/admin/certificates'
+  // const isCertificatesPage = currentPage === '/admin/certificates'
 
   return (
     <Container>

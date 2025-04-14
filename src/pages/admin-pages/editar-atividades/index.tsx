@@ -33,6 +33,7 @@ const ActivityAdmin: React.FC = () => {
   const navigate = useNavigate()
   const { activityId } = useParams()
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [submitedButton, setSubmitedButton] = useState(false)
   const [options, setOptions] = useState<DropdownProps[]>([])
   const [formValues, setFormValues] = useState<FormValues>({

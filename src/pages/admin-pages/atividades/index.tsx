@@ -38,8 +38,7 @@ export default function AtividadesAdmin() {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        let data
-        data = await getAdminActivities(search)
+        const data = await getAdminActivities(search)
         console.log('activities: ', data)
         setAdminActivities(data)
       } catch (error: any) {

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap'
 
 import Header from '../../../components/admin-components/header'
 import Filter from '../../../components/admin-components/search-bar'
-import Table from '../../../components/admin-components/table'
+// import Table from '../../../components/admin-components/table'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
 import iconDelete from '../../../assets/img/icons/btn-delete.png'

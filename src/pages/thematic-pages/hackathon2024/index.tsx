@@ -61,117 +61,6 @@ const HomeHackathon: React.FC = () => {
     },
   ]
 
-<<<<<<< Updated upstream
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
-    useEffect(() => {
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-  
-    return (
-      <Container>
-        <GlobalStyles/>
-        {windowWidth > 900 ? (
-          <HeaderContainer>
-            <Header/>
-          </HeaderContainer>
-        ) : (
-          <HeaderContainer>
-            <HeaderCellPhone/>
-          </HeaderContainer>
-        )}
-        <img className ='banner-home' src={BannerImage} alt="Banner do WIT"/>
-        <div className='main-infos'>
-          <h1 className ='title'>TEMA</h1>
-          <h2 className ='theme'>Soluções para combate à violência de gênero</h2>
-          <p className='main-text'>
-            A nossa hackathon é uma iniciativa crucial para enfrentar um problema que afeta milhões de mulheres 
-            em todo o mundo. De acordo com dados recentes, <b>85% das mulheres já sofreram algum tipo de violência 
-            no ambiente doméstico ou em relacionamentos íntimos</b> [1]. Além disso, <b>1 em cada 3 mulheres foi vítima de 
-            violência física, sexual ou psicológica</b> [2]. Esses números alarmantes nos motivam a criar soluções 
-            inovadoras que utilizem a tecnologia como ferramenta para proteger e empoderar as mulheres. Durante 
-            a hackathon, queremos incentivar o desenvolvimento de tecnologias que ofereçam suporte, informação e 
-            recursos para as vítimas, além de promover a conscientização e a mudança social. Juntos, podemos 
-            fazer a diferença e construir um mundo mais seguro e igualitário para todas as mulheres. 
-          </p>
-          <p className='main-references'>
-            [1] <a href='https://www2.senado.leg.br/bdsf/bitstream/handle/id/603368/DataSenado_12-2021.pdf'>Pesquisa DataSenado: Violência Doméstica e Familiar contra a Mulher</a> <br/>
-            [2] <a href='https://g1.globo.com/ciencia-e-saude/noticia/2021/03/09/1-em-cada-3-mulheres-no-mundo-sofre-violencia-fisica-ou-sexual-e-cenario-deve-piorar-com-a-pandemia-diz-oms.ghtml'>Relatório da OMS (Organização Mundial da Saúde)</a>
-          </p>
-          <div className='btn-area'>
-              <a className='btn' href="../../../../docs/Regulamento.pdf" target="_blank"><h3 className='btn-text'>CONFIRA O EDITAL</h3></a>
-              <a className='btn' href="../../../../docs/texto_apoio.pdf" target="_blank"><h3 className='btn-text'>LEIA O MATERIAL DE APOIO</h3></a>
-              <a className='btn' id='btn-inscricoes'><h3 className='btn-text'>INSCRIÇÕES ENCERRADAS</h3></a>
-          </div>
-        </div>
-        <div className='patrocinadores'>
-            <h1 className='title'>AGRADECIMENTO AOS NOSSOS PATROCINADORES!</h1>
-            <div className='gold'>
-              <div className='patrocinio'>
-                <img className='gold-img' src={Cemeai}/>
-                <p className='gold-text'>CEMEAI</p>
-              </div>
-              <div className='patrocinio'>
-                <img className='gold-img' src={Google}/>
-                <p className='gold-text'>GOOGLE</p>
-              </div>
-              <div className='patrocinio'>
-              </div>
-            </div>
-            <div className='silver'>
-              <div className='patrocinio'>
-                <img className='silver-img' src={Venturus}/>
-                <p className='silver-text'>VENTURUS</p>
-              </div>
-              <div className='patrocinio'>
-                <img className='silver-img' src={Yampi}/>
-                <p className='silver-text'>YAMPI</p>
-              </div>
-              <div className='patrocinio'>
-                <img className='silver-img' src={Voitto}/>
-                <p className='silver-text'>VOITTO</p>
-              </div>
-            </div>
-            <div className='bronze'>
-              <div className='patrocinio'>
-                <img className='bronze-img' src={FundacaoEstudar}/>
-                <p className='bronze-text'>FUNDAÇÃO ESTUDAR</p>
-              </div>
-              <div className='patrocinio'>
-                <img className='bronze-img' src={Arquivei}/>
-                <p className='bronze-text'>ARQUIVEI</p>
-              </div>
-              <div className='patrocinio'>
-                <img className='bronze-img' src={Amdocs}/>
-                <p className='bronze-text'>AMDOCS</p>
-              </div>
-              <div className='patrocinio'>
-                <img className='bronze-img' src={AdaTech}/>
-                <p className='bronze-text'>ADA TECH</p>
-              </div>
-            </div>
-        </div>
-        <div className='confira-hackathon'>
-          <h1 className='title' id='title-hackathon'>CONFIRA O QUE ROLOU NO NOSSO EVENTO</h1>
-          <div className='fotos-and-video'>
-            <VideoEntrevista/>
-            <div className='fotos'>
-              <img src={Hackathon1} className="image-hack" alt="Integrante do WIT posando para a foto fazendo sinal de V com as maõs, ela está de sobretudo cinza e sentada em uma cadeira de escrivaninha durante o evento"/>
-              <img src={Hackathon2} className="image-hack" alt="Duas integrantes do WIT sorrindo para a camera enquanto estão sentadas nas cadeiras de escravinha durante o evento"/>
-              <img src={Hackathon3} className="image-hack" alt="Integrante do WIT explicando algo para as participantes. Todos estão de pé. As participantes estão fazendo um semi-circulo ao redor da integrante para ouvir melhor a explicação"/>
-              <img src={Hackathon4} className="image-hack" alt="Todas as participantes e membros da organização estão posando para a foto. Algumas meninas estão em pé e outras ajoelhadas ou sentadas. Atrás das meninas há um parede escrito Gente normal não muda o mundo"/>
-              <img src={Hackathon5} className="image-hack" alt="Mentora da hackathon dando dicas para uma equipe. A equipe consiste em 3 mulheres, todas com notebook aberto em cima da mesa. "/>
-              <img src={Hackathon6} className="image-hack" alt="Vencedoras da hackathon juntas com as juradas. Atrás delas tem a projeção de um slide com o símbolo da nossa hackathon, uma mulher com cabelo afro, ósculos escuros e brincos argolas, na cor roxa e branco."/>
-            </div>
-=======
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   useEffect(() => {
@@ -297,7 +186,6 @@ const HomeHackathon: React.FC = () => {
           <div className='patrocinio'>
             <img className='bronze-img' src={AdaTech} />
             <p className='bronze-text'>ADA TECH</p>
->>>>>>> Stashed changes
           </div>
         </div>
       </div>

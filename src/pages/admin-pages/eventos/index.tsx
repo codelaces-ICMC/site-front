@@ -36,8 +36,7 @@ export default function EventosAdmin() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        let data
-        data = await getAdminEvents(search)
+        const data = await getAdminEvents(search)
         adminWebEvents(data)
       } catch (error: any) {
         console.error(error)

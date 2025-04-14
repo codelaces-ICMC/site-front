@@ -71,12 +71,12 @@ const EventosAdmin: React.FC = () => {
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target
-    if (files && files.length > 0) {
-      setFormValues({ ...formValues, [name]: files[0] })
-    }
-  }
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, files } = e.target
+  //   if (files && files.length > 0) {
+  //     setFormValues({ ...formValues, [name]: files[0] })
+  //   }
+  // }
 
   const handleSubmission = async (event: React.FormEvent) => {
     event.preventDefault() // Evita o comportamento padrão de envio de formulário
