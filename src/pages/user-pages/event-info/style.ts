@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   background: var(--degrade-roxo-rosa);
@@ -10,12 +10,12 @@ export const Container = styled.div`
     margin: 0 10vw;
     padding: 7vh 0;
   }
-`;
+`
 
 export const HeaderContainer = styled.header`
   background: var(--cor-branco);
   color: var(--cor-roxo-escuro);
   width: 100%;
-`;
+`
 
-export const FooterContainer = styled.footer``;
+export const FooterContainer = styled.footer``

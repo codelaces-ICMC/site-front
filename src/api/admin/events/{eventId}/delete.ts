@@ -1,20 +1,17 @@
-import axios from "axios";
+import axios from 'axios'
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
 
 const deleteAdminEventById = async (eventId: number) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!;
+  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
-    const response = await axios.delete(
-      baseURL + `/admin/events/${eventId}`
-    );
-    return response.data;
+    const response = await axios.delete(baseURL + `/admin/events/${eventId}`)
+    return response.data
   } catch (error) {
-    console.error("[deleteAdminEventById] error: ", error);
-    throw error;
+    console.error('[deleteAdminEventById] error: ', error)
+    throw error
   }
-};
+}
 
-export { deleteAdminEventById };
-
+export { deleteAdminEventById }

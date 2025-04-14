@@ -1,244 +1,243 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
-export const Container = styled.div` 
-    .banner-area {
-        display: flex;
-        justify-content: center;
+export const Container = styled.div`
+  .banner-area {
+    display: flex;
+    justify-content: center;
+  }
+
+  .banner-home {
+    width: 80%;
+    margin-top: 100px;
+  }
+
+  .main-infos {
+    padding-bottom: 5vh;
+    border-bottom: 4px dotted var(--cor-roxo);
+    width: 76%;
+    margin: 0 10vw;
+  }
+
+  .title {
+    font-weight: 800px;
+    color: var(--cor-roxo-escuro);
+    font-size: 2.5em;
+    padding-top: 1.5em;
+  }
+
+  .theme {
+    font-weight: 700px;
+    color: var(--cor-roxo-escuro);
+    font-size: 2em;
+  }
+
+  .main-text {
+    margin: 1.2em 0;
+    font-size: 1.3em;
+  }
+
+  .main-references {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+  }
+
+  .btn-area {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    background-color: var(--cor-roxo);
+    color: var(--cor-branco);
+    padding: 0.6em;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 0.4em;
+  }
+
+  .btn-text {
+    font-weight: 800px;
+  }
+
+  #btn-inscricoes {
+    pointer-events: none;
+    background-color: grey;
+  }
+
+  #btn-inscricoes:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    background-color: var(--cor-roxo-escuro);
+    transform: scale(1.05);
+    transition: 1s;
+  }
+
+  .patrocinadores {
+    margin: 0 10vw;
+  }
+
+  .patrocinio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5vh 2vw;
+    flex-wrap: wrap;
+  }
+
+  .gold,
+  .silver,
+  .bronze {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .gold-img {
+    height: 90px;
+  }
+
+  .gold-text {
+    font-size: 2em;
+    font-weight: 500;
+    margin-top: 2vh;
+  }
+
+  .silver-img {
+    height: 60px;
+  }
+
+  .silver-text {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 2vh;
+  }
+
+  .bronze-img {
+    height: 30px;
+  }
+
+  .bronze-text {
+    font-size: 1em;
+    font-weight: 500;
+    margin-top: 2vh;
+  }
+
+  .programacao-hackathon {
+    background: var(--degrade-branco-roxo);
+  }
+
+  .programacao-area {
+    display: flex;
+    margin: 5vh 0 0 0;
+    width: 100%;
+  }
+
+  .itens-programacao-hackathon {
+    display: flex;
+    align-items: center;
+    flex: grid;
+  }
+
+  .map-area {
+    margin: 0 10vw;
+    width: 100%;
+  }
+
+  .programacao-hackathon iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+  }
+
+  #title-programacao {
+    margin: 0 10vw;
+  }
+
+  .confira-hackathon {
+    margin: 0 10vw;
+    margin-bottom: 10vh;
+  }
+
+  .title-hackathon {
+    margin-left: 0;
+  }
+
+  .fotos-and-video {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .image-hack {
+    height: 320px;
+    width: 400px;
+    margin: 2px;
+  }
+
+  .faq {
+    padding: 0 10vw;
+    background: var(--degrade-roxo-crescente);
+    padding-bottom: 8vh;
+  }
+
+  .QandA {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .line-time {
+    height: 400px;
+    margin: 0 10vw;
+  }
+
+  @media screen and (max-width: 720px) {
+    .map-img {
+      width: 80vw;
     }
 
-    .banner-home {
-        width: 80%;
-        margin-top: 100px;
-    }
-
-    .main-infos {
-        padding-bottom: 5vh;
-        border-bottom: 4px dotted var(--cor-roxo);
-        width: 76%;
-        margin: 0 10vw;
-    }
-
-    .title {
-        font-weight: 800px;
-        color: var(--cor-roxo-escuro);
-        font-size: 2.5em;
-        padding-top: 1.5em;
-    }
-
+    .title,
     .theme {
-        font-weight: 700px;
-        color: var(--cor-roxo-escuro);
-        font-size: 2em;
-    }
-
-    .main-text {
-        margin: 1.2em 0;
-        font-size: 1.3em;
-    }
-
-    .main-references {
-        font-size: 0.9em;
-        margin-bottom: 1em;
-    }
-
-    .btn-area {
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        background-color: var(--cor-roxo);
-        color: var(--cor-branco);
-        padding: 0.6em;
-        font-size: 1.5em;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin-top: 0.4em;
-    }
-
-    .btn-text {
-        font-weight: 800px;
-    }
-
-    #btn-inscricoes {
-        pointer-events: none;
-        background-color: grey;
-    }
-
-    #btn-inscricoes:hover {
-        transform: none;
-    }
-
-    .btn:hover {
-        background-color: var(--cor-roxo-escuro);
-        transform: scale(1.05);
-        transition: 1s;
-    }
-
-    .patrocinadores {
-        margin: 0 10vw;
-    }
-
-    .patrocinio {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin: 5vh 2vw;
-        flex-wrap: wrap;
-    }
-
-    .gold, .silver, .bronze {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .gold-img {
-        height: 90px;
-    }
-
-    .gold-text {
-        font-size: 2em;
-        font-weight: 500;
-        margin-top: 2vh;
-    }
-
-    .silver-img {
-        height: 60px;
-    }
-
-    .silver-text {
-        font-size: 1.5em;
-        font-weight: 500;
-        margin-top: 2vh;
-    }
-
-    .bronze-img {
-        height: 30px;
-    }
-
-    .bronze-text {
-        font-size: 1em;
-        font-weight: 500;
-        margin-top: 2vh;
-    }
-
-    .programacao-hackathon {
-        background: var(--degrade-branco-roxo);
-    }
-
-    .programacao-area {
-        display: flex;
-        margin: 5vh 0 0 0;
-        width: 100%;
-    }
-
-    .itens-programacao-hackathon {
-        display: flex;
-        align-items: center;
-        flex: grid;
-    }
-
-    .map-area {
-        margin: 0 10vw;
-        width: 100%;
-    }
-
-    .programacao-hackathon iframe {
-        width: 100%;
-        max-width: 600px;
-        height: 450px;
-    }
-
-    #title-programacao {
-        margin: 0 10vw;
-    }
-
-    .confira-hackathon {
-        margin: 0 10vw;
-        margin-bottom: 10vh;
-    }
-
-    .title-hackathon {
-        margin-left: 0;
-    }
-
-    .fotos-and-video {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-    }
-
-    .fotos {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-    }
-
-    .image-hack {
-        height: 320px;
-        width: 400px;
-        margin: 2px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      font-size: 1.5em;
     }
 
     .faq {
-        padding: 0 10vw;
-        background: var(--degrade-roxo-crescente);
-        padding-bottom: 8vh;
     }
 
-    .QandA {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        
+    .itens-programacao-hackathon {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
-
-    .line-time {
-        height: 400px;
-        margin: 0 10vw;
-    }
-
-    @media screen and (max-width: 720px) {
-        .map-img {
-            width: 80vw;
-        }
-
-        .title, .theme {
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            text-align: center;
-            font-size: 1.5em;
-        }
-
-        .faq {
-
-        }
-
-        .itens-programacao-hackathon {
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-`;
+  }
+`
 
 export const HeaderContainer = styled.header`
-    background: var(--cor-branco);
-    color: var(--cor-roxo-escuro);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1; 
+  background: var(--cor-branco);
+  color: var(--cor-roxo-escuro);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 
-    button {
-        color: var(--cor-roxo-escuro);
-    }
-`;
+  button {
+    color: var(--cor-roxo-escuro);
+  }
+`

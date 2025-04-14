@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   .main-div {
@@ -90,7 +90,7 @@ export const Container = styled.div`
     margin: 0 0 9.5em 2.5em;
   }
 
-    .class-btn {
+  .class-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,4 +179,4 @@ export const Container = styled.div`
       display: none;
     }
   }
-`;
+`

@@ -1,21 +1,19 @@
-import axios from "axios";
+import axios from 'axios'
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
 
 interface Activity {
-  activityName: string;
-  startTime: string;
-  endTime: string;
-  description: string;
-  responsible: string;
-  eventId: number;
-  registrationAt: string;
+  activityName: string
+  startTime: string
+  endTime: string
+  description: string
+  responsible: string
+  eventId: number
+  registrationAt: string
 }
 
-
-
 const postAdminActivities = async (activity: Activity) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!;
+  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
     const response = await axios.post(baseURL + `/admin/activities`, {
@@ -25,14 +23,13 @@ const postAdminActivities = async (activity: Activity) => {
       description: activity.description,
       responsible: activity.responsible,
       eventId: activity.eventId,
-      registrationAt: activity.registrationAt
-    });
-    return response.data;
+      registrationAt: activity.registrationAt,
+    })
+    return response.data
   } catch (error) {
-    console.error("[postAdminActivities] error: ", error);
-    throw error;
+    console.error('[postAdminActivities] error: ', error)
+    throw error
   }
-};
+}
 
-export { postAdminActivities };
-
+export { postAdminActivities }

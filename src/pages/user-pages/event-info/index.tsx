@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
+<<<<<<< Updated upstream
 import { getWebEvent } from "api/web/events/{eventId}/get";
 import HeaderBranco from "components/user-components/cell-phone-window/header";
 import FooterBranco from "components/user-components/computer-window/footer-branco";
@@ -9,52 +10,62 @@ import Header from "components/user-components/computer-window/header";
 import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
 import GlobalStyles from "styles/GlobalStyles";
 import { Container, HeaderContainer } from "./style";
+=======
+import { getWebEvent } from 'api/web/events/{eventId}/get'
+import HeaderBranco from 'components/user-components/cell-phone-window/header'
+import FooterBranco from 'components/user-components/computer-window/footer-branco'
+import Header from 'components/user-components/computer-window/header'
+import InfoEvent from 'components/user-components/computer-window/info-event'
+// import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
+import GlobalStyles from 'styles/GlobalStyles'
+import { Container, HeaderContainer } from './style'
+>>>>>>> Stashed changes
 
-import Activities from "../../../components/user-components/props/props-info-activity";
+import Activities from '../../../components/user-components/props/props-info-activity'
 
 const EventInfo: React.FC = () => {
-  const { eventId } = useParams();
+  const { eventId } = useParams()
 
   interface Evento {
-    eventId: number;
-    eventName: string;
-    startDate: string;
-    endDate: string;
-    coffeePaymentURL: string;
-    coffeeValue: string;
-    galleryURL: string;
-    activities: Activities[];
+    eventId: number
+    eventName: string
+    startDate: string
+    endDate: string
+    coffeePaymentURL: string
+    coffeeValue: string
+    galleryURL: string
+    activities: Activities[]
   }
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [webEvent, setWebEvent] = useState<Evento[]>();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [webEvent, setWebEvent] = useState<Evento[]>()
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const data = await getWebEvent(parseInt(eventId!));
-        setWebEvent(data);
+        const data = await getWebEvent(parseInt(eventId!))
+        setWebEvent(data)
       } catch (err) {
-        console.error(err);
+        console.error(err)
       }
-    };
-    fetchEvents();
-  }, [eventId]);
+    }
+    fetchEvents()
+  }, [eventId])
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+      setWindowWidth(window.innerWidth)
+    }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const event_infos = webEvent
-    ? webEvent.map((evento) => ({
+    ? webEvent.map(evento => ({
         id: evento.eventId,
         eventName: evento.eventName,
         beginDate: new Date(evento.startDate),
@@ -64,7 +75,12 @@ const EventInfo: React.FC = () => {
         link_fotos: evento.galleryURL,
         activities: evento.activities,
       }))
+<<<<<<< Updated upstream
     : [];
+=======
+    : []
+
+>>>>>>> Stashed changes
   return (
     <Container>
       <GlobalStyles />
@@ -77,11 +93,16 @@ const EventInfo: React.FC = () => {
           <HeaderBranco />
         </HeaderContainer>
       )}
+<<<<<<< Updated upstream
       <div className="card-event">
         <AltInfoEvent infos={event_infos} />
+=======
+      <div className='card-event'>
+        <InfoEvent infos={event_infos} />
+>>>>>>> Stashed changes
       </div>
       <FooterBranco />
     </Container>
-  );
-};
-export default EventInfo;
+  )
+}
+export default EventInfo

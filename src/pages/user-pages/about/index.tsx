@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import HeaderCellPhone from "../../../components/user-components/cell-phone-window/header";
-import Footer from "../../../components/user-components/computer-window/footer";
-import Header from "../../../components/user-components/computer-window/header";
-import GlobalStyles from "../../../styles/GlobalStyles";
+import React, { useEffect, useState } from 'react'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import HeaderCellPhone from '../../../components/user-components/cell-phone-window/header'
+import Footer from '../../../components/user-components/computer-window/footer'
+import Header from '../../../components/user-components/computer-window/header'
+import GlobalStyles from '../../../styles/GlobalStyles'
 
-import ImageAbout from "../../../assets/img/general_imgs/about_photo.png";
+import ImageAbout from '../../../assets/img/general_imgs/about_photo.png'
 
-import { Custom, HeaderContainer } from "./style";
+import { Custom, HeaderContainer } from './style'
 
 const About: React.FC = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+      setWindowWidth(window.innerWidth)
+    }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
-    <div id="main-about">
+    <div id='main-about'>
       <GlobalStyles />
       {windowWidth > 900 ? (
         <HeaderContainer>
@@ -41,10 +41,11 @@ const About: React.FC = () => {
       <Custom>
         <Container fluid>
           <Row>
-            <Col className="about">
-              <div className="about-text">
+            <Col className='about'>
+              <div className='about-text'>
                 <h1>Sobre</h1>
                 <p>
+<<<<<<< Updated upstream
                   O Women in Tech tem como objetivo realizar eventos,
                   integração, reuniões e debates com a finalidade de discutir a
                   falta de representatividade feminina nas áreas de ciência e
@@ -59,38 +60,64 @@ const About: React.FC = () => {
                   src={ImageAbout}
                   alt="Banner do Women in Tech"
                 />
+=======
+                  O WIT é um grupo de extensão do{' '}
+                  <a
+                    href='https://www.icmc.usp.br/'
+                    target='_blank'
+                    style={{
+                      display: 'inline',
+                      textDecoration: 'underline',
+                      color: '#1a0dab',
+                      whiteSpace: 'nowrap',
+                    }}
+                    className='hiperlink-a'
+                  >
+                    ICMC
+                  </a>{' '}
+                  que tem como objetivo realizar eventos, integração, reuniões e
+                  debates com a finalidade de discutir a falta de
+                  representatividade feminina nas áreas de ciência e tecnologia,
+                  de forma empoderada e nos conectando com outras mulheres,
+                  assim incentivamos mais mulheres a ingressarem e permanecerem
+                  na área.
+                </p>
+              </div>
+              <div>
+                <img width='700rem' src={ImageAbout} alt='Banner do WIT' />
+>>>>>>> Stashed changes
               </div>
             </Col>
           </Row>
-          <Row className="jumbotron">
-            <Col className="anchor-icon">
-              <a className="icon-target" href="#about-event">
-                <i className="bi bi-calendar-event"></i>
+          <Row className='jumbotron'>
+            <Col className='anchor-icon'>
+              <a className='icon-target' href='#about-event'>
+                <i className='bi bi-calendar-event'></i>
                 <h2>Eventos</h2>
               </a>
             </Col>
-            <Col className="anchor-icon">
-              <a className="icon-target" href="#about-fin">
-                <i className="bi bi-piggy-bank-fill"></i>
+            <Col className='anchor-icon'>
+              <a className='icon-target' href='#about-fin'>
+                <i className='bi bi-piggy-bank-fill'></i>
                 <h2>Financeiro</h2>
               </a>
             </Col>
-            <Col className="anchor-icon">
-              <a className="icon-target" href="#about-mkt">
-                <i className="bi bi-bullseye"></i>
+            <Col className='anchor-icon'>
+              <a className='icon-target' href='#about-mkt'>
+                <i className='bi bi-bullseye'></i>
                 <h2>Marketing</h2>
               </a>
             </Col>
-            <Col className="anchor-icon">
-              <a className="icon-target" href="#about-site">
-                <i className="bi bi-laptop"></i>
+            <Col className='anchor-icon'>
+              <a className='icon-target' href='#about-site'>
+                <i className='bi bi-laptop'></i>
                 <h2>Site</h2>
               </a>
             </Col>
           </Row>
-          <Row className="listing">
+          <Row className='listing'>
             <Col>
-              <div className="anchor" id="about-event">
+              <div className='anchor' id='about-event'>
                 <h1>EVENTOS</h1>
                 <p>
                   Realização do planejamento e organização de atividades do WiT
@@ -104,7 +131,7 @@ const About: React.FC = () => {
             </Col>
             <hr />
             <Col>
-              <div className="anchor" id="about-fin">
+              <div className='anchor' id='about-fin'>
                 <h1>FINANCEIRO</h1>
                 <p>
                   Realização do planejamento e organização de atividades do WiT,
@@ -117,7 +144,7 @@ const About: React.FC = () => {
             </Col>
             <hr />
             <Col>
-              <div className="anchor" id="about-mkt">
+              <div className='anchor' id='about-mkt'>
                 <h1>MARKETING</h1>
                 <p>
                   Realização do planejamento e divulgação de atividades do WiT
@@ -131,14 +158,14 @@ const About: React.FC = () => {
             </Col>
             <hr />
             <Col>
-              <div className="anchor" id="about-site">
+              <div className='anchor' id='about-site'>
                 <h1>SITE</h1>
                 <p>
                   Criação, planejamento e organização do site WiT, de forma a
                   agregar conhecimentos e estudos aos membros responsáveis, além
                   de criar a identidade visual. Organizada a partir de 3
                   subdivisões: FrontEnd, BackEnd e Design, busca integrar o
-                  conhecimento de todas para tornar o site cada vez melhor.{" "}
+                  conhecimento de todas para tornar o site cada vez melhor.{' '}
                 </p>
               </div>
             </Col>
@@ -147,6 +174,6 @@ const About: React.FC = () => {
       </Custom>
       <Footer />
     </div>
-  );
-};
-export default About;
+  )
+}
+export default About

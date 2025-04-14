@@ -1,20 +1,21 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Container } from "./style";
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Container } from './style'
 
 export default function Header() {
-    const navigate = useNavigate();
+  const navigate = useNavigate()
 
-    const handleScroll = () => {
-        navigate('/');
-        setTimeout(() => {
-            const targetSection = document.getElementById('targetSection');
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 0); // Timeout para garantir que a navegação ocorreu antes da rolagem
-    };
+  const handleScroll = () => {
+    navigate('/')
+    setTimeout(() => {
+      const targetSection = document.getElementById('targetSection')
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 0) // Timeout para garantir que a navegação ocorreu antes da rolagem
+  }
 
+<<<<<<< Updated upstream
     return (
         <Container>
             <a href="/"><h1>W<span>i</span>T</h1></a>
@@ -25,4 +26,28 @@ export default function Header() {
             </div>
         </Container>
     );
+=======
+  return (
+    <Container>
+      <a href='/'>
+        <h1>WIT</h1>
+      </a>
+      <div className='menu'>
+        <li>
+          <a href='/about'>SOBRE</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href='/events'>EVENTOS</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href='https://docs.google.com/forms/d/e/1FAIpQLScFG2eJNnNmaBTBIw7bVEzZWeGpx1c4FWGLbhsWNlHYkWNcWw/viewform'>
+            PROCESSO SELETIVO
+          </a>
+        </li>
+      </div>
+    </Container>
+  )
+>>>>>>> Stashed changes
 }

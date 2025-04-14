@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.footer`
     background: var(--cor-branco);
@@ -49,4 +49,4 @@ export const Container = styled.footer`
             width: 400px;
         }
     }
-`;
+`
