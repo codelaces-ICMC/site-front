@@ -93,12 +93,13 @@ export const Custom = styled.div`
   }
 
   img {
-    height: 60vh;
-    width: 30vw;
+    height: 350px;
+    width: 400px;
     margin-right: 8vw;
   }
 
-  .hiperlink-a {
+
+  .hiperlink-a{
   }
 
   @media screen and (max-width: 800px) {

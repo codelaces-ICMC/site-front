@@ -31,7 +31,7 @@ const HamburgerMenuBranco: React.FC = () => {
             <button onClick={toggleMenu}>
                 <img className="btn-menu" src={MenuImage}/>
             </button>
-            <a href="/"><h1>W<span>i</span>T</h1></a>
+            <a href="/"><h1>WIT</h1></a>
         </div>
         <div className="drop-down">
             {isOpen && (
@@ -41,6 +41,9 @@ const HamburgerMenuBranco: React.FC = () => {
                     </a>
                     <a href="/events">
                         <li>Eventos</li>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScFG2eJNnNmaBTBIw7bVEzZWeGpx1c4FWGLbhsWNlHYkWNcWw/viewform">
+                        <li>Processo Seletivo</li>
                     </a>
                 </ul>
             )}
