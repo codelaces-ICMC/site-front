@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Custom = styled.div`
   background: var(--cor-branco);
@@ -98,7 +98,7 @@ export const Custom = styled.div`
     margin-right: 8vw;
   }
 
-  .hiperlink-a{
+  .hiperlink-a {
   }
 
   @media screen and (max-width: 800px) {
@@ -116,7 +116,7 @@ export const Custom = styled.div`
       display: flex;
     }
   }
-`;
+`
 
 export const HeaderContainer = styled.header`
   background: var(--cor-branco);
@@ -130,4 +130,4 @@ export const HeaderContainer = styled.header`
   button {
     color: var(--cor-roxo-escuro);
   }
-`;
+`

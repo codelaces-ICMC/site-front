@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   .main-div {
@@ -202,4 +202,4 @@ export const Container = styled.div`
       display: none;
     }
   }
-`;
+`

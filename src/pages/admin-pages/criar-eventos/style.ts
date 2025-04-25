@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   background: var(--degrade-roxo-rosa);
@@ -118,4 +118,4 @@ export const Container = styled.div`
     top: 0.5vh;
     right: 2vw;
   }
-`;
+`

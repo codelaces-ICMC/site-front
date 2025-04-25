@@ -1,29 +1,32 @@
-import React from "react";
-import Card from "../card";
-import CardProps from "../props/props-card";
-import { Container } from "./style";
+import React from 'react'
+import Card from '../card'
+import CardProps from '../props/props-card'
+import { Container } from './style'
 
-const CardsSet: React.FC<{ cards: CardProps[], onSelected: (eventId: number) => void }> = ({ cards, onSelected}) => {
+const CardsSet: React.FC<{
+  cards: CardProps[]
+  onSelected: (eventId: number) => void
+}> = ({ cards, onSelected }) => {
   const [selectedCardId, setSelectedCardId] = React.useState<number | null>(
-    null
-  );
+    null,
+  )
 
   const handleClick = (cardNumber: number) => {
     if (selectedCardId === cardNumber) {
-      setSelectedCardId(null);
+      setSelectedCardId(null)
     } else {
-      setSelectedCardId(cardNumber);
+      setSelectedCardId(cardNumber)
       onSelected(cardNumber)
     }
-  };
+  }
 
   return (
     <Container>
-      <div className="card-list">
-        {cards.map((card) => (
+      <div className='card-list'>
+        {cards.map(card => (
           <div
             className={`unique-card ${
-              selectedCardId === card.cardNumber ? "selected" : ""
+              selectedCardId === card.cardNumber ? 'selected' : ''
             }`}
             key={card.cardNumber}
             onClick={() => handleClick(card.cardNumber)}
@@ -44,7 +47,7 @@ const CardsSet: React.FC<{ cards: CardProps[], onSelected: (eventId: number) => 
         ))}
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default CardsSet;
+export default CardsSet

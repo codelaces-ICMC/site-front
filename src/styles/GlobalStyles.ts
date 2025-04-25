@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
     :root {
@@ -59,4 +59,4 @@ export default createGlobalStyle`
         width:50%;
         background-color: var(--cor-rosa);
     }
-`;
+`
