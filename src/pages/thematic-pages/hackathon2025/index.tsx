@@ -81,8 +81,8 @@ const HomeHackathon: React.FC = () => {
             [2] <a href='https://www.poder360.com.br/midia/cai-de-27-para-17-o-percentual-de-brasileiros-que-pagam-por-noticias-on-line/'>Cai de 27% para 17% o percentual de brasileiros que pagam por noticias online</a>
           </p>
           <div className='btn-area'>
-              <a className='btn' id='btn-inscricoes' href="../../../../docs/Regulamento.pdf" target="_blank"><h3 className='btn-text'>EDITAL EM BREVE</h3></a>
-              <a className='btn' id='btn-inscricoes' href="../../../../docs/texto_apoio.pdf" target="_blank"><h3 className='btn-text'>MATERIAL DE APOIO EM BREVE</h3></a>
+              <a className='btn' href="../../../../docs/Regulamento2025.pdf"><h3 className='btn-text'>CONFIRA O EDITAL</h3></a>
+              <a className='btn' href="../../../../docs/Tema2025.pdf"><h3 className='btn-text'>LEIA O MATERIAL DE APOIO</h3></a>
               <a className='btn' id='btn-inscricoes'><h3 className='btn-text'>INSCRIÇÕES EM BREVE</h3></a>
           </div>
         </div>
