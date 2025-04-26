@@ -53,7 +53,7 @@ const EventosAdmin: React.FC = () => {
     }
   };
 
-  const onSubmit = async (event: React.FormEvent) => {
+  const handleSubmission = async (event: React.FormEvent) => {
     event.preventDefault(); // Evita o comportamento padrão de envio de formulário
     console.log("Form Values:", formValues); // Debugging: Log form values
     try {
@@ -109,7 +109,7 @@ const EventosAdmin: React.FC = () => {
         </div>
       </div>
       <div className="forms-event">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmission}>
           <label id="label-nome" className="label-event">
             Nome do evento:
             <input
