@@ -10,6 +10,7 @@ import { postAdminEvents } from "api/admin/events/post";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Container } from "./style";
+import { useForm } from 'react-hook-form';
 
 interface FormValues {
   nomeEvento: string;
@@ -52,8 +53,9 @@ const EventosAdmin: React.FC = () => {
     }
   };
 
-  const handleSubmission = async (event: React.FormEvent) => {
+  const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault(); // Evita o comportamento padrão de envio de formulário
+    console.log("Form Values:", formValues); // Debugging: Log form values
     try {
       await postAdminEvents({ 
         eventName: formValues.nomeEvento,
@@ -74,14 +76,22 @@ const EventosAdmin: React.FC = () => {
 
       if (err) {
         Swal.fire({
-          title: err.title,
-          text: err.message,
-          confirmButtonText: 'OK',
+          title: err?.title || "Erro",
+          text: err?.message || "Algo deu errado. Tente novamente <3.",
+          confirmButtonText: "OK",
         })
       }
       navigate("/admin/login")
     }
   };
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<FormValues>();
 
   return (
     <Container>
@@ -99,14 +109,19 @@ const EventosAdmin: React.FC = () => {
         </div>
       </div>
       <div className="forms-event">
-        <form onSubmit={handleSubmission}>
+        <form onSubmit={onSubmit}>
           <label id="label-nome" className="label-event">
             Nome do evento:
             <input
               type="text"
-              name="nomeEvento"
-              value={formValues.nomeEvento}
-              onChange={handleInputChange}
+              placeholder="Nome do evento"
+              {...register("nomeEvento", {
+                required: "Esse campo é obrigatório.",
+                minLength: {
+                  value: 3,
+                  message: "O nome do evento deve ter pelo menos 3 caracteres.",
+                },
+              })}
             />
           </label>
           <div className="linha-data">
@@ -114,20 +129,28 @@ const EventosAdmin: React.FC = () => {
               Inicio:
               <input
                 type="text"
-                name="inicio"
-                value={formValues.inicio}
-                onChange={handleInputChange}
                 placeholder="DD/MM/AA XX:XX"
+                {...register("inicio", {
+                  required: "Esse campo é obrigatório.",
+                  pattern: {
+                    value: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{2} \d{2}:\d{2}$/,
+                    message: "Formato inválido. Use DD/MM/AA HH:MM",
+                  },
+                })}
               />
             </label>
             <label id="label-fim" className="label-event">
               Fim:
               <input
                 type="text"
-                name="fim"
-                value={formValues.fim}
-                onChange={handleInputChange}
                 placeholder="DD/MM/AA XX:XX"
+                {...register("fim", {
+                  required: "Esse campo é obrigatório.",
+                  pattern: {
+                    value: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{2} \d{2}:\d{2}$/,
+                    message: "Formato inválido. Use DD/MM/AA HH:MM",
+                  },
+                })}
               />
             </label>
           </div>
@@ -139,6 +162,7 @@ const EventosAdmin: React.FC = () => {
               name="descricao"
               value={formValues.descricao}
               onChange={handleInputChange}
+              placeholder="Descrição do evento"
               onInput={(e) => {
                 if (e.target instanceof HTMLElement) {
                   e.target.style.height = "auto"; // Redefine a altura para automática
@@ -154,6 +178,7 @@ const EventosAdmin: React.FC = () => {
               name="lugar"
               value={formValues.lugar}
               onChange={handleInputChange}
+              placeholder="Local do evento"
             />
           </label>
           {/* <label id="label-banner" className="label-event">
@@ -172,9 +197,14 @@ const EventosAdmin: React.FC = () => {
               Valor:
               <input
                 type="text"
-                name="valor"
-                onChange={handleInputChange}
                 placeholder="XX.XX"
+                {...register("valor", {
+                  required: "Esse campo é obrigatório.",
+                  pattern: {
+                    value: /^\d+(\.\d{1,2})?$/,
+                    message: "Formato inválido. Use XX.XX",
+                  },
+                })}
               />
             </label>
             <label id="label-link" className="label-event">
@@ -183,13 +213,17 @@ const EventosAdmin: React.FC = () => {
                 type="text"
                 name="linkPagamento"
                 onChange={handleInputChange}
+                placeholder="Link para o pagamento"
               />
             </label>
           </div>
           <h2 className="title-section">Fotos</h2>
           <label id="label-drive" className="label-event">
             Link do Drive:
-            <input type="text" name="linkDrive" onChange={handleInputChange} />
+            <input 
+            type="text" 
+            name="linkDrive" 
+            onChange={handleInputChange} />
           </label>
           <button type="submit" className="btn-finish">
             <MyButton text="Finalizar" img_path={iconFinish} />
