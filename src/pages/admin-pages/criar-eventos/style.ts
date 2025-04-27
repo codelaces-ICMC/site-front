@@ -52,6 +52,17 @@ export const Container = styled.div`
     padding: 0.5em;
   }
 
+  .input-error {
+    border: 2px solid var(--cor-vermelho);
+  }
+
+  .error-message {
+    color: var(--cor-vermelho);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
   textarea {
     border: 1px solid var(--cor-roxo-escuro);
     border-radius: 20px;

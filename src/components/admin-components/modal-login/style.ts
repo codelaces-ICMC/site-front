@@ -52,6 +52,7 @@ export const Container = styled.div`
     border: 2px solid var(--cor-vermelho);
     
   }
+  
   .error-message {
     color: var(--cor-vermelho);
     font-size: 0.9rem;

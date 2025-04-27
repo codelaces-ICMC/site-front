@@ -46,6 +46,26 @@ const EventosAdmin: React.FC = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
+  // Função para formatação de data
+  const handleDateInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let { value } = e.target;
+
+    // Remove qualquer caractere que não seja dígito
+    value = value.replace(/\D/g, "");
+
+    // Formata a data no formato DD/MM/AA XX:XX
+    if (value.length> 2) value = value.slice(0, 2) + "/" + value.slice(2);
+    if (value.length > 5) value = value.slice(0, 5) + "/" + value.slice(5);
+    if (value.length > 8) value = value.slice(0, 8) + " " + value.slice(8);
+    if (value.length > 11) value = value.slice(0, 11) + ":" + value.slice(11);
+
+    // Limita o tamanho máximo
+    if (value.length > 14) value = value.slice(0, 14);
+
+    // Atualiza o valor do input
+    e.target.value = value;
+  }
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, files } = e.target;
     if (files && files.length > 0) {
@@ -115,6 +135,7 @@ const EventosAdmin: React.FC = () => {
             <input
               type="text"
               placeholder="Nome do evento"
+              className={errors.nomeEvento ? "input-error" : ""}
               {...register("nomeEvento", {
                 required: "Esse campo é obrigatório.",
                 minLength: {
@@ -123,13 +144,17 @@ const EventosAdmin: React.FC = () => {
                 },
               })}
             />
+
+            {errors.nomeEvento && <span className="error-message">{errors.nomeEvento.message}</span>}
           </label>
+
           <div className="linha-data">
             <label id="label-inicio" className="label-event">
               Inicio:
               <input
                 type="text"
                 placeholder="DD/MM/AA XX:XX"
+                className={errors.inicio ? "input-error" : ""}
                 {...register("inicio", {
                   required: "Esse campo é obrigatório.",
                   pattern: {
@@ -137,13 +162,19 @@ const EventosAdmin: React.FC = () => {
                     message: "Formato inválido. Use DD/MM/AA HH:MM",
                   },
                 })}
+                onChange={(e) => {
+                  handleDateInputChange(e);
+                }}
               />
+              {errors.inicio && <span className="error-message">{errors.inicio.message}</span>}
             </label>
+
             <label id="label-fim" className="label-event">
               Fim:
               <input
                 type="text"
                 placeholder="DD/MM/AA XX:XX"
+                className={errors.fim ? "input-error" : ""}
                 {...register("fim", {
                   required: "Esse campo é obrigatório.",
                   pattern: {
@@ -151,8 +182,13 @@ const EventosAdmin: React.FC = () => {
                     message: "Formato inválido. Use DD/MM/AA HH:MM",
                   },
                 })}
+                onChange={(e) => {
+                  handleDateInputChange(e);
+                }}
               />
+              {errors.fim && <span className="error-message">{errors.fim.message}</span>}
             </label>
+
           </div>
           <label id="label-descricao" className="label-event">
             Descrição:
