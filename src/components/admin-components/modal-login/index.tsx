@@ -72,7 +72,7 @@ export default function ModalLogin() {
                   required: "Esse campo é obrigatório.",
                   pattern: {
                     value: /^\S+@\S+$/i,
-                    message: "Formato de e-mail inválido",
+                    message: "Formato de e-mail inválido.",
                   },
                 })}
               />
@@ -87,7 +87,7 @@ export default function ModalLogin() {
                   required: "Esse campo é obrigatório.",
                   minLength: {
                     value: 6,
-                    message: "A senha deve ter no mínimo 6 caracteres",
+                    message: "A senha deve ter no mínimo 6 caracteres.",
                   },
                 })}
               />
