@@ -9,6 +9,9 @@ import ButtonProps from 'components/user-components/props/button-props'
 import BannerImage from '../../../assets/img/hackathon2025/banner.png'
 import lineTimeImage from '../../../assets/img/hackathon2025/linha_tempo.png'
 
+import Amdocs from '../../../assets/img/patrocinadores/amdocs.png'
+import Alura from '../../../assets/img/patrocinadores/alura.png'
+
 import { Container, HeaderContainer } from './style'
 
 const HomeHackathon: React.FC = () => {
@@ -120,6 +123,18 @@ const HomeHackathon: React.FC = () => {
       </div>
       <div className='patrocinadores'>
         <h1 className='title'>AGRADECIMENTO AOS NOSSOS PATROCINADORES!</h1>
+        <div className='gold'>
+          <div className='patrocinio'>
+            <img className='gold-img' src={Alura} alt='Logo da Alura' />
+            <p className='gold-text'>Alura</p>
+          </div>
+        </div>
+        <div className='bronze'>
+          <div className='patrocinio'>
+            <img className='bronze-img' src={Amdocs} alt='Logo da Amdocs' />
+            <p className='bronze-text'>AMDOCS</p>
+          </div>
+        </div>
       </div>
       <div className='programacao-hackathon'>
         <h1 className='title' id='title-programacao'>
