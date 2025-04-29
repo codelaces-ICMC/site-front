@@ -28,8 +28,7 @@ const HomeHackathon: React.FC = () => {
     },
     {
       question: 'Quais são os requisitos para participar?',
-      answer:
-        'Ser uma mulher cis ou trans e ser apaixonada por tecnologia.',
+      answer: 'Ser uma mulher cis ou trans e ser apaixonada por tecnologia.',
     },
     {
       question: 'Quantas integrantes cada equipe terá?',
