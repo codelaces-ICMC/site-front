@@ -11,6 +11,8 @@ import lineTimeImage from '../../../assets/img/hackathon2025/linha_tempo.png'
 
 import Amdocs from '../../../assets/img/patrocinadores/amdocs.png'
 import Alura from '../../../assets/img/patrocinadores/alura.png'
+import ICMC from '../../../assets/img/patrocinadores/ICMC.png'
+import EESC from '../../../assets/img/patrocinadores/EESC.png'
 
 import { Container, HeaderContainer } from './style'
 
@@ -126,6 +128,14 @@ const HomeHackathon: React.FC = () => {
           <div className='patrocinio'>
             <img className='gold-img' src={Alura} alt='Logo da Alura' />
             <p className='gold-text'>Alura</p>
+          </div>
+          <div className='patrocinio'>
+            <img className='gold-img' src={ICMC} alt='Logo dO ICMC' />
+            <p className='gold-text'>ICMC - USP</p>
+          </div>
+          <div className='patrocinio'>
+            <img className='gold-img' src={EESC} alt='Logo da EESC' />
+            <p className='gold-text'>EESC - USP</p>
           </div>
         </div>
         <div className='bronze'>

@@ -98,7 +98,7 @@ export const Container = styled.div`
   }
 
   .gold-img {
-    height: 100px;
+    height: 90px;
   }
 
   .gold-text {
@@ -108,7 +108,7 @@ export const Container = styled.div`
   }
 
   .silver-img {
-    height: 50px;
+    height: 75px;
   }
 
   .silver-text {
@@ -118,7 +118,7 @@ export const Container = styled.div`
   }
 
   .bronze-img {
-    height: 25px;
+    height: 40px;
   }
 
   .bronze-text {
