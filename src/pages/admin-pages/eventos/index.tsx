@@ -14,6 +14,8 @@ import Swal from "sweetalert2";
 import DynamicButton from "../../../components/admin-components/btn";
 import CardsSet from "../../../components/admin-components/cards-set";
 import { Container } from "./style";
+import Tabela, { Coluna } from "../../../components/admin-components/table/Tabela";
+import inscritosMockadosData from "../../../pages/admin-pages/admin-inscritos/inscritosMock.json"; // Importando o arquivo JSON
 
 export default function EventosAdmin() {
   const navigate = useNavigate();
@@ -31,7 +33,17 @@ export default function EventosAdmin() {
 
   const [adminEvents, adminWebEvents] = useState<Evento[]>([]);
   const [search, setSearch] = useState("null");
-  const [eventId, setEventId] = useState(-1)
+  const [eventId, setEventId] = useState(-1);
+
+  const [showTable, setShowTable] = useState(false);
+  const [inscritosMockados, setInscritosMockados] = useState(inscritosMockadosData); // Utilizando o arquivo JSON
+
+  const colunasInscritos: Coluna[] = [
+    { header: "ID", accessor: "id" },
+    { header: "Nome", accessor: "nome" },
+    { header: "Email", accessor: "email" },
+
+  ];
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -42,15 +54,15 @@ export default function EventosAdmin() {
       } catch (error: any) {
         console.error(error);
 
-        const err = error?.response?.data?.error
+        const err = error?.response?.data?.error;
 
         if (err) {
           Swal.fire({
             title: err.title,
             text: err.message,
-            confirmButtonText: 'OK',
-          })
-          navigate("/admin/login")
+            confirmButtonText: "OK",
+          });
+          navigate("/admin/login");
         }
       }
     };
@@ -58,8 +70,8 @@ export default function EventosAdmin() {
   }, [search]);
 
   const handleSelectedEvent = (eventSelected: number) => {
-    setEventId(eventSelected)
-  }
+    setEventId(eventSelected);
+  };
 
   const handleTextChange = (newText: string) => {
     setSearch(newText);
@@ -79,43 +91,47 @@ export default function EventosAdmin() {
   }));
 
   const handleNewEvent = () => {
-    navigate("/admin/create/event")
-  }
+    navigate("/admin/create/event");
+  };
 
   const handleEditEvent = () => {
-    navigate(`/admin/edit/event/${eventId}`)
-  }
+    navigate(`/admin/edit/event/${eventId}`);
+  };
 
   const handleDeleteEvent = async () => {
     try {
       if (eventId < 0) throw new Error("evento não existe");
-      
+
       await deleteAdminEventById(eventId);
 
       Swal.fire({
         title: "Evento apagado.",
         text: `O evento de id ${eventId} foi apagado com sucesso!`,
-        confirmButtonText: 'Voltar',
+        confirmButtonText: "Voltar",
       }).then((result: any) => {
-        if(result.isConfirmed) {
-          window.location.reload()
+        if (result.isConfirmed) {
+          window.location.reload();
         }
-      })
-
+      });
     } catch (error: any) {
       console.error("Erro ao enviar a solicitação DELETE:", error);
-      const err = error?.response?.data?.error
+      const err = error?.response?.data?.error;
 
       if (err) {
         Swal.fire({
           title: err.title,
           text: err.message,
-          confirmButtonText: 'OK',
-        })
+          confirmButtonText: "OK",
+        });
       }
-      navigate("/admin/login")
+      navigate("/admin/login");
     }
-  }
+  };
+
+  const handleToggleTabela = () => {
+   
+    setShowTable(!showTable);
+  };
 
   return (
     <Container>
@@ -128,14 +144,40 @@ export default function EventosAdmin() {
             <h2 className="text">Eventos Criados:</h2>
           </div>
           <div className="buttons">
-            <DynamicButton text="Deletar" img_path={iconDelete} onAction={handleDeleteEvent} /> 
-            <DynamicButton text="Editar" img_path={iconEdit} onAction={handleEditEvent}/>
-            <DynamicButton text="Novo Evento" img_path={iconAdd} onAction={handleNewEvent} />
+            <DynamicButton
+              text="Deletar"
+              img_path={iconDelete}
+              onAction={handleDeleteEvent}
+            />
+            <DynamicButton
+              text="Editar"
+              img_path={iconEdit}
+              onAction={handleEditEvent}
+            />
+            <DynamicButton
+              text="Novo Evento"
+              img_path={iconAdd}
+              onAction={handleNewEvent}
+            />
+            <DynamicButton
+              text="Inscritos"
+              img_path={iconEdit}
+              onAction={() =>{
+                setShowTable(!showTable);
+              }}
+            />
           </div>
         </div>
         <div className="cards">
           <CardsSet onSelected={handleSelectedEvent} cards={cards_data} />
         </div>
+
+        {showTable && (
+          <div style={{ marginTop: "20px" }} className="tabela-scroll-container">
+            <h3>Inscritos do Evento:</h3>
+            <Tabela dados={inscritosMockados} colunas={colunasInscritos} />
+          </div>
+        )}
       </section>
     </Container>
   );

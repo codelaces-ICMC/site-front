@@ -15,7 +15,6 @@ import Events from "./pages/user-pages/events";
 import Home from "./pages/user-pages/home";
 import HomeHackathon from "pages/thematic-pages/hackathon2025";
 import GlobalStyles from "./styles/GlobalStyles";
-import AdminInscritos from "./pages/admin-pages/admin-inscritos/AdminInscritos";
 function App() {
   return (
     <Router>
@@ -46,7 +45,6 @@ function App() {
             path="/admin/create/certificate"
             element={<CreateCertificateAdmin />}
           /> 
-          <Route path="/admin/inscritos" element={<AdminInscritos />} />
         </Routes>
       </div>
     </Router>
