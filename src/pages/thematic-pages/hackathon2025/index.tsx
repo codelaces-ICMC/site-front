@@ -117,7 +117,7 @@ const HomeHackathon: React.FC = () => {
           <a className='btn' href='../../../../docs/Tema2025.pdf'>
             <h3 className='btn-text'>LEIA O MATERIAL DE APOIO</h3>
           </a>
-          <a className='btn' href='https://forms.gle/7ra8bYX2z3JZBT6o7'>
+          <a className='btn' href='https://forms.gle/AJhXrYCTihrS2e8H7'>
             <h3 className='btn-text'>INSCRIÇÕES ABERTAS</h3>
           </a>
         </div>
