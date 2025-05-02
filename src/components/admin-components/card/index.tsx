@@ -1,10 +1,10 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import CardProps from "../props/props-card";
+import React from 'react'
+import { useLocation } from 'react-router-dom'
+import CardProps from '../props/props-card'
 
-import DynamicTag from "../card-tag";
+import DynamicTag from '../card-tag'
 
-import { Container } from "./style";
+import { Container } from './style'
 
 const Card: React.FC<
   CardProps & { isSelected: boolean; onClick: () => void }
@@ -20,33 +20,33 @@ const Card: React.FC<
   hasCover,
   hasCoffee,
 }) => {
-  const location = useLocation();
-  const currentPage = location.pathname;
+  const location = useLocation()
+  const currentPage = location.pathname
 
-  const isEventsPage = currentPage === "/admin/events";
-  const isActivitiesPage = currentPage === "/admin/activities";
-  const isCertificatesPage = currentPage === "/admin/certificates";
-  console.log("startTime Activity: ", startTime)
-  console.log("endTime Activity: ", endTime)
+  const isEventsPage = currentPage === '/admin/events'
+  // const isActivitiesPage = currentPage === '/admin/activities'
+  const isCertificatesPage = currentPage === '/admin/certificates'
+  console.log('startTime Activity: ', startTime)
+  console.log('endTime Activity: ', endTime)
 
   const formatDate = (date: Date): string => {
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  };
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  }
 
   const formatTime = (date: Date): string => {
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    return `${hours}:${minutes}`;
-  };
+    const hours = date.getHours().toString().padStart(2, '0')
+    const minutes = date.getMinutes().toString().padStart(2, '0')
+    return `${hours}:${minutes}`
+  }
 
   return (
     <Container>
       <div
-        className="menu"
+        className='menu'
         style={{
           boxShadow: isSelected
-            ? "0px 0px 10px 3px var(--cor-roxo-claro)"
-            : "0px 0px 10px 3px rgba(0, 0, 0, 0.3)",
+            ? '0px 0px 10px 3px var(--cor-roxo-claro)'
+            : '0px 0px 10px 3px rgba(0, 0, 0, 0.3)',
         }}
         onClick={onClick}
       >
@@ -65,22 +65,22 @@ const Card: React.FC<
           </p>
         )}
         {event && (
-          <p className="text-different">
+          <p className='text-different'>
             <span>Evento: </span>
             {event}
           </p>
         )}
         {workload && (
-          <p className="text-different">
+          <p className='text-different'>
             <span>Carga Horária: </span>
             {workload}
           </p>
         )}
-        <div className="tags-area">
+        <div className='tags-area'>
           {isEventsPage && (
             <>
-              <DynamicTag isTrue={hasCover} text="Cover" link="#" />
-              <DynamicTag isTrue={hasCoffee} text="Coffee" link="#" />
+              <DynamicTag isTrue={hasCover} text='Cover' link='#' />
+              <DynamicTag isTrue={hasCoffee} text='Coffee' link='#' />
             </>
           )}
           {/* {isActivitiesPage && (
@@ -90,13 +90,13 @@ const Card: React.FC<
           )} */}
           {isCertificatesPage && (
             <>
-              <DynamicTag isTrue={true} text="Template" link="#" />
+              <DynamicTag isTrue={true} text='Template' link='#' />
             </>
           )}
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

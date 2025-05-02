@@ -1,12 +1,12 @@
 // src/components/Pagination.tsx
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+  currentPage: number
+  totalPages: number
+  onPageChange: (page: number) => void
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({
   // ...
 
   return (
-    <div className="pagination">
+    <div className='pagination'>
       {/* Renderize os números das páginas aqui */}
       {/* Exemplo: */}
       {Array.from({ length: totalPages }, (_, index) => (
@@ -31,13 +31,13 @@ const Pagination: React.FC<PaginationProps> = ({
         </button>
       ))}
     </div>
-  );
-};
+  )
+}
 
 Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
-};
+}
 
-export default Pagination;
+export default Pagination

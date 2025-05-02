@@ -1,6 +1,6 @@
 interface ButtonProps {
-    question: string;
-    answer: string;
+  question: string
+  answer: string
 }
 
-export default ButtonProps;
+export default ButtonProps

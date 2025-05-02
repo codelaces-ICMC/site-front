@@ -1,16 +1,16 @@
-import axios from "axios";
+import axios from 'axios'
 
 interface User {
-  email: string;
-  name: string;
+  email: string
+  name: string
 }
 
 const postSubscribeUser = async (
   eventId: number,
   activityId: number,
-  user: User
+  user: User,
 ) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!;
+  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
     const response = await axios.post(
@@ -18,14 +18,13 @@ const postSubscribeUser = async (
       {
         name: user.name,
         email: user.email,
-      }
-    );
-    return response.data;
+      },
+    )
+    return response.data
   } catch (error) {
-    console.error("[postSubscribeUser] error: ", error);
-    throw error;
+    console.error('[postSubscribeUser] error: ', error)
+    throw error
   }
-};
+}
 
-export { postSubscribeUser };
-
+export { postSubscribeUser }

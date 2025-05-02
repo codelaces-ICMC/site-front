@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import inscritosMock from "./inscritosMock.json";
-import "./AdminInscritos.css";
+import React, { useState, useEffect } from 'react'
+import inscritosMock from './inscritosMock.json'
+import './AdminInscritos.css'
 
 type Inscrito = {
-  id: number;
-  nome: string;
-  evento: string;
-  data: string;
-};
+  id: number
+  nome: string
+  evento: string
+  data: string
+}
 
 const AdminInscritos = () => {
-  const [inscritos, setInscritos] = useState<Inscrito[]>([]);
+  const [inscritos, setInscritos] = useState<Inscrito[]>([])
 
   useEffect(() => {
-    setInscritos(inscritosMock as Inscrito[]);
-  }, []);
+    setInscritos(inscritosMock as Inscrito[])
+  }, [])
 
   return (
-    <div className="admin-inscritos-container">
+    <div className='admin-inscritos-container'>
       <h2>Inscritos nos Eventos</h2>
-      <table className="inscritos-table">
+      <table className='inscritos-table'>
         <thead>
           <tr>
             <th>ID</th>
@@ -29,7 +29,7 @@ const AdminInscritos = () => {
           </tr>
         </thead>
         <tbody>
-          {inscritos.map((inscrito) => (
+          {inscritos.map(inscrito => (
             <tr key={inscrito.id}>
               <td>{inscrito.id}</td>
               <td>{inscrito.nome}</td>
@@ -40,7 +40,7 @@ const AdminInscritos = () => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default AdminInscritos;
+export default AdminInscritos
