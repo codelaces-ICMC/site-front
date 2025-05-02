@@ -1,0 +1,49 @@
+.inscritos-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .inscritos-table th,
+  .inscritos-table td {
+    padding: 12px;
+    border: 1px solid #b88ae6;
+    text-align: left;
+  }
+  
+  .inscritos-table th {
+    background-color: var(--cor-roxa-escura);  
+    color: #76158d;
+  }
+  
+  .inscritos-table tr:nth-child(even) {
+    background-color: var(--cor-roxa-clara); 
+  }
+  
+  .inscritos-table tr:hover {
+    background-color: #cfb1ee;
+    transition: 0.3s;
+  }
+  
+  .tabela-scroll-container {
+    max-height: 300px; /* Você pode ajustar esse valor */
+    overflow-y: auto;
+  }
+  
+  /* (Opcional) Scrollbar personalizada para navegadores Webkit (Chrome, Edge, etc.) */
+  .tabela-scroll-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .tabela-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .tabela-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #b88ae6;
+    border-radius: 4px;
+  }
+  
+  .tabela-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #76158d;
+  }
+  
