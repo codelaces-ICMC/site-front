@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   .main-div {
@@ -86,6 +86,13 @@ export const Container = styled.div`
     justify-content: center;
   }
 
+  .error-message {
+    color: var(--cor-vermelho);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
   @media screen and (max-width: 1600px) {
     .main-div {
       width: 50vw;
@@ -105,4 +112,4 @@ export const Container = styled.div`
       width: 50vw;
     }
   }
-`;
+`

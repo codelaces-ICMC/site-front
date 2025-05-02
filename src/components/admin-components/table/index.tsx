@@ -1,45 +1,45 @@
-import React, { useState } from 'react';
-import { Container } from "./style";
+import React, { useState } from 'react'
+import { Container } from './style'
 
 interface Person {
-  id: number;
-  nome: string;
-  email: string;
+  id: number
+  nome: string
+  email: string
 }
 
 interface TableProps {
-  data: Person[];
+  data: Person[]
 }
 
 const Table: React.FC<TableProps> = ({ data }) => {
-  const itemsPerPage = 10; // Quantidade de pessoas por página
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const itemsPerPage = 10 // Quantidade de pessoas por página
+  const totalPages = Math.ceil(data.length / itemsPerPage)
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const peopleToShow = data.slice(startIndex, startIndex + itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const peopleToShow = data.slice(startIndex, startIndex + itemsPerPage)
 
-  const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const [selectedRows, setSelectedRows] = useState<number[]>([])
 
   const handleCheckboxChange = (id: number) => {
     if (selectedRows.includes(id)) {
       // Se o ID já estiver selecionado, remova-o
-      setSelectedRows(selectedRows.filter(rowId => rowId !== id));
+      setSelectedRows(selectedRows.filter(rowId => rowId !== id))
     } else {
       // Caso contrário, adicione-o aos IDs selecionados
-      setSelectedRows([...selectedRows, id]);
+      setSelectedRows([...selectedRows, id])
     }
-  };
+  }
 
   const handleSelectAll = () => {
     if (selectedRows.length === peopleToShow.length) {
       // Se todos já estiverem selecionados, desmarque todos
-      setSelectedRows([]);
+      setSelectedRows([])
     } else {
       // Caso contrário, selecione todos
-      setSelectedRows(peopleToShow.map(person => person.id));
+      setSelectedRows(peopleToShow.map(person => person.id))
     }
-  };
+  }
 
   return (
     <Container>
@@ -96,7 +96,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
         ))}
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

@@ -1,12 +1,12 @@
-import { HTMLProps } from "react";
+import { HTMLProps } from 'react'
 
 interface CardProps extends HTMLProps<HTMLDivElement> {
-  cardNumber: number;
-  eventName: string;
+  cardNumber: number
+  eventName: string
   // link_image: string;
-  isSelected: boolean;
-  endDate?: Date;
-  onClick?: () => void;
+  isSelected: boolean
+  endDate?: Date
+  onClick?: () => void
 }
 
-export default CardProps;
+export default CardProps

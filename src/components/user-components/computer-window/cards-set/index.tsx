@@ -1,35 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import CardProps from "../../props/props-card";
-import Card from "../card-event";
-import { Container } from "./style";
+import CardProps from '../../props/props-card'
+import Card from '../card-event'
+import { Container } from './style'
 
 const CardsSet: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
   const [selectedCardId, setSelectedCardId] = React.useState<number | null>(
-    null
-  );
+    null,
+  )
 
   const handleClick = (cardNumber: number) => {
     if (selectedCardId === cardNumber) {
-      setSelectedCardId(null);
+      setSelectedCardId(null)
     } else {
-      setSelectedCardId(cardNumber);
+      setSelectedCardId(cardNumber)
     }
-  };
+  }
 
-  const currentDate = new Date();
+  const currentDate = new Date()
 
   return (
     <Container>
-      <div className="card-list">
-        {cards.map((card) => (
-          <div className="unique-card" key={card.cardNumber}>
+      <div className='card-list'>
+        {cards.map(card => (
+          <div className='unique-card' key={card.cardNumber}>
             {card.endDate && currentDate <= new Date(card.endDate) ? (
               <Link to={`/events/info/${card.cardNumber}`}>
                 <div
                   className={`unique-card ${
-                    selectedCardId === card.cardNumber ? "selected" : ""
+                    selectedCardId === card.cardNumber ? 'selected' : ''
                   }`}
                   onClick={() => handleClick(card.cardNumber)}
                 >
@@ -45,7 +45,7 @@ const CardsSet: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
             ) : (
               <div
                 className={`unique-card ${
-                  selectedCardId === card.cardNumber ? "selected" : ""
+                  selectedCardId === card.cardNumber ? 'selected' : ''
                 }`}
                 onClick={() => handleClick(card.cardNumber)}
               >
@@ -62,7 +62,7 @@ const CardsSet: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
         ))}
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default CardsSet;
+export default CardsSet

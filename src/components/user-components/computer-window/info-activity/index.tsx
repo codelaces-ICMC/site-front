@@ -1,10 +1,10 @@
 // Importe useState e useEffect do React
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import { postSubscribeUser } from "api/web/events/{eventId}/activities/{acitivity}/subscribe/post";
-import { useParams } from "react-router-dom";
-import InfoProps from "../../props/props-info-activity";
-import { Container } from "./style";
+import { postSubscribeUser } from 'api/web/events/{eventId}/activities/{acitivity}/subscribe/post'
+import { useParams } from 'react-router-dom'
+import InfoProps from '../../props/props-info-activity'
+import { Container } from './style'
 import Swal from "sweetalert2";
 import { useForm } from 'react-hook-form';
 
@@ -14,11 +14,11 @@ type FormInputs = {
 };
 
 const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
-  const { eventId, activityId } = useParams();
+  const { eventId, activityId } = useParams()
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   const {
     register,
@@ -29,15 +29,15 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   } = useForm<FormInputs>();
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
+    setEmail(event.target.value)
+  }
 
   const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
+    setName(event.target.value)
+  }
 
   const handleSubmission = async (event: React.FormEvent) => {
-    event.preventDefault(); // Evita o comportamento padrão de envio de formulário
+    event.preventDefault() // Evita o comportamento padrão de envio de formulário
     try {
       await postSubscribeUser(parseInt(eventId!), parseInt(activityId!), {
         name,
@@ -65,7 +65,7 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
               });
             }
     }
-  };
+  }
 
   useEffect(() => {
     if (submitted) {
@@ -74,35 +74,35 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
       setName("");
       setEmail("");
     }
-  }, [submitted]);
+  }, [submitted])
 
   const formatDate = (date: Date): string => {
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  };
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  }
 
   const formatTime = (date: Date): string => {
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    return `${hours}:${minutes}`;
-  };
+    const hours = date.getHours().toString().padStart(2, '0')
+    const minutes = date.getMinutes().toString().padStart(2, '0')
+    return `${hours}:${minutes}`
+  }
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 720);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 720)
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 720);
-    };
+      setIsMobile(window.innerWidth <= 720)
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
     <Container>
-      {infos.map((event) => (
-        <div className="main-div" key={event.activityId}>
-          <div className="column" id="first-column">
-            <p id="first-p">
+      {infos.map(event => (
+        <div className='main-div' key={event.activityId}>
+          <div className='column' id='first-column'>
+            <p id='first-p'>
               <span>ATIVIDADE: </span>
               {event.activityName}
             </p>
@@ -125,19 +125,31 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
               {formatTime(event.startTime)} às {formatTime(event.endTime)}
             </p>
           </div>
-          {!isMobile && <div className="line-between"></div>}
+          {!isMobile && <div className='line-between'></div>}
           {event.activityName.toLowerCase().includes('lightning') ? (
-            <div className="class-btn">
-              <p id="p-descricao"><span>Sobre as Lightning Talks: </span>Sobre as Lightning Talks: são palestras curtas, com objetivo de transmitir conhecimentos e estimular discussões sobre o tema visto. Cada palestrante tem cinco minutos de apresentação e com temática relacionada a ciências, exatas e tecnologia - fica a critério da pessoa fazer uma apresentação em slides, mas não é obrigatório. Vamos dar preferência para inscritas mulheres! Horários das Lightning Talks a definir.</p>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNV_sDIVVe0pnpE3sjyamrYAoUv4kldbH3X9NB8YS95PDdvA/viewform?usp=sharing" className="modal-btn">
+            <div className='class-btn'>
+              <p id='p-descricao'>
+                <span>Sobre as Lightning Talks: </span>Sobre as Lightning Talks:
+                são palestras curtas, com objetivo de transmitir conhecimentos e
+                estimular discussões sobre o tema visto. Cada palestrante tem
+                cinco minutos de apresentação e com temática relacionada a
+                ciências, exatas e tecnologia - fica a critério da pessoa fazer
+                uma apresentação em slides, mas não é obrigatório. Vamos dar
+                preferência para inscritas mulheres! Horários das Lightning
+                Talks a definir.
+              </p>
+              <a
+                href='https://docs.google.com/forms/d/e/1FAIpQLSdNV_sDIVVe0pnpE3sjyamrYAoUv4kldbH3X9NB8YS95PDdvA/viewform?usp=sharing'
+                className='modal-btn'
+              >
                 ACESSE O FORMULÁRIO
               </a>
             </div>
           ) : (
-            <form className="event-form" onSubmit={handleSubmission}>
-              <div id="itens" className="modal">
-                <div className="sub-item">
-                  <h2 className="modal-text">Nome Completo</h2>
+            <form className='event-form' onSubmit={handleSubmission}>
+              <div id='itens' className='modal'>
+                <div className='sub-item'>
+                  <h2 className='modal-text'>Nome Completo</h2>
                   <input
                     className={` modal-input ${errors.name ? 'error' : ''}`}
                     type="text"
@@ -154,8 +166,8 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                   />
                   {errors.name && <p className="error-message">{errors.name.message}</p>}
                 </div>
-                <div className="sub-item">
-                  <h2 className="modal-text">Email</h2>
+                <div className='sub-item'>
+                  <h2 className='modal-text'>Email</h2>
                   <input
                     className={` modal-input ${errors.email ? 'error' : ''}`}
                     type="text"
@@ -173,8 +185,8 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                   {errors.email && <p className="error-message">{errors.email.message}</p>}
                 </div>
               </div>
-              <div className="class-btn">
-                <button className="modal-btn" type="submit">
+              <div className='class-btn'>
+                <button className='modal-btn' type='submit'>
                   INSCREVA-SE
                 </button>
               </div>
@@ -183,7 +195,7 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
         </div>
       ))}
     </Container>
-  );
-};
+  )
+}
 
-export default InfoActivity;
+export default InfoActivity

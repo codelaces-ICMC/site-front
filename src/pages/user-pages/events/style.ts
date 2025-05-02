@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   height: 100vh;
@@ -25,7 +25,7 @@ export const Container = styled.div`
   .cards {
     max-height: 47.6vh;
   }
-`;
+`
 
 export const HeaderContainer = styled.header`
   background: var(--degrade-roxo-rosa);
@@ -34,7 +34,7 @@ export const HeaderContainer = styled.header`
   button {
     color: var(--cor-branco);
   }
-`;
+`
 
 export const FooterContainer = styled.footer`
   background: var(--degrade-roxo-rosa);
@@ -43,4 +43,4 @@ export const FooterContainer = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
-`;
+`

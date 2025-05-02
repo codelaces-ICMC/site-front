@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Swal from 'sweetalert2';
+import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import { useForm } from 'react-hook-form';
 
-import { postAdminLogin } from "api/login/post";
-import { useNavigate } from "react-router-dom";
-import { Container } from "./style";
+import { postAdminLogin } from 'api/login/post'
+import { useNavigate } from 'react-router-dom'
+import { Container } from './style'
 
 type FormInputs = {
   email: string;
@@ -62,8 +62,8 @@ export default function ModalLogin() {
         <div className="modal">
           <form className="modal-form" onSubmit={handleSubmit(onSubmit)}>
             <h1>LOGIN</h1>
-            <div id="itens" className="modal">
-              <h2 className="modal-text">E-mail</h2>
+            <div id='itens' className='modal'>
+              <h2 className='modal-text'>E-mail</h2>
               <input
                 className={` modal-input ${errors.email ? 'error' : ''}`}
                 type="text"
@@ -98,9 +98,10 @@ export default function ModalLogin() {
               {isSubmitting ? "Entrando..." : "Log In"}
             </button>
           </form>
-          <p className="modal-p">WOMEN IN TECH - ICMC/USP 2024</p>
+
+          <p className='modal-p'>WIT - ICMC/USP 2025</p>
         </div>
       </div>
     </Container>
-  );
+  )
 }
