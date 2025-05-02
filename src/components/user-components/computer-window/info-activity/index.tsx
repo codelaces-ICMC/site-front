@@ -71,10 +71,9 @@ const InfoActivity: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
     if (submitted) {
       // Limpar campos após submissão bem-sucedida
       // Usar resert() para limpar os campos
-      setName("");
-      setEmail("");
+      reset();
     }
-  }, [submitted])
+  }, [submitted, reset]);
 
   const formatDate = (date: Date): string => {
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
