@@ -30,6 +30,10 @@ export default function Header() {
         </li>
         <li>|</li>
         <li>
+          <a href='https://forms.gle/TxZWhBWC5HoUTtzF6'>PROCESSO SELETIVO</a>
+        </li>
+        <li>|</li>
+        <li>
           <a href='/hackathon'>HACKATHON</a>
         </li>
       </div>
