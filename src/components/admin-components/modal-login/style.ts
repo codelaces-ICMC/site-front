@@ -50,14 +50,13 @@ export const Container = styled.div`
 
   .modal-input.error {
     border: 2px solid var(--cor-vermelho);
-    
   }
-  
+
   .error-message {
     color: var(--cor-vermelho);
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .modal-btn {
@@ -84,13 +83,6 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: center;
-  }
-
-  .error-message {
-    color: var(--cor-vermelho);
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    text-align: center;
   }
 
   @media screen and (max-width: 1600px) {

@@ -99,7 +99,6 @@ export const Container = styled.div`
 
   .modal-input.error {
     border: 2px solid var(--cor-vermelho);
-    
   }
   .error-message {
     color: var(--cor-vermelho);
