@@ -2,9 +2,13 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
     :root {
+        --cor-roxo-escuro2: #5E548E;
+        --cor-roxo2: #522766;
         --cor-roxo-escuro: #503F77;
         --cor-roxo: #6B549F;
         --cor-roxo-claro: #A296C3;
+        --cor-violeta: #C894E0;
+        --cor-rosa2: #C894E0;
         --cor-rosa: #D662AF;
         --amarelo: #F3E838;
         --cor-branco: #F2F2F2;

@@ -8,6 +8,8 @@ export const Container = styled.header`
   align-items: center;
   padding: 0 5vw;
 
+  background: var(--cor-roxo2);
+
   .menu {
     display: flex;
     justify-content: right;
@@ -26,7 +28,7 @@ export const Container = styled.header`
 
   a:hover,
   #selective-header-btn:hover {
-    color: var(--cor-roxo-claro);
+    color: var(--cor-violeta);
   }
 
   #selective-header-btn {

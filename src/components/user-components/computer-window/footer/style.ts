@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const Container = styled.footer`
     .footer {
-        background: var(--degrade-roxo-rosa);
+        background: var(--cor-roxo2);
         display: flex;
         height: 15vh;
         width: 100%;

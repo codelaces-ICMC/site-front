@@ -15,13 +15,14 @@ export const Container = styled.div`
 
   .search-btn {
     position: absolute;
-    top: 0.5vh;
+    top: 50%;
+    transform: translateY(-48%); /*corrige o alinhamento vertical*/
     left: 15vw;
     background: transparent;
   }
 
   .search-btn:active {
-    transform: scale(1.05);
+    transform: translateY(-50%) scale(1.05); /* mantém centralizado ao clicar */
   }
 
   .card-list {
@@ -32,5 +33,11 @@ export const Container = styled.div`
     padding-bottom: 0.9vh;
     overflow: auto;
     max-height: 80vh;
+  }
+
+  .search-btn img {
+    width: 7em; /*ajuste o tamanho que quiser */
+    height: 7em; /*ajuste o tamanho que quiser */
+    object-fit: contain; /*garante que a imagem não distorça */
   }
 `
