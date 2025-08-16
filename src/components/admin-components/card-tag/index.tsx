@@ -15,8 +15,8 @@ const DynamicTag: FC<DynamicTagProps> = ({
 }) => {
   const tagStyle = {
     background: isTrue
-      ? 'var(--degrade-roxo-rosa)'
-      : 'var(--degrade-branco-cinza)', // Altere as cores conforme necessário
+      ? 'var(--cor-roxo-escuro2)' // Altere as cores conforme necessário
+      : 'var(--cor-branco', // Altere as cores conforme necessário
     color: isTrue ? 'var(--cor-branco)' : 'var(--cor-preto)',
   }
 
