@@ -15,7 +15,9 @@ export default function Header() {
   return (
     <Container>
       <a href='/'>
-        <h1>CODE LACES</h1>
+        <h1>
+          W<span>i</span>T
+        </h1>
       </a>
       <div className='menu'>
         <Tag

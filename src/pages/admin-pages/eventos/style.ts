@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
-  background: var(--cor-roxo2);
+  background: var(--cor-roxo-claro);
   height: 100vh;
 
   .btn-area {

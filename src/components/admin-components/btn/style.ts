@@ -17,7 +17,7 @@ export const Container = styled.div`
     width: auto;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     margin: 0.5em 1em 0.5em 0;
-    background: var(--cor-roxo-escuro2);
+    background: var(--degrade-roxo-rosa);
     color: var(--cor-branco);
     align-items: center;
     font-weight: 700;

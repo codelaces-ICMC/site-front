@@ -7,7 +7,7 @@ export const Container = styled.header`
   justify-content: space-around;
   align-items: center;
   background: var(--cor-branco);
-  color: var(--cor-violeta);
+  color: var(--cor-roxo-escuro);
 
   h1 {
     font-family: var(--font-logo);

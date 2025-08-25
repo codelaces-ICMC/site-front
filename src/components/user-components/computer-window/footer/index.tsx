@@ -12,7 +12,7 @@ export default function Footer() {
           href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'
         ></link>
         <div className='title'>
-          <h2>CODE LACES - ICMC/USP 2025</h2>
+          <h2>WIT - ICMC/USP 2025</h2>
         </div>
         <div className='social-icons'>
           <li>
