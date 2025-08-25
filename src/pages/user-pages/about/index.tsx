@@ -45,7 +45,7 @@ const About: React.FC = () => {
               <div className='about-text'>
                 <h1>Sobre</h1>
                 <p>
-                  O WIT é um grupo de extensão do{' '}
+                  O Codelaces é um grupo de extensão do{' '}
                   <a
                     href='https://www.icmc.usp.br/'
                     target='_blank'
@@ -69,7 +69,11 @@ const About: React.FC = () => {
                 </p>
               </div>
               <div>
-                <img width='700rem' src={ImageAbout} alt='Banner do WIT' />
+                <img
+                  width='700rem'
+                  src={ImageAbout}
+                  alt='Banner do Codelaces'
+                />
               </div>
             </Col>
           </Row>
@@ -110,12 +114,12 @@ const About: React.FC = () => {
               <div className='anchor' id='about-event'>
                 <h1>EVENTOS</h1>
                 <p>
-                  Realização do planejamento e organização de atividades do WIT
-                  de modo interno e externo ao grupo, cronogramas de eventos,
-                  comunicação com palestrantes, empresas, parcerias com outros
-                  grupos de extensão e comunidades, responsável pela integração
-                  interna das integrantes, além de criação de roteiro para
-                  realização de cada evento.
+                  Realização do planejamento e organização de atividades do
+                  Codelaces de modo interno e externo ao grupo, cronogramas de
+                  eventos, comunicação com palestrantes, empresas, parcerias com
+                  outros grupos de extensão e comunidades, responsável pela
+                  integração interna das integrantes, além de criação de roteiro
+                  para realização de cada evento.
                 </p>
               </div>
             </Col>
@@ -124,11 +128,11 @@ const About: React.FC = () => {
               <div className='anchor' id='about-fin'>
                 <h1>FINANCEIRO</h1>
                 <p>
-                  Realização do planejamento e organização de atividades do WIT,
-                  controle, gerenciamento de gastos com eventos e coffee break,
-                  organização de vendas de produtos do WIT, além de promover uma
-                  comunicação para patrocínios e gerenciar documentações
-                  envolvendo financeiramente o grupo.
+                  Realização do planejamento e organização de atividades do
+                  Codelaces, controle, gerenciamento de gastos com eventos e
+                  coffee break, organização de vendas de produtos do Codelaces,
+                  além de promover uma comunicação para patrocínios e gerenciar
+                  documentações envolvendo financeiramente o grupo.
                 </p>
               </div>
             </Col>
@@ -137,12 +141,13 @@ const About: React.FC = () => {
               <div className='anchor' id='about-mkt'>
                 <h1>MARKETING</h1>
                 <p>
-                  Realização do planejamento e divulgação de atividades do WIT
-                  de modo interno e externo ao grupo, organização de cronogramas
-                  de postagens, processos de entrada, criação de artes, produção
-                  de textos e identidade visual, além de realizar a comunicação
-                  com a comunidade por meio das redes sociais e email e ser
-                  responsável pelo gerenciamento das mídias sociais do grupo.
+                  Realização do planejamento e divulgação de atividades do
+                  Codelaces de modo interno e externo ao grupo, organização de
+                  cronogramas de postagens, processos de entrada, criação de
+                  artes, produção de textos e identidade visual, além de
+                  realizar a comunicação com a comunidade por meio das redes
+                  sociais e email e ser responsável pelo gerenciamento das
+                  mídias sociais do grupo.
                 </p>
               </div>
             </Col>
@@ -151,11 +156,12 @@ const About: React.FC = () => {
               <div className='anchor' id='about-site'>
                 <h1>SITE</h1>
                 <p>
-                  Criação, planejamento e organização do site WIT, de forma a
-                  agregar conhecimentos e estudos aos membros responsáveis, além
-                  de criar a identidade visual. Organizada a partir de 3
-                  subdivisões: FrontEnd, BackEnd e Design, busca integrar o
-                  conhecimento de todas para tornar o site cada vez melhor.{' '}
+                  Criação, planejamento e organização do site Codelaces, de
+                  forma a agregar conhecimentos e estudos aos membros
+                  responsáveis, além de criar a identidade visual. Organizada a
+                  partir de 3 subdivisões: FrontEnd, BackEnd e Design, busca
+                  integrar o conhecimento de todas para tornar o site cada vez
+                  melhor.{' '}
                 </p>
               </div>
             </Col>

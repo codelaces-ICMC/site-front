@@ -2,22 +2,18 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
     :root {
-        --cor-roxo-escuro: #503F77;
-        --cor-roxo: #6B549F;
-        --cor-roxo-claro: #A296C3;
-        --cor-rosa: #D662AF;
-        --amarelo: #F3E838;
+        --cor-roxo-escuro: #522766;
+        --cor-roxo-acinzentado: #5E548E;
+        --cor-roxo-vibrante: #A34DCC;
+        --cor-roxo-claro: #C894E0;
+        --cor-amarelo-claro: #FFFFAA;
+        --cor-amarelo: #FFDF00
         --cor-branco: #F2F2F2;
         --cor-preto: #0D0D0D;
-        --degrade-roxo-rosa: linear-gradient(103.5deg, var(--cor-roxo-escuro) 8%, var(--cor-rosa) 350%);
-        --degrade-roxo-rosa2: linear-gradient(145deg, var(--cor-roxo-escuro) 35%, var(--cor-rosa) 100%);
-        --degrade-branco-cinza: linear-gradient(90deg, #D7D7D9 0%, var(--cor-branco) 75%);
-        --degrade-branco-rosa: linear-gradient(180deg, var(--cor-branco) 0%, var(--cor-rosa) 200%);
-        --degrade-roxo-mono: linear-gradient(90deg, var(--cor-roxo) 40%, var(--cor-roxo-claro) 100%);
-        --degrade-branco-roxo: linear-gradient(180deg, var(--cor-branco) 0%, var(--cor-roxo-claro) 100%);
-        --degrade-roxo-crescente: linear-gradient(180deg, var(--cor-roxo-claro) 0%, var(--cor-roxo) 100%);
-        --font-family: 'Nunito', sans-serif;
-        --font-logo: 'Inter', sans-serif;
+        --font-titles: 'Zilla Slab';
+        --font-titles-alt: 'Zilla Slab Highlight';
+        --font-taglines: 'Amoresa';
+        --font-texts: 'Inter';
     }
     * {
         margin: 0;
