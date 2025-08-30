@@ -28,7 +28,6 @@ export const Container = styled.div`
     color: var(--cor-branco);
     font-weight: 400;
     line-height: 1.2em;
-    text-align: justify;
   }
 
   button {
@@ -67,8 +66,48 @@ export const Container = styled.div`
   }
 
   img {
-    width: 28rem;
+    width: 50%;
     height: auto;
     border-radius: 5px;
+  }
+
+  @media (max-width: 800px) {
+    gap: 2.5rem;
+
+    .highlights {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 80%;
+      gap: 2.5rem;
+    }
+
+    .hightlights-left {
+      align-items: center;
+      text-align: center;
+      gap: 1.8rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 1rem 3.25rem;
+      font-weight: 600;
+    }
   }
 `
