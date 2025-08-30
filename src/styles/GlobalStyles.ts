@@ -7,7 +7,7 @@ export default createGlobalStyle`
         --cor-roxo-vibrante: #A34DCC;
         --cor-roxo-claro: #C894E0;
         --cor-amarelo-claro: #FFFFAA;
-        --cor-amarelo: #FFDF00
+        --cor-amarelo: #FFDF00;
         --cor-branco: #F2F2F2;
         --cor-preto: #0D0D0D;
         --font-titles: 'Zilla Slab';
