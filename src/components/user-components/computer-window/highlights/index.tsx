@@ -26,7 +26,9 @@ export default function Highlights({
         <div className='hightlights-left'>
           <h2>{subtitle}</h2>
           <p>{description}</p>
-          <DefaultButton buttonText={buttonText} buttonLink={buttonLink} />
+          <a href={buttonLink}>
+            <DefaultButton buttonText={buttonText} />
+          </a>
         </div>
         <img src={imageSrc} alt={imageAlt} />
       </div>
