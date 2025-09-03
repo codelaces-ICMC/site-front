@@ -1,15 +1,7 @@
 import { Container } from './style'
 import fotoHome from '../../../../assets/imgs/general/fotoHome.png'
 import DefaultButton from '../default-button'
-
-interface HighlightsProps {
-  subtitle: string
-  description: string
-  buttonText: string
-  buttonLink: string
-  imageSrc?: string
-  imageAlt?: string
-}
+import HighlightsProps from '../../props/props-highlights'
 
 export default function Highlights({
   subtitle,
