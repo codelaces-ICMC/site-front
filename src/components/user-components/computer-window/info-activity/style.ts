@@ -97,6 +97,16 @@ export const Container = styled.div`
     width: 30vw;
   }
 
+  .modal-input.error {
+    border: 2px solid var(--cor-vermelho);
+  }
+  .error-message {
+    color: var(--cor-vermelho);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
   .class-btn {
     display: flex;
     justify-content: center;
