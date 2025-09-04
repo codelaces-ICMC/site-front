@@ -2,6 +2,7 @@ import React from 'react'
 import GlobalStyles from '../styles/GlobalStyles'
 import NewsCard from 'components/user-components/computer-window/card-news'
 import { Container } from './style-teste'
+import Modal from 'components/user-components/computer-window/modal'
 import Highlights from 'components/user-components/computer-window/highlights'
 
 const Teste: React.FC = () => {
@@ -32,6 +33,7 @@ const Teste: React.FC = () => {
           buttonLink='/#processo-seletivo'
         />
       </div>
+      <Modal />
       <NewsCard
         imageUrl={newsData.imageUrl}
         imageAlt='Banner do evento Dia das Mulheres na Engenharia'
