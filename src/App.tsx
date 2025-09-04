@@ -1,19 +1,22 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import ActivitiesAdmin from './pages/admin-pages/atividades'
-import CertificatesAdmin from './pages/admin-pages/certificados'
-import CreateActivitiesAdmin from './pages/admin-pages/create-activities'
-import CreateCertificateAdmin from './pages/admin-pages/create-certificate'
-import CreateEventsAdmin from './pages/admin-pages/criar-eventos'
-import EditActivitiesAdmin from './pages/admin-pages/editar-atividades'
-import EditEventsAdmin from './pages/admin-pages/editar-eventos'
-import EventsAdmin from './pages/admin-pages/eventos'
-import LoginAdmin from './pages/admin-pages/login'
-import About from './pages/user-pages/about'
-import ActivityInfo from './pages/user-pages/activity-info'
-import EventInfo from './pages/user-pages/event-info'
-import Events from './pages/user-pages/events'
-import Home from './pages/user-pages/home'
-import HomeHackathon from 'pages/thematic-pages/hackathon2025'
+
+// Comentando os imports
+// import ActivitiesAdmin from './pages/admin-pages/atividades'
+// import CertificatesAdmin from './pages/admin-pages/certificados'
+// import CreateActivitiesAdmin from './pages/admin-pages/create-activities'
+// import CreateCertificateAdmin from './pages/admin-pages/create-certificate'
+// import CreateEventsAdmin from './pages/admin-pages/criar-eventos'
+// import EditActivitiesAdmin from './pages/admin-pages/editar-atividades'
+// import EditEventsAdmin from './pages/admin-pages/editar-eventos'
+// import EventsAdmin from './pages/admin-pages/eventos'
+// import LoginAdmin from './pages/admin-pages/login'
+// import About from './pages/user-pages/about'
+// import ActivityInfo from './pages/user-pages/activity-info'
+// import EventInfo from './pages/user-pages/event-info'
+// import Events from './pages/user-pages/events'
+// import Home from './pages/user-pages/home'
+// import HomeHackathon from 'pages/thematic-pages/hackathon2025'
+import Teste from './pages/teste'
 import GlobalStyles from './styles/GlobalStyles'
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
       <div className='App'>
         <GlobalStyles />
         <Routes>
+          {/* Comentando todas as rotas para não dar erro*/}
+          {/*
           <Route path='/' element={<Home />} />
           <Route path='/hackathon' element={<HomeHackathon />} />
           <Route path='/events' element={<Events />} />
@@ -51,6 +56,8 @@ function App() {
             path='/admin/create/certificate'
             element={<CreateCertificateAdmin />}
           />
+          */}
+          <Route path='/teste/' element={<Teste />} />
         </Routes>
       </div>
     </Router>

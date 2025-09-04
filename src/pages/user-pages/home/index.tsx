@@ -36,14 +36,8 @@ const Home: React.FC = () => {
         </HeaderContainer>
       )}
       <img className='banner-home' src={BannerImage} alt='Banner do WIT' />
-      <h1 className='selective-title'>Ficou interessada em fazer parte?</h1>
-      <p className='selective-text'>
-        Então, não perca a chance de se inscrever no nosso processo seletivo! É
-        fácil, basta clicar em &quot;PROCESSO SELETIVO&quot; no topo da página e
-        você será direcionado para nosso formulário de inscrição. 💜
-      </p>
       <h1 className='selective-title'>
-        Ou quer participar do nosso próximo evento?
+        Quer participar do nosso próximo evento?
       </h1>
       <p className='selective-text'>
         Então, se inscreva na nossa Hackathon 2025! Corre que as vagas são

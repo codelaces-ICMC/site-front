@@ -43,7 +43,7 @@ const HamburgerMenuBranco: React.FC = () => {
             <a href='/events'>
               <li>Eventos</li>
             </a>
-            <a href='https://docs.google.com/forms/d/e/1FAIpQLScFG2eJNnNmaBTBIw7bVEzZWeGpx1c4FWGLbhsWNlHYkWNcWw/viewform'>
+            <a href='https://forms.gle/TxZWhBWC5HoUTtzF6'>
               <li>Processo Seletivo</li>
             </a>
             <a href='/hackathon'>

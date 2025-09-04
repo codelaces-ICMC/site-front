@@ -30,9 +30,7 @@ export default function Header() {
         </li>
         <li>|</li>
         <li>
-          <a href='https://docs.google.com/forms/d/e/1FAIpQLScFG2eJNnNmaBTBIw7bVEzZWeGpx1c4FWGLbhsWNlHYkWNcWw/viewform'>
-            PROCESSO SELETIVO
-          </a>
+          <a href='https://forms.gle/TxZWhBWC5HoUTtzF6'>PROCESSO SELETIVO</a>
         </li>
         <li>|</li>
         <li>
