@@ -19,7 +19,7 @@ export default function Highlights({
           <h2>{subtitle}</h2>
           <p>{description}</p>
           <a href={buttonLink}>
-            <DefaultButton buttonText={buttonText} />
+            <DefaultButton text={buttonText} />
           </a>
         </div>
         <img src={imageSrc} alt={imageAlt} />

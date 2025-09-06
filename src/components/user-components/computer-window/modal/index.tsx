@@ -1,17 +1,18 @@
 import { Container } from './style'
-// import InfoFilled from '../../../../assets/icons/general/InfoFilled.svg'
-import DefaultButton from '../default-button'
-//import { useState } from 'react'
+import ModalProps from '../../props/props-modal'
 
-export default function Modal() {
+export default function Modal({ isOpen }: ModalProps) {
   //const [isPopupOpen, setPopupOpen] = useState<boolean>(false)
 
-  return (
-    <Container>
-      <DefaultButton
-        buttonText='ABRIR MODAL'
-        variant='secondary'
-      ></DefaultButton>
-    </Container>
-  )
+  if (isOpen) {
+    return (
+      <Container>
+        <div>
+          <h1>Hello world!</h1>
+        </div>
+      </Container>
+    )
+  }
+
+  return null
 }

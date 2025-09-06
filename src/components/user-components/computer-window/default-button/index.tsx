@@ -9,13 +9,13 @@ type DefaultButtonProps = ButtonProps &
   }
 
 export default function DefaultButton({
-  buttonText,
+  text,
   variant = 'primary',
   ...rest
 }: DefaultButtonProps) {
   return (
     <Button variant={variant} {...rest}>
-      {buttonText}
+      {text}
     </Button>
   )
 }
