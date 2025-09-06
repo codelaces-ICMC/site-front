@@ -42,7 +42,7 @@ const Teste: React.FC = () => {
         onClick={() => setOpenModal(true)}
         variant='secondary'
       />
-      <Modal isOpen={openModal} />
+      <Modal isOpen={openModal} setModalOpen={() => setOpenModal(false)} />
       <NewsCard
         imageUrl={newsData.imageUrl}
         imageAlt='Banner do evento Dia das Mulheres na Engenharia'
