@@ -1,15 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import GlobalStyles from '../styles/GlobalStyles'
 import NewsCard from 'components/user-components/computer-window/card-news'
 import { Container } from './style-teste'
-import Modal from 'components/user-components/computer-window/modal'
 import Highlights from 'components/user-components/computer-window/highlights'
-import DefaultButton from 'components/user-components/computer-window/default-button'
+import PopupActivity from 'components/user-components/computer-window/popup-activity'
 
 const Teste: React.FC = () => {
-  // Para usar o modal
-  const [openModal, setOpenModal] = useState(false)
-
   const newsData = {
     imageUrl:
       'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*CgHtxyVe8GQF6depD75g_A.png',
@@ -22,6 +18,8 @@ const Teste: React.FC = () => {
     linkArticle:
       'https://medium.com/brazilians-in-tech/escreva-para-a-brazilians-in-tech-94b01babe737',
   }
+
+  const convidados = ['Nome do convidado 1', 'Nome do convidado 2']
 
   return (
     <Container>
@@ -37,12 +35,14 @@ const Teste: React.FC = () => {
           buttonLink='/#processo-seletivo'
         />
       </div>
-      <DefaultButton
-        text='Abrir modal'
-        onClick={() => setOpenModal(true)}
-        variant='secondary'
+      <PopupActivity
+        nomeAtividade='Nome da Atividade'
+        descricao='Descrição da atividade que será realizada no evento. Pode ser uma palestra, um workshop, uma mesa redonda, etc.'
+        convidadados={convidados}
+        tipoAtividade='Tipo da atividade (palestra, workshop, mesa redonda, etc.)'
+        dataAtividade='DD/MM/AAAA'
+        horaAtividade='HH:MM'
       />
-      <Modal isOpen={openModal} setModalOpen={() => setOpenModal(false)} />
       <NewsCard
         imageUrl={newsData.imageUrl}
         imageAlt='Banner do evento Dia das Mulheres na Engenharia'

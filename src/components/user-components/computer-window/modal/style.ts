@@ -22,4 +22,13 @@ export const Container = styled.div`
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1001;
   }
+
+  button {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 `
