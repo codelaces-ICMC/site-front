@@ -13,7 +13,7 @@ export const ModalContainer = styled.div`
 `
 
 export const ModalContent = styled.div`
-  background: #f8f7fa;
+  background: var(--cor-branco);
   padding: 2rem;
   border-radius: 12px;
   width: 380px;
@@ -29,37 +29,43 @@ export const CloseButton = styled.button`
   right: 12px;
   background: transparent;
   border: none;
-  font-size: 22px;
+  font-size: 30px;
   cursor: pointer;
-  color: #666;
+  color: var(--cor-cinza);
 `
 
 export const Label = styled.label`
   font-size: 14px;
   font-weight: 600;
-  color: #4b006e;
-  font-family: 'Inter', sans-serif;
+  color: var(--cor-roxo-escuro);
+  font-family: var(--font-texts);
 `
 
 export const Input = styled.input`
   width: 100%;
   padding: 10px 12px;
-  border: 2px solid #4b006e;
+  border: 2px solid var(--cor-roxo-escuro);
   border-radius: 12px;
   outline: none;
   font-size: 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-texts);
+
+  &::placeholder {
+    color: var(--cor-cinza-claro);
+    font-weight: 400;
+    opacity: 1;
+  }
 
   &:focus {
-    border-color: #6a1b9a;
+    border-color: var(--cor-roxo-claro);
   }
 `
 
 export const Button = styled.button`
   margin-top: 1rem;
   padding: 14px;
-  background: #4b006e;
-  color: white;
+  background: var(--cor-roxo-escuro);
+  color: var(--cor-branco);
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -67,6 +73,6 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #37004d;
+    background: var(--cor-roxo-claro);
   }
 `
