@@ -19,4 +19,10 @@ export const Container = styled.div`
     border: none;
     cursor: pointer;
   }
+
+  @media (max-width: 750px) {
+    p {
+      font-size: 1.2rem;
+    }
+  }
 `

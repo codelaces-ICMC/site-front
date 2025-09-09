@@ -31,4 +31,16 @@ export const Container = styled.div`
     border: none;
     cursor: pointer;
   }
+
+  @media (max-width: 750px) {
+    .modal-style {
+      width: 90%;
+      padding: 3.5rem 2rem 2rem 2rem;
+    }
+
+    button {
+      top: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `
