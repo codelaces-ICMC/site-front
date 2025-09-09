@@ -3,6 +3,7 @@ import GlobalStyles from '../styles/GlobalStyles'
 import NewsCard from 'components/user-components/computer-window/card-news'
 import { Container } from './style-teste'
 import Highlights from 'components/user-components/computer-window/highlights'
+import PopupActivity from 'components/user-components/computer-window/popup-activity'
 
 const Teste: React.FC = () => {
   const newsData = {
@@ -18,6 +19,8 @@ const Teste: React.FC = () => {
       'https://medium.com/brazilians-in-tech/escreva-para-a-brazilians-in-tech-94b01babe737',
   }
 
+  const convidados = ['Nome do convidado 1', 'Nome do convidado 2']
+
   return (
     <Container>
       <GlobalStyles />
@@ -32,6 +35,14 @@ const Teste: React.FC = () => {
           buttonLink='/#processo-seletivo'
         />
       </div>
+      <PopupActivity
+        nomeAtividade='Nome da Atividade'
+        descricao='Descrição da atividade que será realizada no evento. Pode ser uma palestra, um workshop, uma mesa redonda, etc.'
+        convidadados={convidados}
+        tipoAtividade='Tipo da atividade (palestra, workshop, mesa redonda, etc.)'
+        dataAtividade='DD/MM/AAAA'
+        horaAtividade='HH:MM'
+      />
       <NewsCard
         imageUrl={newsData.imageUrl}
         imageAlt='Banner do evento Dia das Mulheres na Engenharia'
