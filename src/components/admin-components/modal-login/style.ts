@@ -48,6 +48,17 @@ export const Container = styled.div`
     width: 30vw;
   }
 
+  .modal-input.error {
+    border: 2px solid var(--cor-vermelho);
+  }
+
+  .error-message {
+    color: var(--cor-vermelho);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
   .modal-btn {
     align-items: center;
     background: var(--cor-roxo-escuro);
@@ -72,13 +83,6 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: center;
-  }
-
-  .error-message {
-    color: var(--cor-vermelho);
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    text-align: center;
   }
 
   @media screen and (max-width: 1600px) {
