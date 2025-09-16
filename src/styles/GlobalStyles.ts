@@ -10,6 +10,8 @@ export default createGlobalStyle`
         --cor-amarelo: #FFDF00;
         --cor-branco: #F2F2F2;
         --cor-preto: #0D0D0D;
+        --cor-cinza: #666;
+        --cor-cinza-claro: #b1b1b1ff;
         --font-titles: 'Zilla Slab';
         --font-titles-alt: 'Zilla Slab Highlight';
         --font-taglines: 'Amoresa';
