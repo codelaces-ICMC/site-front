@@ -22,19 +22,16 @@ const PopupForm: React.FC<PopupFormProps> = ({
 }) => {
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
-  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   const handleSubmit = async () => {
-    setLoading(true)
     setError('')
     try {
       await postSubscribeUser(eventId, activityId, { name: nome, email })
       onClose()
     } catch (err) {
-      setError('Erro ao inscrever.')
-    } finally {
-      setLoading(false)
+      /* mudar isso para um pop-up depois*/
+      setError('Erro ao se inscrever.')
     }
   }
 
@@ -42,26 +39,28 @@ const PopupForm: React.FC<PopupFormProps> = ({
     <ModalContainer>
       <ModalContent>
         <CloseButton onClick={onClose}>×</CloseButton>
-        <Label htmlFor='nome'>Nome Completo</Label>
-        <Input
-          id='nome'
-          type='text'
-          placeholder='Digite seu nome completo'
-          value={nome}
-          onChange={e => setNome(e.target.value)}
-        />
-        <Label htmlFor='email'>E-mail</Label>
-        <Input
-          id='email'
-          type='email'
-          placeholder='Digite seu e-mail'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
+        <div className='campo-forms-inscricao'>
+          <Label htmlFor='nome'>Nome Completo</Label>
+          <Input
+            id='nome'
+            type='text'
+            placeholder='Digite seu nome completo'
+            value={nome}
+            onChange={e => setNome(e.target.value)}
+          />
+        </div>
+        <div className='campo-forms-inscricao'>
+          <Label htmlFor='email'>E-mail</Label>
+          <Input
+            id='email'
+            type='email'
+            placeholder='Digite seu e-mail'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </div>
         {error && <span style={{ color: 'red' }}>{error}</span>}
-        <Button onClick={handleSubmit} disabled={loading}>
-          {loading ? 'Enviando...' : 'CONFIRMAR INSCRIÇÃO'}
-        </Button>
+        <Button onClick={handleSubmit}>{'CONFIRMAR INSCRIÇÃO'}</Button>
       </ModalContent>
     </ModalContainer>
   )

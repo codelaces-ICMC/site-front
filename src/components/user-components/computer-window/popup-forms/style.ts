@@ -35,8 +35,8 @@ export const CloseButton = styled.button`
 `
 
 export const Label = styled.label`
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--cor-roxo-escuro);
   font-family: var(--font-texts);
 `
@@ -44,14 +44,16 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 10px 12px;
+  margin-top: 0.5rem;
   border: 2px solid var(--cor-roxo-escuro);
   border-radius: 12px;
   outline: none;
-  font-size: 14px;
+  font-size: 1rem;
   font-family: var(--font-texts);
 
   &::placeholder {
     color: var(--cor-cinza-claro);
+    font-family: var(--font-texts);
     font-weight: 400;
     opacity: 1;
   }
@@ -68,11 +70,13 @@ export const Button = styled.button`
   color: var(--cor-branco);
   border: none;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: bold;
+  font-family: var(--font-titles);
   cursor: pointer;
 
   &:hover {
     background: var(--cor-roxo-claro);
+    color: var(--cor-roxo-escuro);
   }
 `
