@@ -21,6 +21,10 @@ const Teste: React.FC = () => {
       'https://medium.com/brazilians-in-tech/escreva-para-a-brazilians-in-tech-94b01babe737',
   }
 
+  const headerEvents = [
+    { name: 'Processo Seletivo', targetId: 'processo-seletivo' },
+  ]
+
   const convidados = ['Nome do convidado 1', 'Nome do convidado 2']
 
   return (
@@ -29,6 +33,7 @@ const Teste: React.FC = () => {
       <Header
         backgroundColor='var(--cor-roxo-escuro)'
         textColor='var(--cor-branco)'
+        events={headerEvents}
       />
       {/* Comentando só pra não ter que fazer a lógica de fechar o pop-up 
       <PopupForm
@@ -48,6 +53,7 @@ const Teste: React.FC = () => {
           buttonLink='/#processo-seletivo'
         />
       </div>
+      <div id='processo-seletivo'></div>
       <PopupActivity
         nomeAtividade='Nome da Atividade'
         descricao='Descrição da atividade que será realizada no evento. Pode ser uma palestra, um workshop, uma mesa redonda, etc.'
@@ -56,6 +62,7 @@ const Teste: React.FC = () => {
         dataAtividade='DD/MM/AAAA'
         horaAtividade='HH:MM'
       />
+      <div />
       <NewsCard
         imageUrl={newsData.imageUrl}
         imageAlt='Banner do evento Dia das Mulheres na Engenharia'
