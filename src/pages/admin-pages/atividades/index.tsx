@@ -1,4 +1,3 @@
-import Header from '../../../components/admin-components/header'
 import Filter from '../../../components/admin-components/search-bar'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
@@ -117,7 +116,6 @@ export default function AtividadesAdmin() {
   return (
     <Container>
       <GlobalStyles />
-      <Header />
       <Filter onSearch={handleTextChange} />
       <section className='cards-area'>
         <div className='btn-area'>

@@ -1,12 +1,18 @@
 import { styled } from 'styled-components'
+import { ReactComponent as LogoSVG } from '../../../../assets/icons/logos/logo.svg'
 
-export const Container = styled.header`
+export const Container = styled.header<{
+  backgroundColor: string
+  textColor: string
+}>`
   display: flex;
   height: 100px;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 0 5vw;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ textColor }) => textColor};
 
   .menu {
     display: flex;
@@ -14,30 +20,26 @@ export const Container = styled.header`
     flex-wrap: wrap;
   }
 
-  h1 {
-    font-family: var(--font-logo);
-    font-weight: 700;
-    font-size: 40px;
-
-    span {
-      font-size: 30px;
-    }
-  }
-
   a:hover,
   #selective-header-btn:hover {
     color: var(--cor-roxo-claro);
-  }
-
-  #selective-header-btn {
-    font-weight: 500;
-    background: none;
+    cursor: pointer;
   }
 
   li {
     font-weight: 500;
     font-size: 25px;
+    font-family: var(--font-titles);
     display: inline-block;
     margin: 0 5px;
+  }
+`
+
+export const StyledLogo = styled(LogoSVG)<{ logoColor: string }>`
+  width: 80px;
+  color: ${({ logoColor }) => logoColor};
+
+  &:hover {
+    cursor: pointer;
   }
 `

@@ -3,21 +3,9 @@ import GlobalStyles from '../styles/GlobalStyles'
 import NewsCard from 'components/user-components/computer-window/card-news'
 import { Container } from './style-teste'
 // import PopupForm from '../components/user-components/computer-window/popup-forms'
-
-const Teste: React.FC = () => {
-  {
-    /* Comentando só pra não ter que fazer a lógica de fechar o pop-up
-  const handleClose = () => {
-    console.log('Popup fechado')
-  }
-
-  // Defina os IDs conforme necessário para o teste
-  const eventId = 1
-  const activityId = 1
-  */
-  }
 import Highlights from 'components/user-components/computer-window/highlights'
 import PopupActivity from 'components/user-components/computer-window/popup-activity'
+import Header from 'components/user-components/computer-window/header'
 
 const Teste: React.FC = () => {
   const newsData = {
@@ -38,6 +26,10 @@ const Teste: React.FC = () => {
   return (
     <Container>
       <GlobalStyles />
+      <Header
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
       {/* Comentando só pra não ter que fazer a lógica de fechar o pop-up 
       <PopupForm
         onClose={handleClose}

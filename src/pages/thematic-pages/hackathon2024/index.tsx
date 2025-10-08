@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from '../../../styles/GlobalStyles'
-import Header from '../../../components/user-components/computer-window/header'
-import HeaderCellPhone from '../../../components/user-components/cell-phone-window/header'
 import FooterBranco from '../../../components/user-components/computer-window/footer-branco'
 import ToggleButton from 'components/thematic-components/quest&answer'
 import ButtonProps from 'components/user-components/props/button-props'
@@ -78,15 +76,6 @@ const HomeHackathon: React.FC = () => {
   return (
     <Container>
       <GlobalStyles />
-      {windowWidth > 900 ? (
-        <HeaderContainer>
-          <Header />
-        </HeaderContainer>
-      ) : (
-        <HeaderContainer>
-          <HeaderCellPhone />
-        </HeaderContainer>
-      )}
       <img className='banner-home' src={BannerImage} alt='Banner do WIT' />
       <div className='main-infos'>
         <h1 className='title'>TEMA</h1>

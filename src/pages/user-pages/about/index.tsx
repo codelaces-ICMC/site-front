@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import HeaderCellPhone from '../../../components/user-components/cell-phone-window/header'
 import Footer from '../../../components/user-components/computer-window/footer'
-import Header from '../../../components/user-components/computer-window/header'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
 import ImageAbout from '../../../assets/img/general_imgs/about_photo.png'
@@ -29,15 +27,6 @@ const About: React.FC = () => {
   return (
     <div id='main-about'>
       <GlobalStyles />
-      {windowWidth > 900 ? (
-        <HeaderContainer>
-          <Header />
-        </HeaderContainer>
-      ) : (
-        <HeaderContainer>
-          <HeaderCellPhone />
-        </HeaderContainer>
-      )}
       <Custom>
         <Container fluid>
           <Row>

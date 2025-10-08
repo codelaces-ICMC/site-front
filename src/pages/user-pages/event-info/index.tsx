@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { getWebEvent } from 'api/web/events/{eventId}/get'
-import HeaderBranco from 'components/user-components/cell-phone-window/header'
 import FooterBranco from 'components/user-components/computer-window/footer-branco'
-import Header from 'components/user-components/computer-window/header'
 import InfoEvent from 'components/user-components/computer-window/info-event'
 // import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
 import GlobalStyles from 'styles/GlobalStyles'
@@ -69,15 +67,6 @@ const EventInfo: React.FC = () => {
   return (
     <Container>
       <GlobalStyles />
-      {windowWidth > 900 ? (
-        <HeaderContainer>
-          <Header />
-        </HeaderContainer>
-      ) : (
-        <HeaderContainer>
-          <HeaderBranco />
-        </HeaderContainer>
-      )}
       <div className='card-event'>
         <InfoEvent infos={event_infos} />
       </div>

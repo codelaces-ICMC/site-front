@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from '../../../styles/GlobalStyles'
-import Header from '../../../components/user-components/computer-window/header'
-import HeaderCellPhone from '../../../components/user-components/cell-phone-window/header'
 import Footer from '../../../components/user-components/computer-window/footer'
 
 import BannerImage from '../../../assets/img/general_imgs/banner-home.png'
@@ -26,15 +24,6 @@ const Home: React.FC = () => {
   return (
     <Container>
       <GlobalStyles />
-      {windowWidth > 900 ? (
-        <HeaderContainer>
-          <Header />
-        </HeaderContainer>
-      ) : (
-        <HeaderContainer>
-          <HeaderCellPhone />
-        </HeaderContainer>
-      )}
       <img className='banner-home' src={BannerImage} alt='Banner do WIT' />
       <h1 className='selective-title'>
         Quer participar do nosso próximo evento?

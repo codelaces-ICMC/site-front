@@ -1,10 +1,15 @@
-import React from 'react'
 // import { useNavigate } from 'react-router-dom'
-import { Container } from './style'
+import { Container, StyledLogo } from './style'
 
-export default function Header() {
+interface HeaderProps {
+  backgroundColor: string
+  textColor: string
+}
+
+export default function Header({ backgroundColor, textColor }: HeaderProps) {
   // const navigate = useNavigate()
 
+  // Por enquanto está comentadao, mas vou reabilitar para dar um foco no evento mais prox
   // const handleScroll = () => {
   //   navigate('/')
   //   setTimeout(() => {
@@ -16,25 +21,18 @@ export default function Header() {
   // }
 
   return (
-    <Container>
+    // passar a cor como parâmetro e também o evento mais próximo para usar esse handleScroll (pode ser mais de um evento)
+    <Container backgroundColor={backgroundColor} textColor={textColor}>
       <a href='/'>
-        <h1>WIT</h1>
+        <StyledLogo logoColor={backgroundColor} />
       </a>
       <div className='menu'>
         <li>
-          <a href='/about'>SOBRE</a>
+          <a href='/about'>SOBRE NÓS</a>
         </li>
         <li>|</li>
         <li>
           <a href='/events'>EVENTOS</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href='https://forms.gle/TxZWhBWC5HoUTtzF6'>PROCESSO SELETIVO</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href='/hackathon'>HACKATHON</a>
         </li>
       </div>
     </Container>

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import { getWebEvents } from 'api/web/events/get'
 import Filter from 'components/admin-components/search-bar'
-import HeaderBranco from 'components/user-components/cell-phone-window/header_branco'
 import CardsSet from 'components/user-components/computer-window/cards-set'
 import Footer from 'components/user-components/computer-window/footer'
-import Header from 'components/user-components/computer-window/header'
 import GlobalStyles from 'styles/GlobalStyles'
 import { Container, FooterContainer, HeaderContainer } from './style'
 
@@ -70,15 +68,6 @@ const Events: React.FC = () => {
   return (
     <Container>
       <GlobalStyles />
-      {windowWidth > 900 ? (
-        <HeaderContainer>
-          <Header />
-        </HeaderContainer>
-      ) : (
-        <HeaderContainer>
-          <HeaderBranco />
-        </HeaderContainer>
-      )}
       <div className='main-area'>
         <Filter onSearch={handleTextChange} />
         <section className='cards-area'>
