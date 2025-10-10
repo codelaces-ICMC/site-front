@@ -1,8 +1,9 @@
-import emailIcon from '../../../../assets/icons/general/email.svg'
-import instaIcon from '../../../../assets/icons/general/insta.svg'
-import linkedinIcon from '../../../../assets/icons/general/linkedin.svg'
-
-import { Container, StyledIcons } from './style'
+import {
+  Container,
+  StyledEmailIcon,
+  StyledInstaIcon,
+  StyledLinkedinIcon,
+} from './style'
 
 interface FooterProps {
   backgroundColor: string
@@ -20,17 +21,17 @@ export default function Footer({ backgroundColor, textColor }: FooterProps) {
         <div className='social-icons'>
           <li>
             <a href={`mailto:${emailLink}`}>
-              <StyledIcons logoColor={textColor} src={emailIcon} />
+              <StyledEmailIcon logoColor={textColor} />
             </a>
           </li>
           <li>
             <a href='https://www.instagram.com/code.laces?igsh=aDR3N3JuZm5meGp3'>
-              <StyledIcons logoColor={textColor} src={instaIcon} />
+              <StyledInstaIcon logoColor={textColor} />
             </a>
           </li>
           <li>
             <a href='https://www.linkedin.com/company/codelaces'>
-              <StyledIcons logoColor={textColor} src={linkedinIcon} />
+              <StyledLinkedinIcon logoColor={textColor} />
             </a>
           </li>
         </div>
