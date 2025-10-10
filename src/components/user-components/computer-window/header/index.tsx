@@ -1,5 +1,5 @@
-import React from 'react'
-import { Container, StyledLogo } from './style'
+import React, { useState } from 'react'
+import { Container, StyledLogo, Menu, Hamburger } from './style'
 
 interface EventItem {
   name: string
@@ -16,11 +16,18 @@ export default function Header({
   textColor,
   events = [],
 }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const handleScroll = (targetId: string) => {
     const targetSection = document.getElementById(targetId)
     if (targetSection) {
       targetSection.scrollIntoView({ behavior: 'smooth' })
     }
+    setIsMenuOpen(false)
+  }
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
   }
 
   return (
@@ -29,35 +36,48 @@ export default function Header({
       <a href='/'>
         <StyledLogo logoColor={backgroundColor} />
       </a>
-      <div className='menu'>
-        {/* Links Estáticos */}
-        <li>
-          <a href='/about'>SOBRE NÓS</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href='/events'>EVENTOS</a>
-        </li>
 
-        {/* Links Dinâmicos */}
-        {events.map((event, index) => (
-          <React.Fragment key={event.targetId}>
-            <li>|</li>
-            <li>
-              <a
-                href={`#${event.targetId}`}
-                onClick={e => {
-                  e.preventDefault()
-                  handleScroll(event.targetId)
-                }}
-              >
-                {event.name.toUpperCase()}
-              </a>
-            </li>
-            {index < events.length - 1 && <li>|</li>}
-          </React.Fragment>
-        ))}
-      </div>
+      {/* Botão Hambúrguer - visível apenas em mobile */}
+      <Hamburger onClick={toggleMenu} isOpen={isMenuOpen}>
+        <div />
+        <div />
+        <div />
+      </Hamburger>
+
+      <Menu isOpen={isMenuOpen} backgroundColor={backgroundColor}>
+        <ul>
+          {/* Links Estáticos */}
+          <li>
+            <a href='/about' onClick={() => setIsMenuOpen(false)}>
+              SOBRE NÓS
+            </a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href='/events' onClick={() => setIsMenuOpen(false)}>
+              EVENTOS
+            </a>
+          </li>
+
+          {/* Links Dinâmicos */}
+          {events.map(event => (
+            <React.Fragment key={event.targetId}>
+              <li>|</li>
+              <li>
+                <a
+                  href={`#${event.targetId}`}
+                  onClick={e => {
+                    e.preventDefault()
+                    handleScroll(event.targetId)
+                  }}
+                >
+                  {event.name.toUpperCase()}
+                </a>
+              </li>
+            </React.Fragment>
+          ))}
+        </ul>
+      </Menu>
     </Container>
   )
 }
