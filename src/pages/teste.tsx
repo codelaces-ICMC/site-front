@@ -6,6 +6,7 @@ import { Container } from './style-teste'
 import Highlights from 'components/user-components/computer-window/highlights'
 import PopupActivity from 'components/user-components/computer-window/popup-activity'
 import Header from 'components/user-components/computer-window/header'
+import Footer from 'components/user-components/computer-window/footer'
 
 const Teste: React.FC = () => {
   const newsData = {
@@ -72,6 +73,10 @@ const Teste: React.FC = () => {
         date={newsData.date}
         readTimeInMinutes={newsData.readTime}
         linkArticle={newsData.linkArticle}
+      />
+      <Footer
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
       />
     </Container>
   )

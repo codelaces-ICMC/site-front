@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from '../../../styles/GlobalStyles'
-import FooterBranco from '../../../components/user-components/computer-window/footer-branco'
 import ToggleButton from 'components/thematic-components/quest&answer'
 import ButtonProps from 'components/user-components/props/button-props'
 
@@ -173,7 +172,6 @@ const HomeHackathon: React.FC = () => {
           ))}
         </div>
       </div>
-      <FooterBranco />
     </Container>
   )
 }

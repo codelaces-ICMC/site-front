@@ -76,9 +76,6 @@ const Events: React.FC = () => {
           </div>
         </section>
       </div>
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
     </Container>
   )
 }

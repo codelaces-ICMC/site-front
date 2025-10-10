@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from '../../../styles/GlobalStyles'
-import Footer from '../../../components/user-components/computer-window/footer'
 
 import BannerImage from '../../../assets/img/general_imgs/banner-home.png'
 
@@ -33,9 +32,6 @@ const Home: React.FC = () => {
         limitadas. Para conferir é só clicar em &quot;HACKATHON&quot; no topo da
         página e você poderá saber mais sobre esse evento incrível. 😁
       </p>
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
     </Container>
   )
 }

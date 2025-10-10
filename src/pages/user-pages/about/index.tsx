@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Footer from '../../../components/user-components/computer-window/footer'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
 import ImageAbout from '../../../assets/img/general_imgs/about_photo.png'
@@ -169,7 +168,6 @@ const About: React.FC = () => {
           </Row>
         </Container>
       </Custom>
-      <Footer />
     </div>
   )
 }

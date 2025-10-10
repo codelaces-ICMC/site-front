@@ -1,33 +1,36 @@
-import React from 'react'
+import emailIcon from '../../../../assets/icons/general/email.svg'
+import instaIcon from '../../../../assets/icons/general/insta.svg'
+import linkedinIcon from '../../../../assets/icons/general/linkedin.svg'
 
-import { Container } from './style'
+import { Container, StyledIcons } from './style'
 
-export default function Footer() {
-  const emailLink = 'womenintech@icmc.usp.br'
+interface FooterProps {
+  backgroundColor: string
+  textColor: string
+}
+
+export default function Footer({ backgroundColor, textColor }: FooterProps) {
+  const emailLink = 'codelaces@icmc.usp.br'
   return (
-    <Container>
+    <Container backgroundColor={backgroundColor} textColor={textColor}>
       <div className='footer'>
-        <link
-          rel='stylesheet'
-          href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'
-        ></link>
         <div className='title'>
-          <h2>WIT - ICMC/USP 2025</h2>
+          <h2>CODELACES - ICMC/USP 2025</h2>
         </div>
         <div className='social-icons'>
           <li>
             <a href={`mailto:${emailLink}`}>
-              <i className='bi bi-envelope-fill'></i>
+              <StyledIcons logoColor={textColor} src={emailIcon} />
             </a>
           </li>
           <li>
-            <a href='https://www.instagram.com/wit.usp?igsh=aDR3N3JuZm5meGp3'>
-              <i className='bi bi-instagram'></i>
+            <a href='https://www.instagram.com/code.laces?igsh=aDR3N3JuZm5meGp3'>
+              <StyledIcons logoColor={textColor} src={instaIcon} />
             </a>
           </li>
           <li>
-            <a href='https://www.linkedin.com/company/witusp/'>
-              <i className='bi bi-linkedin'></i>
+            <a href='https://www.linkedin.com/company/codelaces'>
+              <StyledIcons logoColor={textColor} src={linkedinIcon} />
             </a>
           </li>
         </div>
