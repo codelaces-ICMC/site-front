@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import CardProps from '../../props/props-card'
-import Card from '../card-event'
+import CardPropsEvent from '../../props/props-card-event'
+import EventCard from '../card-event'
 import { Container } from './style'
 
-const CardsSet: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
+const CardsSet: React.FC<{ cards: CardPropsEvent[] }> = ({ cards }) => {
   const [selectedCardId, setSelectedCardId] = React.useState<number | null>(
     null,
   )
@@ -33,11 +33,13 @@ const CardsSet: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
                   }`}
                   onClick={() => handleClick(card.cardNumber)}
                 >
-                  <Card
+                  <EventCard
                     cardNumber={card.cardNumber}
                     eventName={card.eventName}
+                    startDate={card.endDate}
                     endDate={card.endDate}
-                    isSelected={selectedCardId === card.cardNumber}
+                    eventPlace={card.eventPlace}
+                    coffeeLink={card.coffeeLink}
                     onClick={() => handleClick(card.cardNumber)}
                   />
                 </div>
@@ -49,11 +51,13 @@ const CardsSet: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
                 }`}
                 onClick={() => handleClick(card.cardNumber)}
               >
-                <Card
+                <EventCard
                   cardNumber={card.cardNumber}
                   eventName={card.eventName}
+                  startDate={card.endDate}
                   endDate={card.endDate}
-                  isSelected={selectedCardId === card.cardNumber}
+                  eventPlace={card.eventPlace}
+                  coffeeLink={card.coffeeLink}
                   onClick={() => handleClick(card.cardNumber)}
                 />
               </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import GlobalStyles from '../styles/GlobalStyles'
 import NewsCard from 'components/user-components/computer-window/card-news'
+import EventCard from 'components/user-components/computer-window/card-event'
 import { Container } from './style-teste'
 // import PopupForm from '../components/user-components/computer-window/popup-forms'
 import Highlights from 'components/user-components/computer-window/highlights'
@@ -20,6 +21,15 @@ const Teste: React.FC = () => {
     readTime: 3,
     linkArticle:
       'https://medium.com/brazilians-in-tech/escreva-para-a-brazilians-in-tech-94b01babe737',
+  }
+
+  const cardData = {
+    cardNumber: 1000,
+    eventName: 'Mulheres na engenharia',
+    startDate: new Date(2025, 10, 25, 18, 0),
+    endDate: new Date(2025, 10, 25, 19, 0),
+    eventPlace: 'Online (YouTube)',
+    coffeLink: 'url',
   }
 
   const headerEvents = [
@@ -73,6 +83,15 @@ const Teste: React.FC = () => {
         date={newsData.date}
         readTimeInMinutes={newsData.readTime}
         linkArticle={newsData.linkArticle}
+      />
+      <EventCard
+        cardNumber={cardData.cardNumber}
+        eventName={cardData.eventName}
+        startDate={cardData.startDate}
+        endDate={cardData.endDate}
+        eventPlace={cardData.eventPlace}
+        coffeeLink={cardData.coffeLink}
+        onClick={() => {}}
       />
       <Footer
         backgroundColor='var(--cor-roxo-escuro)'
