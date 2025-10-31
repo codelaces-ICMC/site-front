@@ -12,6 +12,8 @@ const Events: React.FC = () => {
     eventId: number
     eventName: string
     endDate: string
+    coffeeLink: string
+    eventPlace: string
   }
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -49,8 +51,9 @@ const Events: React.FC = () => {
     key: evento.eventId,
     cardNumber: evento.eventId,
     eventName: evento.eventName,
-    isSelected: false,
     endDate: new Date(evento.endDate),
+    coffeeLink: evento.coffeeLink,
+    eventPlace: evento.eventPlace,
   }))
 
   useEffect(() => {
