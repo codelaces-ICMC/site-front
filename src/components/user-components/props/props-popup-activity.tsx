@@ -5,6 +5,8 @@ interface PopupActivityProps {
   tipoAtividade: string
   dataAtividade: string
   horaAtividade: string
+  isOpen: boolean
+  onClose: () => void
 }
 
 export default PopupActivityProps

@@ -1,6 +1,8 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
+  font-family: var(--font-titles);
+
   .main-div {
     background: var(--cor-branco);
     width: 80vw;
@@ -21,6 +23,55 @@ export const Container = styled.div`
     height: auto;
   }
 
+  #second-column {
+    text-align: left;
+    gap: 2vh;
+
+    h1 {
+      font-size: 1.4em;
+      color: var(--cor-roxo-escuro);
+      margin: 0.5em 0;
+      text-align: center;
+    }
+
+    .activity-li {
+      font-size: 1.4em;
+      color: var(--cor-roxo-escuro);
+      margin-bottom: 1em;
+      display: flex;
+      align-itens: center;
+
+      input[type='checkbox'] {
+        margin-right: 15px;
+        cursor: pointer;
+      }
+
+      img {
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+
+      button {
+        background-color: var(--cor-roxo-escuro);
+        color: var(--cor-branco);
+        font-size: 1.3em;
+        font-weight: 600;
+        padding: 0.5em 1em;
+        border-radius: 10px;
+      }
+
+      button:hover {
+        background-color: var(--cor-amarelo);
+        cursor: pointer;
+      }
+    }
+  }
+
   .img-event {
     width: 100%;
     height: 20vh;
@@ -30,7 +81,7 @@ export const Container = styled.div`
   p {
     font-weight: 500;
     font-size: 1.4em;
-    margin: 0.5em;
+    margin: 0.5em 0;
 
     span {
       font-weight: 700;
@@ -39,22 +90,18 @@ export const Container = styled.div`
   }
 
   #first-p {
-    margin-top: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: var(--cor-roxo-escuro);
+    color: var(--cor-branco);
+    font-size: 1.5em;
   }
 
   .line-between {
-    width: 2px;
-    height: 75vh;
-    background-color: var(--cor-rosa);
-    margin-top: 5vh;
-  }
-
-  h1 {
-    color: var(--cor-roxo-escuro);
-    font-weight: 700;
-    font-size: 1.5em;
-    text-align: center;
-    margin: 1.5em;
+    width: 3px;
+    background-color: var(--cor-amarelo);
+    margin: 4% 0;
   }
 
   .modal-form {
@@ -94,61 +141,27 @@ export const Container = styled.div`
     margin: 0.5em;
   }
 
-  .activities-ul {
-    text-align: center;
-  }
-
-  .activity-li {
-    font-size: 1.5em;
-    color: var(--cor-roxo-escuro);
-  }
-
-  .activity-li:hover {
-    color: var(--cor-rosa);
-  }
-
   @media screen and (max-width: 750px) {
     .main-div {
-      display: flex;
-      justify-content: center;
       flex-direction: column;
-      height: auto;
-      padding: 0;
+      align-items: center;
+      width: 95vw;
+      padding: 2rem 1rem;
     }
 
     .column {
       width: 100%;
+      padding: 0;
     }
 
     #first-column {
-      padding-top: 2vh;
-      border-bottom: 2px dotted var(--cor-rosa);
-    }
-
-    p {
-      font-size: 1.5em;
-      line-height: 1.2em;
-      margin-bottom: 0.5em;
-    }
-
-    h1 {
-      margin: 0 1em 0.5em 1em;
-    }
-
-    #title-inscricoes {
-      padding-top: 2vh;
-    }
-
-    .modal-text {
-      font-size: 1.2em;
+      margin-bottom: 20px;
     }
 
     .line-between {
-      display: none;
-    }
-
-    .img-event {
-      display: none;
+      width: 100%;
+      height: 3px;
+      margin: 20px 0;
     }
   }
 `

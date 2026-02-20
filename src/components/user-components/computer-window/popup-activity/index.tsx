@@ -1,8 +1,6 @@
 import { Container } from './style'
 import PopupActivityProps from 'components/user-components/props/props-popup-activity'
 import Modal from '../modal'
-import { useState } from 'react'
-import InfoFilled from '../../../../assets/icons/general/InfoFilled.svg'
 
 export default function PopupActivity({
   nomeAtividade,
@@ -11,16 +9,12 @@ export default function PopupActivity({
   tipoAtividade,
   dataAtividade,
   horaAtividade,
+  isOpen,
+  onClose,
 }: PopupActivityProps) {
-  const [openModal, setOpenModal] = useState(false)
-
   return (
     <div>
-      <button onClick={() => setOpenModal(true)}>
-        <img src={InfoFilled} alt='Ver detalhes da atividade' />
-      </button>
-
-      <Modal isOpen={openModal} setModalOpen={() => setOpenModal(false)}>
+      <Modal isOpen={isOpen} setModalOpen={onClose}>
         <Container>
           <p>
             <strong>ATIVIDADE:</strong> {nomeAtividade}

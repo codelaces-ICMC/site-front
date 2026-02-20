@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Container } from './style'
 
 import InfoProps from '../../props/props-info-event'
+import InfoBtn from '../../../../assets/icons/general/btn-info.svg'
+import PopupActivity from '../popup-activity'
 
 const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const formatDate = (date: Date): string => {
@@ -17,6 +19,34 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 720)
 
+  const [atividadesSelecionadas, setAtividadesSelecionadas] = useState<
+    number[]
+  >([])
+
+  const [activityForPopup, setActivityForPopup] = useState<
+    InfoProps['activities'][0] | null
+  >(null)
+
+  const handleCheckboxChange = (activityId: number) => {
+    setAtividadesSelecionadas(prevSelecionadas => {
+      // Se já estiver selecionado, remove da lista. Se não, adiciona.
+      if (prevSelecionadas.includes(activityId)) {
+        return prevSelecionadas.filter(id => id !== activityId)
+      } else {
+        return [...prevSelecionadas, activityId]
+      }
+    })
+  }
+
+  const handleInscrever = (eventId: number) => {
+    console.log(
+      `Inscrição no Evento ${eventId} com as atividades:`,
+      atividadesSelecionadas,
+    )
+
+    // API aqui
+  }
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 720)
@@ -30,10 +60,7 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
       {infos.map(event => (
         <div className='main-div' key={event.id}>
           <div className='column' id='first-column'>
-            <p id='first-p'>
-              <span>EVENTO: </span>
-              {event.eventName}
-            </p>
+            <p id='first-p'>{event.eventName}</p>
             <p>
               <span>DATA: </span>
               {formatDate(event.beginDate)}
@@ -48,10 +75,6 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                 {event.coffeeValue}
               </p>
             )}
-            <p>
-              (Caso o comprador traga seu próprio copo ou caneca NÃO
-              DESCARTÁVEL, R$4,00 serão reembolsados no dia do evento!)
-            </p>
             {event.link_coffee && (
               <p>
                 <span>LINK COFFEE: </span>
@@ -64,27 +87,71 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
                 <a href={event.link_fotos}>Clique aqui</a>
               </p>
             )}
-            <h1 id='title-inscricoes'>
-              INSCRIÇÕES ABERTAS ATÉ {formatDate(event.finalDate)}
-            </h1>
           </div>
           {!isMobile && <div className='line-between'></div>}
           <div className='column' id='second-column'>
-            <h1>ATIVIDADES DISPONÍVEIS PARA ESSE EVENTO</h1>
+            <h1>SELECIONE AS ATIVIDADES QUE DESEJA PARTICIPAR</h1>
             <ul className='activities-ul'>
               {event.activities.map((activity, index) => (
                 <li key={index} className='activity-li'>
-                  <a
-                    href={`/events/info/${event.id}/activities/${activity.activityId}`}
-                  >
+                  <input
+                    type='checkbox'
+                    id={`checkbox-${activity.activityId}`}
+                    // Controla se a caixinha tá marcada baseado no nosso estado
+                    checked={atividadesSelecionadas.includes(
+                      activity.activityId,
+                    )}
+                    // Chama a função toda vez que clica
+                    onChange={() => handleCheckboxChange(activity.activityId)}
+                  />
+                  {/* O label com htmlFor faz com que clicar no texto também marque a caixinha! */}
+                  <label htmlFor={`checkbox-${activity.activityId}`}>
                     {activity.activityName}
-                  </a>
+                    <button
+                      type='button'
+                      className='info-btn'
+                      onClick={() => setActivityForPopup(activity)}
+                      // aria-label ajuda leitores de tela para pessoas com deficiência visual
+                      aria-label={`Ver detalhes sobre ${activity.activityName}`}
+                    >
+                      <img src={InfoBtn} alt='' />
+                    </button>
+                  </label>
                 </li>
               ))}
             </ul>
+            {/* BOTÃO QUE ENVIA AS INFORMAÇÕES */}
+            <div className='btn-container'>
+              <button
+                className='btn-inscreva-se'
+                onClick={() => handleInscrever(event.id)}
+              >
+                INSCREVA-SE
+              </button>
+            </div>
+            <h1 id='title-inscricoes'>
+              INSCRIÇÕES ABERTAS ATÉ {formatDate(event.finalDate)}!
+            </h1>
           </div>
         </div>
       ))}
+
+      {activityForPopup && (
+        <PopupActivity
+          isOpen={!!activityForPopup}
+          onClose={() => setActivityForPopup(null)}
+          nomeAtividade={activityForPopup.activityName}
+          descricao={activityForPopup.subject || 'Descrição não informada.'}
+          convidadados={
+            activityForPopup.responsible
+              ? [activityForPopup.responsible]
+              : undefined
+          }
+          tipoAtividade={activityForPopup.local || 'Atividade'}
+          dataAtividade={formatDate(activityForPopup.startTime)}
+          horaAtividade={formatTime(activityForPopup.startTime)}
+        />
+      )}
     </Container>
   )
 }

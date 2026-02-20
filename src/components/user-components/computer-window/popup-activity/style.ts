@@ -3,9 +3,10 @@ import { styled } from 'styled-components'
 export const Container = styled.div`
   p {
     margin-bottom: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-family: var(--font-texts);
     color: var(--cor-preto);
+    font-weight: 400;
   }
 
   strong {

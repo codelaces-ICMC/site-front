@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GlobalStyles from '../styles/GlobalStyles'
 import NewsCard from 'components/user-components/computer-window/card-news'
 import EventCard from 'components/user-components/computer-window/card-event'
@@ -8,6 +8,7 @@ import Highlights from 'components/user-components/computer-window/highlights'
 import PopupActivity from 'components/user-components/computer-window/popup-activity'
 import Header from 'components/user-components/computer-window/header'
 import Footer from 'components/user-components/computer-window/footer'
+import InfoEvent from 'components/user-components/computer-window/info-event'
 
 const Teste: React.FC = () => {
   const newsData = {
@@ -26,8 +27,8 @@ const Teste: React.FC = () => {
   const cardData = {
     cardNumber: 1000,
     eventName: 'Mulheres na engenharia',
-    startDate: new Date(2025, 10, 25, 18, 0),
-    endDate: new Date(2025, 10, 25, 19, 0),
+    startDate: new Date(2030, 10, 25, 18, 0),
+    endDate: new Date(2030, 10, 25, 19, 0),
     eventPlace: 'Online (YouTube)',
     coffeLink: 'url',
   }
@@ -37,6 +38,39 @@ const Teste: React.FC = () => {
   ]
 
   const convidados = ['Nome do convidado 1', 'Nome do convidado 2']
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+  // 1. CRIAR OS DADOS FICTÍCIOS PARA O INFO-EVENT
+  const infoEventData = [
+    {
+      id: 1,
+      eventName: 'Winx Club Experience',
+      beginDate: new Date(2030, 10, 25, 18, 0),
+      finalDate: new Date(2030, 10, 25, 20, 0),
+      coffeeValue: 'R$ 15,00',
+      link_coffee: 'https://forms.gle/exemplo',
+      link_fotos: 'https://drive.google.com/exemplo',
+      activities: [
+        {
+          activityId: 101,
+          activityName: 'Palestra de Magia',
+          responsible: 'Fada Bloom',
+          startTime: new Date(2030, 10, 25, 18, 0),
+          endTime: new Date(2030, 10, 25, 19, 0),
+          registrationAt: new Date(2030, 10, 20),
+        },
+        {
+          activityId: 102,
+          activityName: 'Workshop de Design',
+          responsible: 'Fada Stella',
+          startTime: new Date(2030, 10, 25, 19, 0),
+          endTime: new Date(2030, 10, 25, 20, 0),
+          registrationAt: new Date(2030, 10, 20),
+        },
+      ],
+    },
+  ]
 
   return (
     <Container>
@@ -64,15 +98,6 @@ const Teste: React.FC = () => {
           buttonLink='/#processo-seletivo'
         />
       </div>
-      <div id='processo-seletivo'></div>
-      <PopupActivity
-        nomeAtividade='Nome da Atividade'
-        descricao='Descrição da atividade que será realizada no evento. Pode ser uma palestra, um workshop, uma mesa redonda, etc.'
-        convidadados={convidados}
-        tipoAtividade='Tipo da atividade (palestra, workshop, mesa redonda, etc.)'
-        dataAtividade='DD/MM/AAAA'
-        horaAtividade='HH:MM'
-      />
       <div />
       <NewsCard
         imageUrl={newsData.imageUrl}
@@ -91,7 +116,18 @@ const Teste: React.FC = () => {
         endDate={cardData.endDate}
         eventPlace={cardData.eventPlace}
         coffeeLink={cardData.coffeLink}
-        onClick={() => {}}
+        onClick={() => setIsPopupOpen(true)} // Isso abre o modal
+      />
+      <InfoEvent infos={infoEventData} />
+      <PopupActivity
+        isOpen={isPopupOpen} // <- Controla se está aberto
+        onClose={() => setIsPopupOpen(false)} // <- Função para o Modal conseguir fechar
+        nomeAtividade='Nome da Atividade'
+        descricao='Descrição da atividade que será realizada no evento...'
+        convidadados={convidados}
+        tipoAtividade='Tipo da atividade'
+        dataAtividade='DD/MM/AAAA'
+        horaAtividade='HH:MM'
       />
       <Footer
         backgroundColor='var(--cor-roxo-escuro)'
