@@ -6,6 +6,25 @@ export const Container = styled.div`
     margin-top: 100px;
   }
 
+  #carrossel-news {
+    background-color: var(--cor-amarelo-claro);
+  }
+
+  .title-news {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+    padding-top: 2.5em;
+    padding-bottom: 0.5em;
+
+    h1 {
+      font-family: var(--font-titles-alt);
+      color: var(--cor-roxo-escuro);
+      font-size: 2.5em;
+    }
+  }
+
   .selective-title {
     font-weight: 800px;
     color: var(--cor-roxo-escuro);

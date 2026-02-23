@@ -2,12 +2,14 @@ import { styled } from 'styled-components'
 
 export const Container = styled.div`
   width: 300px;
+  height: 480px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
+  background-color: var(--cor-branco);
 
   .div-img-news {
-    padding: 20px;
+    padding: 20px 20px 5px 20px;
   }
 
   .img-news {
@@ -30,6 +32,7 @@ export const Container = styled.div`
     font-family: var(--font-titles);
     text-transform: uppercase;
     font-size: 1.25rem;
+    padding-top: 1em;
   }
 
   .description-news {

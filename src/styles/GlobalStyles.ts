@@ -17,6 +17,13 @@ export default createGlobalStyle`
         --font-taglines: 'Amoresa';
         --font-texts: 'Inter';
     }
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -31,7 +38,8 @@ export default createGlobalStyle`
     }
 
     #root {
-        height: 100vh;
+        min-height: 100vh; 
+        width: 100%;
     }
 
     ul, li {
@@ -46,6 +54,7 @@ export default createGlobalStyle`
     body {
         background-color: var(--cor-branco);
         overflow-x: hidden;
+        position: relative;
     }
 
     hr {
