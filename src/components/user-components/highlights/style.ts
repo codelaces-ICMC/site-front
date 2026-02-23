@@ -6,7 +6,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: var(--cor-roxo-escuro);
-  margin-top: 5.6rem;
   gap: 4.8rem;
 
   h1 {
@@ -14,6 +13,7 @@ export const Container = styled.div`
     font-size: 2.5rem;
     color: var(--cor-branco);
     text-align: center;
+    padding-top: 2em;
   }
 
   h2 {

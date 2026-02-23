@@ -3,8 +3,9 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 import Header from 'components/user-components/header'
 import Footer from 'components/user-components/footer'
 import Banner from 'components/user-components/banner'
-import NewsCarousel from 'components/user-components/carrossel-news'
+// import NewsCarousel from 'components/user-components/carrossel-news'
 import NewsIcon from '../../../assets/icons/general/info.svg'
+import Highlights from 'components/user-components/highlights'
 
 import { Container } from './style'
 
@@ -13,6 +14,8 @@ const Home: React.FC = () => {
     { name: 'Processo Seletivo', targetId: 'processo-seletivo' },
   ]
 
+  {
+    /*
   const ultimasNoticias = [
     {
       imageUrl:
@@ -67,6 +70,8 @@ const Home: React.FC = () => {
         'https://medium.com/code-like-a-girl/women-rising-why-women-intech-writers-are-invisible-on-substack-92ec55909e95',
     },
   ]
+  */
+  }
 
   return (
     <Container>
@@ -84,11 +89,20 @@ const Home: React.FC = () => {
           <img src={NewsIcon} />
           <h1>NOTÍCIAS</h1>
         </div>
-        <NewsCarousel newsList={ultimasNoticias} />
+        <p className='temp-p'>Em breve...</p>
+        {/* <NewsCarousel newsList={ultimasNoticias} /> */}
+      </section>
+      <section id='highlight'>
+        <Highlights
+          subtitle='PROCESSO SELETIVO 2026'
+          description='Quer participar de projetos com outras mulheres? Sair em um rolêzinho só com mulheres? Não perca a oportunidade de fazer parte do Codelaces! Inscrições abertas até XX/XX!'
+          buttonText='INSCREVA-SE'
+          buttonLink='/#processo-seletivo'
+        />
       </section>
       <Footer
-        backgroundColor='var(--cor-roxo-escuro)'
-        textColor='var(--cor-branco)'
+        backgroundColor='var(--cor-branco)'
+        textColor='var(--cor-roxo-escuro)'
       />
     </Container>
   )

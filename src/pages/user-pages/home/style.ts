@@ -23,6 +23,28 @@ export const Container = styled.div`
       color: var(--cor-roxo-escuro);
       font-size: 2.5em;
     }
+
+    @media (max-width: 520px) {
+      padding-top: 15vh;
+
+      h1 {
+        font-size: 2em;
+      }
+    }
+  }
+
+  .temp-p {
+    font-family: var(--font-titles);
+    font-size: 2.5em;
+    display: flex;
+    color: var(--cor-roxo-escuro);
+    font-weight: 700;
+    justify-content: center;
+    padding: 30vh 0;
+
+    @media (max-width: 520px) {
+      font-size: 2em;
+    }
   }
 
   .selective-title {
