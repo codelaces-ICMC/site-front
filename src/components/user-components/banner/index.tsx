@@ -24,12 +24,19 @@ const Banner: React.FC = () => {
   return (
     <Container>
       {/* Elementos decorativos posicionados de forma absoluta */}
-      <DecorItem className='top-left' src={svgDevSimbols} />
-      <DecorItem className='top-right' src={svgDarSparkle} />
-      <DecorItem className='bottom-left' src={svgBubbles} />
-
-      {/* O grafismo de Vênus que VAZA para a próxima seção */}
-      <DecorItem className='bottom-right-venus' src={svgVenusCircles} alt='' />
+      <DecorItem className='top-left' src={svgDevSimbols} showLogo={showLogo} />
+      <DecorItem
+        className='top-right'
+        src={svgDarSparkle}
+        showLogo={showLogo}
+      />
+      <DecorItem className='bottom-left' src={svgBubbles} showLogo={showLogo} />
+      <DecorItem
+        className='bottom-right-venus'
+        src={svgVenusCircles}
+        alt=''
+        showLogo={showLogo}
+      />
 
       {/* Wrapper central onde as coisas trocam */}
       <ContentWrapper>

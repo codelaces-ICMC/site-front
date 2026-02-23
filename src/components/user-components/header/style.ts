@@ -105,4 +105,8 @@ export const StyledLogo = styled(LogoSVG)<{ logoColor: string }>`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 50px;
+  }
 `

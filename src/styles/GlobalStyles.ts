@@ -45,6 +45,7 @@ export default createGlobalStyle`
 
     body {
         background-color: var(--cor-branco);
+        overflow-x: hidden;
     }
 
     hr {
