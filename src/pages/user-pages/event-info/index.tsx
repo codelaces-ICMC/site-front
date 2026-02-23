@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { getWebEvent } from 'api/web/events/{eventId}/get'
-import InfoEvent from 'components/user-components/computer-window/info-event'
+import InfoEvent from 'components/user-components/info-event'
 // import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
 import GlobalStyles from 'styles/GlobalStyles'
 import { Container, HeaderContainer } from './style'
 
-import Activities from '../../../components/user-components/props/props-info-activity'
+import Activities from '../../../components/props/props-info-activity'
 
 const EventInfo: React.FC = () => {
   const { eventId } = useParams()

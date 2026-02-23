@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ButtonProps from 'components/user-components/props/button-props'
+import ButtonProps from 'components/props/button-props'
 import { Container } from './style'
 import setaIcon from '../../../assets/img/icons/seta.png'
 

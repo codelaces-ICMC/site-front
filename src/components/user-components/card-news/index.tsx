@@ -1,5 +1,5 @@
 import React from 'react'
-import CardNewsProps from 'components/user-components/props/props-card-news'
+import CardNewsProps from 'components/props/props-card-news'
 import { Container } from './style'
 
 const NewsCard: React.FC<CardNewsProps> = ({

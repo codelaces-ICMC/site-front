@@ -59,22 +59,3 @@ export const Container = styled.div`
     }
   }
 `
-
-export const HeaderContainer = styled.header`
-  background: var(--cor-branco);
-  color: var(--cor-roxo-escuro);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-
-  button {
-    color: var(--cor-roxo-escuro);
-  }
-`
-
-export const FooterContainer = styled.footer`
-  background: var(--degrade-roxo-rosa);
-  color: var(--cor-preto);
-`

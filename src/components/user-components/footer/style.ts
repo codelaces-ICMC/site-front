@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
-import { ReactComponent as EmailIcon } from '../../../../assets/icons/general/email.svg'
-import { ReactComponent as InstaIcon } from '../../../../assets/icons/general/insta.svg'
-import { ReactComponent as LinkedinIcon } from '../../../../assets/icons/general/linkedin.svg'
+import { ReactComponent as EmailIcon } from '../../../assets/icons/general/email.svg'
+import { ReactComponent as InstaIcon } from '../../../assets/icons/general/insta.svg'
+import { ReactComponent as LinkedinIcon } from '../../../assets/icons/general/linkedin.svg'
 
 export const Container = styled.footer<{
   backgroundColor: string

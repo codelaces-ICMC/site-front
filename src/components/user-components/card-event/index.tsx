@@ -4,7 +4,7 @@ import { Container } from './style'
 
 import CardEventProps from '../../props/props-card-event'
 
-import cardImage from '../../../../assets/imgs/general/membras.png'
+import cardImage from '../../../assets/imgs/general/membras.png'
 
 const Card: React.FC<CardEventProps & { onClick: () => void }> = ({
   eventName,

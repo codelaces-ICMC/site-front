@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import GlobalStyles from '../../../styles/GlobalStyles'
 import ToggleButton from 'components/thematic-components/quest&answer'
-import ButtonProps from 'components/user-components/props/button-props'
+import ButtonProps from 'components/props/button-props'
 import VideoEntrevista from 'components/thematic-components/video'
 
 import BannerImage from '../../../assets/img/hackathon2024/background-hackathon.png'

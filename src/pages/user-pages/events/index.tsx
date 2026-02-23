@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import { getWebEvents } from 'api/web/events/get'
 import Filter from 'components/admin-components/search-bar'
-import CardsSet from 'components/user-components/computer-window/cards-set'
-import Footer from 'components/user-components/computer-window/footer'
+import CardsSet from 'components/user-components/cards-set'
+import Footer from 'components/user-components/footer'
 import GlobalStyles from 'styles/GlobalStyles'
 import { Container, FooterContainer, HeaderContainer } from './style'
 

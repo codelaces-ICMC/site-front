@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Container } from './style'
 
 import InfoProps from '../../props/props-info-event'
-import InfoBtn from '../../../../assets/icons/general/btn-info.svg'
+import InfoBtn from '../../../assets/icons/general/btn-info.svg'
 import PopupActivity from '../popup-activity'
 
 const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {

@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { ReactComponent as LogoSVG } from '../../../../assets/icons/logos/logo.svg'
-import menuIcon from '../../../../assets/icons/general/btn-menu-hamburguer.svg'
+import { ReactComponent as LogoSVG } from '../../../assets/icons/logos/logo.svg'
+import menuIcon from '../../../assets/icons/general/btn-menu-hamburguer.svg'
 
 export const Container = styled.header<{
   backgroundColor: string

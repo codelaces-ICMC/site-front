@@ -1,4 +1,4 @@
-import Activities from '../../../components/user-components/props/props-info-activity'
+import Activities from './props-info-activity'
 
 interface InfoProps {
   id: number

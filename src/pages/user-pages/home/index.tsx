@@ -1,37 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from 'components/user-components/header'
+import Footer from 'components/user-components/footer'
+import Banner from 'components/user-components/banner'
 
-import BannerImage from '../../../assets/img/general_imgs/banner-home.png'
-
-import { Container, HeaderContainer, FooterContainer } from './style'
+import { Container } from './style'
 
 const Home: React.FC = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+  const headerEvents = [
+    { name: 'Processo Seletivo', targetId: 'processo-seletivo' },
+  ]
 
   return (
     <Container>
       <GlobalStyles />
-      <img className='banner-home' src={BannerImage} alt='Banner do WIT' />
-      <h1 className='selective-title'>
-        Quer participar do nosso próximo evento?
-      </h1>
-      <p className='selective-text'>
-        Então, se inscreva na nossa Hackathon 2025! Corre que as vagas são
-        limitadas. Para conferir é só clicar em &quot;HACKATHON&quot; no topo da
-        página e você poderá saber mais sobre esse evento incrível. 😁
-      </p>
+      <Header
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+        events={headerEvents}
+      />
+      <section id='banner'>
+        <Banner />
+      </section>
+      <Footer
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
     </Container>
   )
 }

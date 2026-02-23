@@ -14,7 +14,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // import ActivityInfo from './pages/user-pages/activity-info'
 // import EventInfo from './pages/user-pages/event-info'
 // import Events from './pages/user-pages/events'
-// import Home from './pages/user-pages/home'
+import Home from './pages/user-pages/home'
 // import HomeHackathon from 'pages/thematic-pages/hackathon2025'
 import Teste from './pages/teste'
 import GlobalStyles from './styles/GlobalStyles'
@@ -57,6 +57,7 @@ function App() {
             element={<CreateCertificateAdmin />}
           />
           */}
+          <Route path='/' element={<Home />} />
           <Route path='/teste/' element={<Teste />} />
         </Routes>
       </div>
