@@ -4,10 +4,10 @@ export const Container = styled.div`
   .card-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 4vw;
+    gap: 3vw;
     padding: 1vh;
     overflow: auto;
-    max-height: 50vh;
+    justify-content: center;
   }
 
   @media screen and (max-width: 817px) {

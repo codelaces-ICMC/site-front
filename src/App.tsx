@@ -13,7 +13,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // import About from './pages/user-pages/about'
 // import ActivityInfo from './pages/user-pages/activity-info'
 // import EventInfo from './pages/user-pages/event-info'
-// import Events from './pages/user-pages/events'
+import Events from './pages/user-pages/events'
 import Home from './pages/user-pages/home'
 // import HomeHackathon from 'pages/thematic-pages/hackathon2025'
 import Teste from './pages/teste'
@@ -58,6 +58,7 @@ function App() {
           />
           */}
           <Route path='/' element={<Home />} />
+          <Route path='/events' element={<Events />} />
           <Route path='/teste/' element={<Teste />} />
         </Routes>
       </div>

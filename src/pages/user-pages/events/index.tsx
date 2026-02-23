@@ -1,84 +1,60 @@
-import React, { useEffect, useState } from 'react'
-
-import { getWebEvents } from 'api/web/events/get'
-import Filter from 'components/admin-components/search-bar'
-import CardsSet from 'components/user-components/cards-set'
+import React from 'react'
+import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from 'components/user-components/header'
 import Footer from 'components/user-components/footer'
-import GlobalStyles from 'styles/GlobalStyles'
-import { Container, FooterContainer, HeaderContainer } from './style'
+import SearchBar from 'components/user-components/search-bar'
+import CardsSet from 'components/user-components/cards-set'
+
+import { Container } from './style'
 
 const Events: React.FC = () => {
-  interface Evento {
-    eventId: number
-    eventName: string
-    endDate: string
-    coffeeLink: string
-    eventPlace: string
-  }
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const [webEvents, setWebEvents] = useState<Evento[]>([])
-  const [search, setSearch] = useState('')
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const data = await getWebEvents(search)
-        setWebEvents(data)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    fetchEvents()
-  }, [search])
-
-  const handleTextChange = (newText: string) => {
-    setSearch(newText)
-  }
-
-  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.key === 'Enter') {
-  //     handleSearch()
-  //   }
-  // }
-
-  // const handleSearch = () => {
-  //   console.log('Realizar pesquisa...')
-  //   // A pesquisa será acionada automaticamente através do useEffect com base na mudança do estado de 'search'
-  // }
-
-  const cards_data = webEvents.map(evento => ({
-    key: evento.eventId,
-    cardNumber: evento.eventId,
-    eventName: evento.eventName,
-    endDate: new Date(evento.endDate),
-    coffeeLink: evento.coffeeLink,
-    eventPlace: evento.eventPlace,
-  }))
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
+  const meusEventos = [
+    {
+      cardNumber: 1,
+      eventName: 'Workshop de React e TypeScript',
+      startDate: new Date('2025-03-15T14:00:00'),
+      endDate: new Date('2025-03-15T18:00:00'),
+      eventPlace: 'Laboratório 6 - ICMC',
+      coffeeLink: 'https://link-do-sympla.com',
+    },
+    {
+      cardNumber: 2,
+      eventName: 'Roda de Conversa: Mulheres na TI',
+      startDate: new Date('2026-04-10T19:00:00'),
+      endDate: new Date('2026-04-10T21:00:00'),
+      eventPlace: 'Auditório Fernão Stella',
+      coffeeLink: '',
+    },
+    {
+      cardNumber: 3,
+      eventName: 'Hackathon Codelaces',
+      startDate: new Date('2026-05-20T08:00:00'),
+      endDate: new Date('2026-05-22T20:00:00'),
+      eventPlace: 'Vão Livre do ICMC',
+      coffeeLink: 'https://forms.gle/exemplo',
+    },
+    {
+      cardNumber: 4,
+      eventName: 'Hackathon Codelaces',
+      startDate: new Date('2026-05-20T08:00:00'),
+      endDate: new Date('2026-05-22T20:00:00'),
+      eventPlace: 'Vão Livre do ICMC',
+      coffeeLink: 'https://forms.gle/exemplo',
+    },
+  ]
   return (
     <Container>
       <GlobalStyles />
-      <div className='main-area'>
-        <Filter onSearch={handleTextChange} />
-        <section className='cards-area'>
-          <div className='cards'>
-            <CardsSet cards={cards_data} />
-          </div>
-        </section>
-      </div>
+      <Header
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
+      <SearchBar />
+      <CardsSet cards={meusEventos} />
+      <Footer
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
     </Container>
   )
 }
