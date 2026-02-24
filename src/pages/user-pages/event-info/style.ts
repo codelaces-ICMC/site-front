@@ -1,21 +1,17 @@
 import { styled } from 'styled-components'
+import bgSvg from '../../../assets/icons/general/background.svg'
 
 export const Container = styled.div`
-  background: var(--degrade-roxo-rosa);
+  background-image: url(${bgSvg});
+  background-repeat: repeat;
+  background-position: -100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10vh;
 
-  .card-event {
+  .main-div {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 0 10vw;
-    padding: 7vh 0;
   }
 `
-
-export const HeaderContainer = styled.header`
-  background: var(--cor-branco);
-  color: var(--cor-roxo-escuro);
-  width: 100%;
-`
-
-export const FooterContainer = styled.footer``

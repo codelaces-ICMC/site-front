@@ -4,6 +4,7 @@ import { Container } from './style'
 
 import InfoProps from '../../props/props-info-event'
 import InfoBtn from '../../../assets/icons/general/btn-info.svg'
+import PopupForm from '../popup-forms'
 import PopupActivity from '../popup-activity'
 
 const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
@@ -38,13 +39,18 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
     })
   }
 
-  const handleInscrever = (eventId: number) => {
-    console.log(
-      `Inscrição no Evento ${eventId} com as atividades:`,
-      atividadesSelecionadas,
-    )
+  const [showSubscribeForm, setShowSubscribeForm] = useState(false)
+  const [currentEventId, setCurrentEventId] = useState<number | null>(null)
 
-    // API aqui
+  const handleInscrever = (eventId: number) => {
+    // Trava de segurança: impede de abrir o form sem escolher atividade
+    if (atividadesSelecionadas.length === 0) {
+      alert('Por favor, selecione pelo menos uma atividade!')
+      return
+    }
+
+    setCurrentEventId(eventId)
+    setShowSubscribeForm(true) // Abre o popup!
   }
 
   useEffect(() => {
@@ -150,6 +156,14 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
           tipoAtividade={activityForPopup.local || 'Atividade'}
           dataAtividade={formatDate(activityForPopup.startTime)}
           horaAtividade={formatTime(activityForPopup.startTime)}
+        />
+      )}
+      {showSubscribeForm && currentEventId !== null && (
+        <PopupForm
+          eventId={currentEventId}
+          // Pegando a primeira atividade da lista para satisfazer a tipagem do seu componente
+          activityId={atividadesSelecionadas[0]}
+          onClose={() => setShowSubscribeForm(false)}
         />
       )}
     </Container>

@@ -1,75 +1,59 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-
-import { getWebEvent } from 'api/web/events/{eventId}/get'
+import React from 'react'
+import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from 'components/user-components/header'
+import Footer from 'components/user-components/footer'
 import InfoEvent from 'components/user-components/info-event'
-// import AltInfoEvent from "components/user-components/computer-window/alternative-info-event";
-import GlobalStyles from 'styles/GlobalStyles'
-import { Container, HeaderContainer } from './style'
 
-import Activities from '../../../components/props/props-info-activity'
+import { Container } from './style'
 
 const EventInfo: React.FC = () => {
-  const { eventId } = useParams()
-
-  interface Evento {
-    eventId: number
-    eventName: string
-    startDate: string
-    endDate: string
-    coffeePaymentURL: string
-    coffeeValue: string
-    galleryURL: string
-    activities: Activities[]
-  }
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const [webEvent, setWebEvent] = useState<Evento[]>()
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const data = await getWebEvent(parseInt(eventId!))
-        setWebEvent(data)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    fetchEvents()
-  }, [eventId])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  const event_infos = webEvent
-    ? webEvent.map(evento => ({
-        id: evento.eventId,
-        eventName: evento.eventName,
-        beginDate: new Date(evento.startDate),
-        finalDate: new Date(evento.endDate),
-        link_coffee: evento.coffeePaymentURL,
-        coffeeValue: evento.coffeeValue,
-        link_fotos: evento.galleryURL,
-        activities: evento.activities,
-      }))
-    : []
+  const infoEventData = [
+    {
+      id: 1,
+      eventName: 'Winx Club Experience',
+      beginDate: new Date(2030, 10, 25, 18, 0),
+      finalDate: new Date(2030, 10, 25, 20, 0),
+      coffeeValue: 'R$ 15,00',
+      link_coffee: 'https://forms.gle/exemplo',
+      link_fotos: 'https://drive.google.com/exemplo',
+      activities: [
+        {
+          activityId: 101,
+          activityName: 'Palestra de Magia',
+          responsible: 'Fada Bloom',
+          startTime: new Date(2030, 10, 25, 18, 0),
+          endTime: new Date(2030, 10, 25, 19, 0),
+          registrationAt: new Date(2030, 10, 20),
+        },
+        {
+          activityId: 102,
+          activityName: 'Workshop de Design',
+          responsible: 'Fada Stella',
+          startTime: new Date(2030, 10, 25, 19, 0),
+          endTime: new Date(2030, 10, 25, 20, 0),
+          registrationAt: new Date(2030, 10, 20),
+        },
+      ],
+    },
+  ]
 
   return (
     <Container>
       <GlobalStyles />
-      <div className='card-event'>
-        <InfoEvent infos={event_infos} />
+      <Header
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
+      <div className='main-div'>
+        <InfoEvent infos={infoEventData} />
       </div>
+
+      <Footer
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
     </Container>
   )
 }
+
 export default EventInfo
