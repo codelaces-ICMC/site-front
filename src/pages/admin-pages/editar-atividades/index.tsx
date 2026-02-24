@@ -83,6 +83,27 @@ const ActivityAdmin: React.FC = () => {
 
   const handleSubmission = async (event: React.FormEvent) => {
     event.preventDefault() // Evita o comportamento padrão de envio de formulário
+
+    if (formValues.nomeEvento.length > 60) {
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'O nome da atividade deve ter no máximo 60 caracteres.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      })
+      return // Para a execução aqui e não envia para a API
+    }
+
+    if (formValues.evento === -1 || !formValues.evento) {
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Você precisa vincular essa atividade a um evento!',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      })
+      return // Para a execução aqui
+    }
+
     try {
       if (activityId) {
         await updateAdminActivityById({
@@ -154,6 +175,7 @@ const ActivityAdmin: React.FC = () => {
               name='nomeEvento'
               value={formValues.nomeEvento}
               onChange={handleInputChange}
+              maxLength={60}
             />
           </label>
           <div className='primeira-linha'>
