@@ -10,7 +10,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // import EditEventsAdmin from './pages/admin-pages/editar-eventos'
 // import EventsAdmin from './pages/admin-pages/eventos'
 // import LoginAdmin from './pages/admin-pages/login'
-// import About from './pages/user-pages/about'
+import About from './pages/user-pages/about'
 // import ActivityInfo from './pages/user-pages/activity-info'
 import EventInfo from './pages/user-pages/event-info'
 import Events from './pages/user-pages/events'
@@ -60,6 +60,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/events' element={<Events />} />
           <Route path='/events/info/' element={<EventInfo />} />
+          <Route path='/about' element={<About />} />
           <Route path='/teste/' element={<Teste />} />
         </Routes>
       </div>
