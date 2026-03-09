@@ -23,7 +23,6 @@ export default function AtividadesAdmin() {
     startDate: string
     endDate: string
     activityName: string
-    cerficated: boolean
   }
 
   const [adminActivities, setAdminActivities] = useState<Activity[]>([])

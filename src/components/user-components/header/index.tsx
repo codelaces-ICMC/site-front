@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Container, StyledLogo, Menu, Hamburger } from './style'
+import { Container, Hamburger, Menu, StyledLogo } from './style'
 
 interface EventItem {
   name: string
-  targetId: string // O 'id' da div ou seção para onde a página deve rolar
+  targetId: string
 }
+
 interface HeaderProps {
   backgroundColor: string
   textColor: string
@@ -31,22 +32,19 @@ export default function Header({
   }
 
   return (
-    // passar a cor como parâmetro e também o evento mais próximo para usar esse handleScroll (pode ser mais de um evento)
-    <Container backgroundColor={backgroundColor} textColor={textColor}>
+    <Container $backgroundColor={backgroundColor} $textColor={textColor}>
       <a href='/'>
-        <StyledLogo logoColor={backgroundColor} />
+        <StyledLogo $logoColor={backgroundColor} />
       </a>
 
-      {/* Botão Hambúrguer - visível apenas em mobile */}
-      <Hamburger onClick={toggleMenu} isOpen={isMenuOpen}>
+      <Hamburger onClick={toggleMenu} $isOpen={isMenuOpen}>
         <div />
         <div />
         <div />
       </Hamburger>
 
-      <Menu isOpen={isMenuOpen} backgroundColor={backgroundColor}>
+      <Menu $isOpen={isMenuOpen} $backgroundColor={backgroundColor}>
         <ul>
-          {/* Links Estáticos */}
           <li>
             <a href='/about' onClick={() => setIsMenuOpen(false)}>
               SOBRE NÓS
@@ -59,7 +57,6 @@ export default function Header({
             </a>
           </li>
 
-          {/* Links Dinâmicos */}
           {events.map(event => (
             <React.Fragment key={event.targetId}>
               <li>|</li>

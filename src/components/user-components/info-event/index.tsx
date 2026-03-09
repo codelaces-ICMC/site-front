@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import { Container } from './style'
 
-import InfoProps from '../../props/props-info-event'
 import InfoBtn from '../../../assets/icons/general/btn-info.svg'
-import PopupForm from '../popup-forms'
+import InfoProps from '../../props/props-info-event'
 import PopupActivity from '../popup-activity'
+import PopupForm from '../popup-forms'
 
 const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const formatDate = (date: Date): string => {
@@ -161,8 +161,7 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
       {showSubscribeForm && currentEventId !== null && (
         <PopupForm
           eventId={currentEventId}
-          // Pegando a primeira atividade da lista para satisfazer a tipagem do seu componente
-          activityId={atividadesSelecionadas[0]}
+          activityIds={atividadesSelecionadas}
           onClose={() => setShowSubscribeForm(false)}
         />
       )}

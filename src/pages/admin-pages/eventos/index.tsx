@@ -1,9 +1,9 @@
 import Filter from '../../../components/admin-components/search-bar'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
-import iconDelete from '../../../assets/img/icons/btn-delete.png'
-import iconAdd from '../../../assets/img/icons/icon-add.png'
-import iconEdit from '../../../assets/img/icons/icon-edit.png'
+import iconAdd from '../../../assets/icons/general/arrow.svg'
+import iconDelete from '../../../assets/icons/general/close.svg'
+import iconEdit from '../../../assets/icons/general/info.svg'
 
 import { getAdminEvents } from 'api/admin/events/get'
 import { deleteAdminEventById } from 'api/admin/events/{eventId}/delete'

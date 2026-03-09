@@ -1,41 +1,64 @@
-import React from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
-import Header from 'components/user-components/header'
+import { getWebActivities } from 'api/web/events/{eventId}/activities/get'
+import { getWebEvent } from 'api/web/events/{eventId}/get'
 import Footer from 'components/user-components/footer'
 import InfoEvent from 'components/user-components/info-event'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import Header from '../../../components/user-components/header'
+import GlobalStyles from '../../../styles/GlobalStyles'
 
 import { Container } from './style'
 
 const EventInfo: React.FC = () => {
-  const infoEventData = [
-    {
-      id: 1,
-      eventName: 'Winx Club Experience',
-      beginDate: new Date(2030, 10, 25, 18, 0),
-      finalDate: new Date(2030, 10, 25, 20, 0),
-      coffeeValue: 'R$ 15,00',
-      link_coffee: 'https://forms.gle/exemplo',
-      link_fotos: 'https://drive.google.com/exemplo',
-      activities: [
+  const { eventId } = useParams()
+  const [infoEventData, setInfoEventData] = useState<any[]>([])
+
+  useEffect(() => {
+    const fetchEventInfo = async () => {
+      if (!eventId) return
+
+      const numericEventId = Number(eventId)
+      const [event, activitiesPayload] = await Promise.all([
+        getWebEvent(numericEventId),
+        getWebActivities(numericEventId),
+      ])
+
+      const activities = Array.isArray(activitiesPayload)
+        ? activitiesPayload
+        : (activitiesPayload?.activities ?? [])
+
+      setInfoEventData([
         {
-          activityId: 101,
-          activityName: 'Palestra de Magia',
-          responsible: 'Fada Bloom',
-          startTime: new Date(2030, 10, 25, 18, 0),
-          endTime: new Date(2030, 10, 25, 19, 0),
-          registrationAt: new Date(2030, 10, 20),
+          id: event?.id,
+          eventName: event?.name ?? event?.eventName ?? '',
+          beginDate: new Date(event?.start_date ?? event?.startDate),
+          finalDate: new Date(event?.registration_end ?? event?.end_date),
+          coffeeValue: event?.coffeeValue
+            ? String(event.coffeeValue)
+            : undefined,
+          link_coffee: event?.coffeePaymentLink,
+          link_fotos: event?.driveGalleryLink,
+          activities: activities.map((activity: any) => ({
+            activityId: activity?.id,
+            activityName: activity?.name ?? activity?.activityName ?? '',
+            responsible: activity?.speaker ?? activity?.responsible ?? '',
+            subject: activity?.description,
+            local: activity?.location,
+            startTime: new Date(activity?.start_time ?? activity?.startTime),
+            endTime: new Date(activity?.end_time ?? activity?.endTime),
+            registrationAt: new Date(
+              activity?.registration_at ??
+                activity?.registrationAt ??
+                event?.registration_end ??
+                event?.end_date,
+            ),
+          })),
         },
-        {
-          activityId: 102,
-          activityName: 'Workshop de Design',
-          responsible: 'Fada Stella',
-          startTime: new Date(2030, 10, 25, 19, 0),
-          endTime: new Date(2030, 10, 25, 20, 0),
-          registrationAt: new Date(2030, 10, 20),
-        },
-      ],
-    },
-  ]
+      ])
+    }
+
+    fetchEventInfo()
+  }, [eventId])
 
   return (
     <Container>

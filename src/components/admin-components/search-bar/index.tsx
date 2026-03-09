@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Container } from './style'
 
-import btnSearch from '../../../assets/img/icons/btn-filter.png'
+import btnSearch from '../../../assets/icons/general/btn-search.svg'
 
 interface SearchBarProps {
   onSearch: (searchText: string) => void // Alteração na definição da prop

@@ -1,24 +1,24 @@
+import { postSubscribeUser } from 'api/web/events/{eventId}/activities/{acitivity}/subscribe/post' // ajuste o caminho conforme seu projeto
 import React, { useState } from 'react'
 import {
-  ModalContainer,
-  ModalContent,
+  Button,
   CloseButton,
   Input,
-  Button,
   Label,
+  ModalContainer,
+  ModalContent,
 } from './style'
-import { postSubscribeUser } from 'api/web/events/{eventId}/activities/{acitivity}/subscribe/post' // ajuste o caminho conforme seu projeto
 
 interface PopupFormProps {
   onClose: () => void
   eventId: number
-  activityId: number
+  activityIds: number[]
 }
 
 const PopupForm: React.FC<PopupFormProps> = ({
   onClose,
   eventId,
-  activityId,
+  activityIds,
 }) => {
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
@@ -27,7 +27,9 @@ const PopupForm: React.FC<PopupFormProps> = ({
   const handleSubmit = async () => {
     setError('')
     try {
-      await postSubscribeUser(eventId, activityId, { name: nome, email })
+      for (const activityId of activityIds) {
+        await postSubscribeUser(eventId, activityId, { name: nome, email })
+      }
       onClose()
     } catch (err) {
       /* mudar isso para um pop-up depois*/
