@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { mapBackendEventsListToFront } from '../../_shared/mappers'
+import { buildApiUrl } from '../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -7,10 +9,10 @@ const getAdminEvents = async (search?: string) => {
 
   try {
     const response = await axios.get(
-      baseURL + `/admin/events?searchParam=${search}`,
+      buildApiUrl(baseURL, `/admin/events?searchParam=${search}`),
       { withCredentials: true },
     )
-    return response.data
+    return mapBackendEventsListToFront(response.data)
   } catch (error) {
     console.error('[getAdminEvents] error: ', error)
     throw error

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { buildApiUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -7,7 +8,7 @@ const deleteAdminActivityById = async (activityId: number) => {
 
   try {
     const response = await axios.delete(
-      baseURL + `/admin/activities/${activityId}`,
+      buildApiUrl(baseURL, `/admin/activities/${activityId}`),
     )
     return response.data
   } catch (error) {

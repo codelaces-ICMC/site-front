@@ -1,13 +1,17 @@
 import axios from 'axios'
+import { mapBackendEventToFront } from '../../../_shared/mappers'
+import { buildApiUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
-const getAdminEventById = async (evenId: number) => {
+const getAdminEventById = async (eventId: number) => {
   const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
-    const response = await axios.get(baseURL + `/admin/events/${evenId}`)
-    return response.data
+    const response = await axios.get(
+      buildApiUrl(baseURL, `/admin/events/${eventId}`),
+    )
+    return mapBackendEventToFront(response.data)
   } catch (error) {
     console.error('[getAdminEventById] error: ', error)
     throw error

@@ -1,4 +1,9 @@
 import axios from 'axios'
+import {
+  mapBackendActivityToFront,
+  mapFrontActivityToBackend,
+} from '../../../_shared/mappers'
+import { buildApiUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -18,18 +23,10 @@ const updateAdminActivityById = async (event: ActivityParams) => {
 
   try {
     const response = await axios.put(
-      baseURL + `/admin/activities/${event.activityId}`,
-      {
-        activityName: event?.activityName,
-        responsible: event?.responsible,
-        description: event?.description,
-        startTime: event?.startTime,
-        endTime: event?.endTime,
-        registrationAt: event?.registrationAt,
-        eventId: event?.eventId,
-      },
+      buildApiUrl(baseURL, `/admin/activities/${event.activityId}`),
+      mapFrontActivityToBackend(event),
     )
-    return response.data
+    return mapBackendActivityToFront(response.data)
   } catch (error) {
     console.error('[updateAdminActivityById] error: ', error)
     throw error

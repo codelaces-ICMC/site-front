@@ -1,4 +1,9 @@
 import axios from 'axios'
+import {
+  mapBackendEventToFront,
+  mapFrontEventToBackend,
+} from '../../../_shared/mappers'
+import { buildApiUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -18,18 +23,10 @@ const updateAdminEventById = async (event: EventParams) => {
 
   try {
     const response = await axios.put(
-      baseURL + `/admin/events/${event.eventId}`,
-      {
-        eventName: event?.eventName,
-        local: event?.local,
-        description: event?.description,
-        driveGalleryLink: event?.driveGalleryLink,
-        coffeeValue: event?.coffeeValue,
-        startDate: event?.startDate,
-        endDate: event?.endDate,
-      },
+      buildApiUrl(baseURL, `/admin/events/${event.eventId}`),
+      mapFrontEventToBackend(event),
     )
-    return response.data
+    return mapBackendEventToFront(response.data)
   } catch (error) {
     console.error('[updateAdminEventById] error: ', error)
     throw error

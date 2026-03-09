@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { buildApiUrl } from '../../../../../../_shared/url'
 
 interface User {
   email: string
@@ -14,7 +15,10 @@ const postSubscribeUser = async (
 
   try {
     const response = await axios.post(
-      baseURL + `/web/events/${eventId}/activities/${activityId}/subscribe`,
+      buildApiUrl(
+        baseURL,
+        `/web/events/${eventId}/activities/${activityId}/subscribe`,
+      ),
       {
         name: user.name,
         email: user.email,

@@ -1,4 +1,9 @@
 import axios from 'axios'
+import {
+  mapBackendEventToFront,
+  mapFrontEventToBackend,
+} from '../../_shared/mappers'
+import { buildApiUrl } from '../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -17,17 +22,11 @@ const postAdminEvents = async (event: Event) => {
   const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
-    const response = await axios.post(baseURL + `/admin/events`, {
-      eventName: event.eventName,
-      startDate: event.startDate,
-      endDate: event.endDate,
-      description: event.description,
-      cover: event.cover,
-      coffeValue: event.coffeeValue,
-      coffeePaymentLink: event.coffeePaymentLink,
-      driveGaleryLink: event.driveGalleryLink,
-    })
-    return response.data
+    const response = await axios.post(
+      buildApiUrl(baseURL, '/admin/events'),
+      mapFrontEventToBackend(event),
+    )
+    return mapBackendEventToFront(response.data)
   } catch (error) {
     console.error('[postAdminEvents] error: ', error)
     throw error
