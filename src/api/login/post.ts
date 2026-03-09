@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { setAdminAuthToken } from '../_shared/auth'
 import { buildApiUrl } from '../_shared/url'
 
 axios.defaults.withCredentials = true
@@ -16,6 +17,7 @@ const postAdminLogin = async (user: User) => {
       password: user.password,
       email: user.email,
     })
+    setAdminAuthToken(response.data?.access_token)
     return response.data
   } catch (error) {
     console.error('[postAdminLogin] error: ', error)

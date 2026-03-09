@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getAdminAuthHeaders } from '../../../_shared/auth'
 import { mapBackendEventToFront } from '../../../_shared/mappers'
 import { buildApiUrl } from '../../../_shared/url'
 
@@ -10,6 +11,7 @@ const getAdminEventById = async (eventId: number) => {
   try {
     const response = await axios.get(
       buildApiUrl(baseURL, `/admin/events/${eventId}`),
+      { headers: getAdminAuthHeaders() },
     )
     return mapBackendEventToFront(response.data)
   } catch (error) {

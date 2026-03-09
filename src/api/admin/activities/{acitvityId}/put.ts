@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getAdminAuthHeaders } from '../../../_shared/auth'
 import {
   mapBackendActivityToFront,
   mapFrontActivityToBackend,
@@ -25,6 +26,7 @@ const updateAdminActivityById = async (event: ActivityParams) => {
     const response = await axios.put(
       buildApiUrl(baseURL, `/admin/activities/${event.activityId}`),
       mapFrontActivityToBackend(event),
+      { headers: getAdminAuthHeaders() },
     )
     return mapBackendActivityToFront(response.data)
   } catch (error) {

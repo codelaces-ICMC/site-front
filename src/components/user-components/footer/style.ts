@@ -4,11 +4,11 @@ import { ReactComponent as InstaIcon } from '../../../assets/icons/general/insta
 import { ReactComponent as LinkedinIcon } from '../../../assets/icons/general/linkedin.svg'
 
 export const Container = styled.footer<{
-  backgroundColor: string
-  textColor: string
+  $backgroundColor: string
+  $textColor: string
 }>`
   .footer {
-    background-color: ${({ backgroundColor }) => backgroundColor};
+    background-color: ${({ $backgroundColor }) => $backgroundColor};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,7 @@ export const Container = styled.footer<{
   }
 
   h2 {
-    color: ${({ textColor }) => textColor};
+    color: ${({ $textColor }) => $textColor};
     font-weight: 800;
     font-size: 1.2em;
     font-family: var(--font-titles);
@@ -49,30 +49,30 @@ export const Container = styled.footer<{
       flex-direction: column;
       align-items: center;
 
-      border-right: 3px solid ${({ textColor }) => textColor};
+      border-right: 3px solid ${({ $textColor }) => $textColor};
       margin-right: 20px;
     }
   }
 `
 
-export const StyledEmailIcon = styled(EmailIcon)<{ logoColor: string }>`
-  color: ${({ logoColor }) => logoColor};
+export const StyledEmailIcon = styled(EmailIcon)<{ $logoColor: string }>`
+  color: ${({ $logoColor }) => $logoColor};
 
   &:hover {
     cursor: pointer;
   }
 `
 
-export const StyledInstaIcon = styled(InstaIcon)<{ logoColor: string }>`
-  color: ${({ logoColor }) => logoColor};
+export const StyledInstaIcon = styled(InstaIcon)<{ $logoColor: string }>`
+  color: ${({ $logoColor }) => $logoColor};
 
   &:hover {
     cursor: pointer;
   }
 `
 
-export const StyledLinkedinIcon = styled(LinkedinIcon)<{ logoColor: string }>`
-  color: ${({ logoColor }) => logoColor};
+export const StyledLinkedinIcon = styled(LinkedinIcon)<{ $logoColor: string }>`
+  color: ${({ $logoColor }) => $logoColor};
 
   &:hover {
     cursor: pointer;

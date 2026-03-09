@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getAdminAuthHeaders } from '../../../_shared/auth'
 import { mapBackendDropdownEventsToFront } from '../../../_shared/mappers'
 import { buildApiUrl } from '../../../_shared/url'
 
@@ -9,6 +10,7 @@ const getAdminActivitiesDropdown = async () => {
   try {
     const response = await axios.get(
       buildApiUrl(baseURL, '/admin/activities/dropdown'),
+      { headers: getAdminAuthHeaders() },
     )
     return mapBackendDropdownEventsToFront(response.data)
   } catch (error) {

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getAdminAuthHeaders } from '../../../_shared/auth'
 import { buildApiUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
@@ -9,6 +10,7 @@ const deleteAdminEventById = async (eventId: number) => {
   try {
     const response = await axios.delete(
       buildApiUrl(baseURL, `/admin/events/${eventId}`),
+      { headers: getAdminAuthHeaders() },
     )
     return response.data
   } catch (error) {
