@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from 'react-router-dom'
 
 // Comentando os imports
 // import ActivitiesAdmin from './pages/admin-pages/atividades'
@@ -8,8 +13,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // import CreateEventsAdmin from './pages/admin-pages/criar-eventos'
 // import EditActivitiesAdmin from './pages/admin-pages/editar-atividades'
 // import EditEventsAdmin from './pages/admin-pages/editar-eventos'
-// import EventsAdmin from './pages/admin-pages/eventos'
-// import LoginAdmin from './pages/admin-pages/login'
+import EventsAdmin from './pages/admin-pages/eventos'
+import LoginAdmin from './pages/admin-pages/login/index'
 import About from './pages/user-pages/about'
 // import ActivityInfo from './pages/user-pages/activity-info'
 import EventInfo from './pages/user-pages/event-info'
@@ -59,9 +64,12 @@ function App() {
           */}
           <Route path='/' element={<Home />} />
           <Route path='/events' element={<Events />} />
-          <Route path='/events/info/' element={<EventInfo />} />
+          <Route path='/events/info/:eventId' element={<EventInfo />} />
           <Route path='/about' element={<About />} />
+          <Route path='/admin/login' element={<LoginAdmin />} />
+          <Route path='/admin/events' element={<EventsAdmin />} />
           <Route path='/teste/' element={<Teste />} />
+          <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </div>
     </Router>
