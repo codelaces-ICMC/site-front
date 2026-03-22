@@ -17,6 +17,7 @@ interface ActivityParams {
   endTime?: string
   registrationAt?: string
   eventId?: number
+  activityType?: string
 }
 
 const updateAdminActivityById = async (event: ActivityParams) => {

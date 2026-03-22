@@ -16,6 +16,7 @@ interface Activity {
   responsible: string
   eventId: number
   registrationAt: string
+  activityType: string
 }
 
 const postAdminActivities = async (activity: Activity) => {

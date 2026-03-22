@@ -1,9 +1,10 @@
+import Header from '../../../components/admin-components/header'
 import Filter from '../../../components/admin-components/search-bar'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
-import iconDelete from '../../../assets/img/icons/btn-delete.png'
-import iconAdd from '../../../assets/img/icons/icon-add.png'
-import iconEdit from '../../../assets/img/icons/icon-edit.png'
+import iconAdd from '../../../assets/icons/general/action-add.svg'
+import iconDelete from '../../../assets/icons/general/action-delete.svg'
+import iconEdit from '../../../assets/icons/general/action-edit.svg'
 
 import { getAdminActivities } from 'api/admin/activities/get'
 import { deleteAdminActivityById } from 'api/admin/activities/{acitvityId}/delete'
@@ -11,6 +12,7 @@ import CardsSet from 'components/admin-components/cards-set'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { toast } from 'react-toastify'
 import DynamicButton from '../../../components/admin-components/btn'
 import { Container } from './style'
 
@@ -26,7 +28,7 @@ export default function AtividadesAdmin() {
   }
 
   const [adminActivities, setAdminActivities] = useState<Activity[]>([])
-  const [search, setSearch] = useState('null')
+  const [search, setSearch] = useState('')
   const [activityId, setActivityId] = useState(-1)
 
   const handleSelectedActivity = (activitySelected: number) => {
@@ -42,14 +44,15 @@ export default function AtividadesAdmin() {
       } catch (error: any) {
         console.error(error)
 
-        const err = error?.response?.data?.error
+        const message =
+          error?.response?.data?.message?.[0] ??
+          error?.response?.data?.error?.message ??
+          error?.response?.data?.error ??
+          'Não foi possível carregar as atividades.'
 
-        if (err) {
-          Swal.fire({
-            title: err.title,
-            text: err.message,
-            confirmButtonText: 'OK',
-          })
+        toast.error(String(message))
+
+        if (error?.response?.status === 401) {
           navigate('/admin/login')
         }
       }
@@ -58,7 +61,7 @@ export default function AtividadesAdmin() {
   }, [search])
 
   const handleTextChange = (newText: string) => {
-    setSearch(newText)
+    setSearch(newText.trim())
   }
 
   const cards_data = adminActivities.map(activity => ({
@@ -79,42 +82,58 @@ export default function AtividadesAdmin() {
   }
 
   const handleEditActivity = () => {
+    if (activityId < 0) return
     navigate(`/admin/edit/activity/${activityId}`)
   }
 
   const handleDeleteActivity = async () => {
+    if (activityId < 0) {
+      toast.warning('Selecione uma atividade para deletar.')
+      return
+    }
+
+    const confirmation = await Swal.fire({
+      title: 'Deseja excluir esta atividade?',
+      text: `ID: ${activityId}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, excluir',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    })
+
+    if (!confirmation.isConfirmed) {
+      return
+    }
+
     try {
-      if (activityId < 0) throw new Error('evento não existe')
-
       await deleteAdminActivityById(activityId)
-
-      Swal.fire({
-        title: 'Atividade apagada.',
-        text: `A atividade de id ${activityId} foi apagada com sucesso!`,
-        confirmButtonText: 'Voltar',
-      }).then((result: any) => {
-        if (result.isConfirmed) {
-          window.location.reload()
-        }
-      })
+      setAdminActivities(prev =>
+        prev.filter(activity => activity.activityId !== activityId),
+      )
+      setActivityId(-1)
+      toast.success('Atividade apagada com sucesso!')
     } catch (error: any) {
       console.error('Erro ao enviar a solicitação DELETE:', error)
-      const err = error?.response?.data?.error
+      const message =
+        error?.response?.data?.message?.[0] ??
+        error?.response?.data?.error?.message ??
+        error?.response?.data?.error ??
+        'Não foi possível apagar a atividade.'
 
-      if (err) {
-        Swal.fire({
-          title: err.title,
-          text: err.message,
-          confirmButtonText: 'OK',
-        })
+      toast.error(String(message))
+
+      if (error?.response?.status === 401) {
+        navigate('/admin/login')
       }
-      navigate('/admin/login')
     }
   }
 
   return (
     <Container>
       <GlobalStyles />
+      <Header />
       <Filter onSearch={handleTextChange} />
       <section className='cards-area'>
         <div className='btn-area'>

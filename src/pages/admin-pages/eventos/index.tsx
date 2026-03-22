@@ -1,14 +1,16 @@
+import Header from '../../../components/admin-components/header'
 import Filter from '../../../components/admin-components/search-bar'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
-import iconAdd from '../../../assets/icons/general/arrow.svg'
-import iconDelete from '../../../assets/icons/general/close.svg'
-import iconEdit from '../../../assets/icons/general/info.svg'
+import iconAdd from '../../../assets/icons/general/action-add.svg'
+import iconDelete from '../../../assets/icons/general/action-delete.svg'
+import iconEdit from '../../../assets/icons/general/action-edit.svg'
 
 import { getAdminEvents } from 'api/admin/events/get'
 import { deleteAdminEventById } from 'api/admin/events/{eventId}/delete'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import Swal from 'sweetalert2'
 import DynamicButton from '../../../components/admin-components/btn'
 import CardsSet from '../../../components/admin-components/cards-set'
@@ -29,7 +31,7 @@ export default function EventosAdmin() {
   }
 
   const [adminEvents, adminWebEvents] = useState<Evento[]>([])
-  const [search, setSearch] = useState('null')
+  const [search, setSearch] = useState('')
   const [eventId, setEventId] = useState(-1)
 
   useEffect(() => {
@@ -39,15 +41,15 @@ export default function EventosAdmin() {
         adminWebEvents(data)
       } catch (error: any) {
         console.error(error)
+        const message =
+          error?.response?.data?.message?.[0] ??
+          error?.response?.data?.error?.message ??
+          error?.response?.data?.error ??
+          'Não foi possível carregar os eventos.'
 
-        const err = error?.response?.data?.error
+        toast.error(String(message))
 
-        if (err) {
-          Swal.fire({
-            title: err.title,
-            text: err.message,
-            confirmButtonText: 'OK',
-          })
+        if (error?.response?.status === 401) {
           navigate('/admin/login')
         }
       }
@@ -60,7 +62,7 @@ export default function EventosAdmin() {
   }
 
   const handleTextChange = (newText: string) => {
-    setSearch(newText)
+    setSearch(newText.trim())
   }
 
   const cards_data = adminEvents.map(evento => ({
@@ -81,42 +83,56 @@ export default function EventosAdmin() {
   }
 
   const handleEditEvent = () => {
+    if (eventId < 0) return
     navigate(`/admin/edit/event/${eventId}`)
   }
 
   const handleDeleteEvent = async () => {
+    if (eventId < 0) {
+      toast.warning('Selecione um evento para deletar.')
+      return
+    }
+
+    const confirmation = await Swal.fire({
+      title: 'Deseja excluir este evento?',
+      text: `ID: ${eventId}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, excluir',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    })
+
+    if (!confirmation.isConfirmed) {
+      return
+    }
+
     try {
-      if (eventId < 0) throw new Error('evento não existe')
-
       await deleteAdminEventById(eventId)
-
-      Swal.fire({
-        title: 'Evento apagado.',
-        text: `O evento de id ${eventId} foi apagado com sucesso!`,
-        confirmButtonText: 'Voltar',
-      }).then((result: any) => {
-        if (result.isConfirmed) {
-          window.location.reload()
-        }
-      })
+      adminWebEvents(prev => prev.filter(event => event.eventId !== eventId))
+      setEventId(-1)
+      toast.success('Evento apagado com sucesso!')
     } catch (error: any) {
       console.error('Erro ao enviar a solicitação DELETE:', error)
-      const err = error?.response?.data?.error
+      const message =
+        error?.response?.data?.message?.[0] ??
+        error?.response?.data?.error?.message ??
+        error?.response?.data?.error ??
+        'Não foi possível apagar o evento.'
 
-      if (err) {
-        Swal.fire({
-          title: err.title,
-          text: err.message,
-          confirmButtonText: 'OK',
-        })
+      toast.error(String(message))
+
+      if (error?.response?.status === 401) {
+        navigate('/admin/login')
       }
-      navigate('/admin/login')
     }
   }
 
   return (
     <Container>
       <GlobalStyles />
+      <Header />
       <Filter onSearch={handleTextChange} />
       <section className='cards-area'>
         <div className='btn-area'>

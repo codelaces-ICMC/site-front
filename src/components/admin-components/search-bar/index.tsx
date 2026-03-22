@@ -5,42 +5,46 @@ import { Container } from './style'
 import btnSearch from '../../../assets/icons/general/btn-search.svg'
 
 interface SearchBarProps {
-  onSearch: (searchText: string) => void // Alteração na definição da prop
+  onSearch: (searchText: string) => void
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  // Recebendo onSearch como uma propriedade
   const [text, setText] = React.useState('')
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch()
-    }
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    onSearch(text.trim())
   }
 
-  const handleSearch = () => {
-    if (text.trim() !== '') {
-      onSearch(text)
-    } else {
-      onSearch('null')
-    }
+  const handleClear = () => {
+    setText('')
+    onSearch('')
   }
 
   return (
     <Container>
-      <div className='search-bar'>
+      <form className='search-bar' onSubmit={handleSubmit}>
         <input
           className='input-search'
           type='text'
           placeholder='Pesquisar evento'
           value={text}
           onChange={e => setText(e.target.value)}
-          onKeyPress={handleKeyPress}
         />
-        <button className='search-btn' disabled={!text} onClick={handleSearch}>
+        {text.trim() !== '' && (
+          <button
+            type='button'
+            className='clear-btn'
+            onClick={handleClear}
+            aria-label='Limpar busca'
+          >
+            x
+          </button>
+        )}
+        <button className='search-btn' type='submit'>
           <img src={btnSearch} alt='botão de busca de eventos' />
         </button>
-      </div>
+      </form>
     </Container>
   )
 }

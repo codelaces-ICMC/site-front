@@ -12,6 +12,9 @@ interface EventParams {
   eventId: number
   eventName?: string
   local?: string
+  registrationStart?: string
+  registrationEnd?: string
+  maxParticipants?: number
   description?: string
   driveGalleryLink?: string
   coffeeValue?: number

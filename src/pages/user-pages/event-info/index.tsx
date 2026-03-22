@@ -31,8 +31,19 @@ const EventInfo: React.FC = () => {
         {
           id: event?.id,
           eventName: event?.name ?? event?.eventName ?? '',
-          beginDate: new Date(event?.start_date ?? event?.startDate),
-          finalDate: new Date(event?.registration_end ?? event?.end_date),
+          description: event?.description ?? '',
+          startDate: new Date(event?.start_date ?? event?.startDate),
+          endDate: new Date(event?.end_date ?? event?.endDate),
+          registrationStart: event?.registration_start
+            ? new Date(event.registration_start)
+            : event?.registrationStart
+              ? new Date(event.registrationStart)
+              : undefined,
+          registrationEnd: event?.registration_end
+            ? new Date(event.registration_end)
+            : event?.registrationEnd
+              ? new Date(event.registrationEnd)
+              : undefined,
           coffeeValue: event?.coffeeValue
             ? String(event.coffeeValue)
             : undefined,
@@ -41,6 +52,8 @@ const EventInfo: React.FC = () => {
           activities: activities.map((activity: any) => ({
             activityId: activity?.id,
             activityName: activity?.name ?? activity?.activityName ?? '',
+            activityType:
+              activity?.activity_type ?? activity?.activityType ?? 'other',
             responsible: activity?.speaker ?? activity?.responsible ?? '',
             subject: activity?.description,
             local: activity?.location,
@@ -50,6 +63,7 @@ const EventInfo: React.FC = () => {
               activity?.registration_at ??
                 activity?.registrationAt ??
                 event?.registration_end ??
+                event?.registrationEnd ??
                 event?.end_date,
             ),
           })),

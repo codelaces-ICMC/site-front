@@ -7,15 +7,15 @@ axios.defaults.withCredentials = true
 
 const getAdminEvents = async (search?: string) => {
   const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const query = search?.trim()
+    ? `/admin/events?searchParam=${encodeURIComponent(search.trim())}`
+    : '/admin/events'
 
   try {
-    const response = await axios.get(
-      buildApiUrl(baseURL, `/admin/events?searchParam=${search}`),
-      {
-        withCredentials: true,
-        headers: getAdminAuthHeaders(),
-      },
-    )
+    const response = await axios.get(buildApiUrl(baseURL, query), {
+      withCredentials: true,
+      headers: getAdminAuthHeaders(),
+    })
     return mapBackendEventsListToFront(response.data)
   } catch (error) {
     console.error('[getAdminEvents] error: ', error)

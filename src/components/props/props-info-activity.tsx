@@ -1,6 +1,7 @@
 interface InfoProps {
   activityName: string
   activityId: number
+  activityType?: string
   subject?: string
   local?: string
   responsible: string

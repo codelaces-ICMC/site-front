@@ -69,6 +69,16 @@ export const Container = styled.div`
         background-color: var(--cor-amarelo);
         cursor: pointer;
       }
+
+      button:disabled {
+        background-color: var(--cor-cinza-claro);
+        color: var(--cor-preto);
+        cursor: not-allowed;
+      }
+
+      button:disabled:hover {
+        background-color: var(--cor-cinza-claro);
+      }
     }
   }
 

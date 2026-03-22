@@ -7,11 +7,13 @@ axios.defaults.withCredentials = true
 
 const getAdminActivities = async (search?: string) => {
   const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const query = search?.trim()
+    ? `/admin/activities?searchParam=${encodeURIComponent(search.trim())}`
+    : '/admin/activities'
   try {
-    const response = await axios.get(
-      buildApiUrl(baseURL, `/admin/activities?searchParam=${search}`),
-      { headers: getAdminAuthHeaders() },
-    )
+    const response = await axios.get(buildApiUrl(baseURL, query), {
+      headers: getAdminAuthHeaders(),
+    })
     return mapBackendActivitiesListToFront(response.data)
   } catch (error) {
     console.error('[getAdminActivities] error: ', error)

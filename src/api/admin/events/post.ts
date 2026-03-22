@@ -12,6 +12,10 @@ interface Event {
   eventName: string
   startDate: string
   endDate: string
+  registrationStart?: string
+  registrationEnd?: string
+  maxParticipants?: number
+  local?: string
   description?: string
   cover?: string
   coffeeValue?: number

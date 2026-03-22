@@ -36,11 +36,11 @@ const AltInfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
             </p>
             <p>
               <span>DATA: </span>
-              {formatDate(event.beginDate)}
+              {formatDate(event.startDate)}
             </p>
             <p>
               <span>HORÁRIO: </span>
-              {formatTime(event.beginDate)}
+              {formatTime(event.startDate)}
             </p>
             {event.coffeeValue && (
               <p>
@@ -57,7 +57,7 @@ const AltInfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
               </a>
             </div>
             <h1 id='title-inscricoes'>
-              INSCRIÇÕES ABERTAS ATÉ {formatDate(event.finalDate)}
+              INSCRIÇÕES ABERTAS ATÉ {formatDate(event.registrationEnd!)}
             </h1>
           </div>
         </div>

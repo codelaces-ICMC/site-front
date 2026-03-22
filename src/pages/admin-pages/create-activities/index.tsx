@@ -4,13 +4,14 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 import MyButton from '../../../components/admin-components/btn'
 import Dropdown from '../../../components/admin-components/dropdown'
 
-import iconFinish from '../../../assets/img/icons/icon-finish.png'
-import iconReturn from '../../../assets/img/icons/icon-return.png'
+import iconFinish from '../../../assets/icons/general/btn-info.svg'
+import iconReturn from '../../../assets/icons/general/btn-return.svg'
 
 import { getAdminActivitiesDropdown } from 'api/admin/activities/dropdown-events/get'
+import { getAdminActivityTypesDropdown } from 'api/admin/activities/dropdown-types/get'
 import { postAdminActivities } from 'api/admin/activities/post'
 import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import { toast } from 'react-toastify'
 import { Container } from './style'
 
 interface DropdownProps {
@@ -26,13 +27,21 @@ interface FormValues {
   responsavel: string
   evento: number
   data_final: string
+  tipoAtividade: string
+}
+
+interface ActivityTypeOption {
+  activityTypeId: number
+  activityTypeName: string
 }
 
 const ActivityAdmin: React.FC = () => {
   const navigate = useNavigate()
 
-  const [submitedButton, setSubmitedButton] = useState(false)
   const [options, setOptions] = useState<DropdownProps[]>([])
+  const [activityTypeOptions, setActivityTypeOptions] = useState<
+    ActivityTypeOption[]
+  >([])
   const [formValues, setFormValues] = useState<FormValues>({
     nomeEvento: '',
     inicio: '',
@@ -41,11 +50,8 @@ const ActivityAdmin: React.FC = () => {
     responsavel: '',
     evento: -1,
     data_final: '',
+    tipoAtividade: '',
   })
-
-  const handleButtonClick = () => {
-    setSubmitedButton(true)
-  }
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -54,74 +60,84 @@ const ActivityAdmin: React.FC = () => {
     setFormValues({ ...formValues, [name]: value })
   }
 
+  const handleSelect = (selectedEventId: number) => {
+    setFormValues({ ...formValues, evento: selectedEventId })
+  }
+
   const handleSubmission = async (event: React.FormEvent) => {
     event.preventDefault()
 
     if (formValues.nomeEvento.length > 60) {
-      Swal.fire({
-        title: 'Atenção!',
-        text: 'O nome da atividade deve ter no máximo 60 caracteres.',
-        icon: 'warning',
-        confirmButtonText: 'OK',
-      })
-      return // Para a execução aqui e não envia para a API
+      toast.warning('O nome da atividade deve ter no máximo 60 caracteres.')
+      return
     }
 
     if (formValues.evento === -1 || !formValues.evento) {
-      Swal.fire({
-        title: 'Atenção!',
-        text: 'Você precisa vincular essa atividade a um evento!',
-        icon: 'warning',
-        confirmButtonText: 'OK',
-      })
-      return // Para a execução aqui
+      toast.warning('Você precisa vincular essa atividade a um evento!')
+      return
+    }
+
+    if (!formValues.tipoAtividade) {
+      toast.warning('Selecione um tipo de atividade.')
+      return
     }
 
     try {
-      if (submitedButton) {
-        await postAdminActivities({
-          activityName: formValues.nomeEvento,
-          startTime: formValues.inicio,
-          endTime: formValues.fim,
-          description: formValues.descricao,
-          responsible: formValues.responsavel,
-          eventId: formValues.evento,
-          registrationAt: formValues.data_final,
-        })
+      await postAdminActivities({
+        activityName: formValues.nomeEvento,
+        startTime: formValues.inicio,
+        endTime: formValues.fim,
+        description: formValues.descricao,
+        responsible: formValues.responsavel,
+        eventId: formValues.evento,
+        registrationAt: formValues.data_final,
+        activityType: formValues.tipoAtividade,
+      })
 
-        navigate(`/admin/activities`)
-      }
+      toast.success('Atividade criada com sucesso!')
+      navigate(`/admin/activities`)
     } catch (error: any) {
       console.error('Erro ao enviar a solicitação POST:', error)
-      const err = error?.response?.data?.error
+      const message = 'Não foi possível criar a atividade.'
 
-      if (err) {
-        Swal.fire({
-          title: err.title,
-          text: err.message,
-          confirmButtonText: 'OK',
-        })
+      toast.error(String(message))
+
+      if (error?.response?.status === 401) {
+        navigate('/admin/login')
       }
-      navigate('/admin/login')
     }
-  }
-
-  const handleSelect = (value: number) => {
-    console.log('Selected option:', value)
-    setFormValues({ ...formValues, ['evento']: value })
   }
 
   useEffect(() => {
     const fetchActivitiesDropdown = async () => {
       try {
         const data = await getAdminActivitiesDropdown()
-        console.log('dropdownEvents: ', data)
         setOptions(data)
       } catch (error: any) {
         console.error(error)
       }
     }
     fetchActivitiesDropdown()
+  }, [])
+
+  useEffect(() => {
+    const fetchActivityTypesDropdown = async () => {
+      try {
+        const data = await getAdminActivityTypesDropdown()
+        setActivityTypeOptions(data)
+
+        if (data.length > 0) {
+          setFormValues(current => ({
+            ...current,
+            tipoAtividade: current.tipoAtividade || data[0].activityTypeName,
+          }))
+        }
+      } catch (error: any) {
+        console.error(error)
+      }
+    }
+
+    fetchActivityTypesDropdown()
   }, [])
 
   return (
@@ -142,7 +158,7 @@ const ActivityAdmin: React.FC = () => {
       <div className='forms-event'>
         <form onSubmit={handleSubmission}>
           <label id='label-nome' className='label-event'>
-            Nome do evento:
+            Nome da atividade:
             <input
               type='text'
               name='nomeEvento'
@@ -155,21 +171,19 @@ const ActivityAdmin: React.FC = () => {
             <label id='label-inicio' className='label-event'>
               Data de inicio:
               <input
-                type='text'
+                type='datetime-local'
                 name='inicio'
                 value={formValues.inicio}
                 onChange={handleInputChange}
-                placeholder='DD/MM/AAAA XX:XX'
               />
             </label>
             <label id='label-fim' className='label-event'>
               Data de fim:
               <input
-                type='text'
+                type='datetime-local'
                 name='fim'
                 value={formValues.fim}
                 onChange={handleInputChange}
-                placeholder='DD/MM/AAAA XX:XX'
               />
             </label>
           </div>
@@ -183,9 +197,9 @@ const ActivityAdmin: React.FC = () => {
               onChange={handleInputChange}
               onInput={e => {
                 if (e.target instanceof HTMLElement) {
-                  e.target.style.height = 'auto' // Redefine a altura para automática
-                  e.target.style.height = `${e.target.scrollHeight}px` // Ajusta a altura conforme o conteúdo
-                } // Ajusta a altura conforme o conteúdo
+                  e.target.style.height = 'auto'
+                  e.target.style.height = `${e.target.scrollHeight}px`
+                }
               }}
             />
           </label>
@@ -203,23 +217,40 @@ const ActivityAdmin: React.FC = () => {
             <label id='label-data-final' className='label-event'>
               Inscrições até:
               <input
-                type='text'
+                type='datetime-local'
                 name='data_final'
                 value={formValues.data_final}
                 onChange={handleInputChange}
-                placeholder='DD/MM/AAAA'
               />
             </label>
             <label id='label-evento' className='label-event'>
               Evento:
               <Dropdown options={options} onSelect={handleSelect} />
             </label>
+            <label id='label-tipo-atividade' className='label-event'>
+              Tipo da atividade:
+              <select
+                name='tipoAtividade'
+                value={formValues.tipoAtividade}
+                onChange={e =>
+                  setFormValues({
+                    ...formValues,
+                    tipoAtividade: e.target.value,
+                  })
+                }
+              >
+                {activityTypeOptions.map(option => (
+                  <option
+                    key={option.activityTypeId}
+                    value={option.activityTypeName}
+                  >
+                    {option.activityTypeName}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
-          <button
-            type='submit'
-            className='btn-finish'
-            onClick={() => handleButtonClick()}
-          >
+          <button type='submit' className='btn-finish'>
             <MyButton text='Finalizar' img_path={iconFinish} />
           </button>
         </form>
