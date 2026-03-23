@@ -13,7 +13,7 @@ interface FooterProps {
 export default function Footer({ backgroundColor, textColor }: FooterProps) {
   const emailLink = 'codelaces@icmc.usp.br'
   return (
-    <Container backgroundColor={backgroundColor} textColor={textColor}>
+    <Container $backgroundColor={backgroundColor} $textColor={textColor}>
       <div className='footer'>
         <div className='title'>
           <h2>CODELACES - ICMC/USP 2025</h2>
@@ -21,17 +21,17 @@ export default function Footer({ backgroundColor, textColor }: FooterProps) {
         <div className='social-icons'>
           <li>
             <a href={`mailto:${emailLink}`}>
-              <StyledEmailIcon logoColor={textColor} />
+              <StyledEmailIcon $logoColor={textColor} />
             </a>
           </li>
           <li>
             <a href='https://www.instagram.com/code.laces?igsh=aDR3N3JuZm5meGp3'>
-              <StyledInstaIcon logoColor={textColor} />
+              <StyledInstaIcon $logoColor={textColor} />
             </a>
           </li>
           <li>
             <a href='https://www.linkedin.com/company/codelaces'>
-              <StyledLinkedinIcon logoColor={textColor} />
+              <StyledLinkedinIcon $logoColor={textColor} />
             </a>
           </li>
         </div>

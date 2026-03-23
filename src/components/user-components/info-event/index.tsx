@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react'
-
+import { toast } from 'react-toastify'
 import { Container } from './style'
 
-import InfoProps from '../../props/props-info-event'
 import InfoBtn from '../../../assets/icons/general/btn-info.svg'
-import PopupForm from '../popup-forms'
+import InfoProps from '../../props/props-info-event'
 import PopupActivity from '../popup-activity'
+import PopupForm from '../popup-forms'
 
 const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const formatDate = (date: Date): string => {
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    const day = `${date.getDate()}`.padStart(2, '0')
+    const month = `${date.getMonth() + 1}`.padStart(2, '0')
+    return `${day}/${month}/${date.getFullYear()}`
   }
 
   const formatTime = (date: Date): string => {
     const hours = date.getHours().toString().padStart(2, '0')
     const minutes = date.getMinutes().toString().padStart(2, '0')
     return `${hours}:${minutes}`
+  }
+
+  const formatActivityType = (type?: string) => {
+    const labels: Record<string, string> = {
+      lecture: 'Palestra',
+      workshop: 'Workshop',
+      presentation: 'Apresentação',
+      other: 'Outro',
+    }
+
+    return labels[type ?? ''] ?? (type || 'Outro')
   }
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 720)
@@ -42,10 +55,51 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const [showSubscribeForm, setShowSubscribeForm] = useState(false)
   const [currentEventId, setCurrentEventId] = useState<number | null>(null)
 
-  const handleInscrever = (eventId: number) => {
+  const isValidDate = (date?: Date) => {
+    return Boolean(date && !Number.isNaN(date.getTime()))
+  }
+
+  const getRegistrationState = (event: InfoProps) => {
+    const now = new Date()
+    const start = event.registrationStart
+    const end = event.registrationEnd
+
+    if (!isValidDate(start) || !isValidDate(end)) {
+      return {
+        isOpen: false,
+        text: 'INSCRIÇÕES FECHADAS!',
+      }
+    }
+
+    if (start && now < start) {
+      return {
+        isOpen: false,
+        text: `INSCRIÇÕES ABREM EM ${formatDate(start)}!`,
+      }
+    }
+
+    if (end && now > end) {
+      return {
+        isOpen: false,
+        text: 'INSCRIÇÕES FECHADAS!',
+      }
+    }
+
+    return {
+      isOpen: true,
+      text: `INSCRIÇÕES ABERTAS ATÉ ${formatDate(end!)}!`,
+    }
+  }
+
+  const handleInscrever = (eventId: number, isRegistrationOpen: boolean) => {
+    if (!isRegistrationOpen) {
+      toast.warning('As inscrições não estão abertas neste momento.')
+      return
+    }
+
     // Trava de segurança: impede de abrir o form sem escolher atividade
     if (atividadesSelecionadas.length === 0) {
-      alert('Por favor, selecione pelo menos uma atividade!')
+      toast.warning('Por favor, selecione pelo menos uma atividade!')
       return
     }
 
@@ -63,84 +117,93 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   }, [])
   return (
     <Container>
-      {infos.map(event => (
-        <div className='main-div' key={event.id}>
-          <div className='column' id='first-column'>
-            <p id='first-p'>{event.eventName}</p>
-            <p>
-              <span>DATA: </span>
-              {formatDate(event.beginDate)}
-            </p>
-            <p>
-              <span>HORÁRIO: </span>
-              {formatTime(event.beginDate)}
-            </p>
-            {event.coffeeValue && (
+      {infos.map(event => {
+        const registrationState = getRegistrationState(event)
+
+        return (
+          <div className='main-div' key={event.id}>
+            <div className='column' id='first-column'>
+              <p id='first-p'>{event.eventName}</p>
               <p>
-                <span>PREÇO DO COFFEE: </span>
-                {event.coffeeValue}
+                <span>DESCRIÇÃO: </span>
+                {event.description || 'Não informada'}
               </p>
-            )}
-            {event.link_coffee && (
               <p>
-                <span>LINK COFFEE: </span>
-                <a href={event.link_coffee}>Clique aqui</a>
+                <span>INÍCIO: </span>
+                {formatDate(event.startDate)}, {formatTime(event.startDate)}
               </p>
-            )}
-            {event.link_fotos && (
               <p>
-                <span>FOTOS: </span>
-                <a href={event.link_fotos}>Clique aqui</a>
+                <span>FIM: </span>
+                {formatDate(event.endDate)}, {formatTime(event.endDate)}
               </p>
-            )}
-          </div>
-          {!isMobile && <div className='line-between'></div>}
-          <div className='column' id='second-column'>
-            <h1>SELECIONE AS ATIVIDADES QUE DESEJA PARTICIPAR</h1>
-            <ul className='activities-ul'>
-              {event.activities.map((activity, index) => (
-                <li key={index} className='activity-li'>
-                  <input
-                    type='checkbox'
-                    id={`checkbox-${activity.activityId}`}
-                    // Controla se a caixinha tá marcada baseado no nosso estado
-                    checked={atividadesSelecionadas.includes(
-                      activity.activityId,
-                    )}
-                    // Chama a função toda vez que clica
-                    onChange={() => handleCheckboxChange(activity.activityId)}
-                  />
-                  {/* O label com htmlFor faz com que clicar no texto também marque a caixinha! */}
-                  <label htmlFor={`checkbox-${activity.activityId}`}>
-                    {activity.activityName}
-                    <button
-                      type='button'
-                      className='info-btn'
-                      onClick={() => setActivityForPopup(activity)}
-                      // aria-label ajuda leitores de tela para pessoas com deficiência visual
-                      aria-label={`Ver detalhes sobre ${activity.activityName}`}
-                    >
-                      <img src={InfoBtn} alt='' />
-                    </button>
-                  </label>
-                </li>
-              ))}
-            </ul>
-            {/* BOTÃO QUE ENVIA AS INFORMAÇÕES */}
-            <div className='btn-container'>
-              <button
-                className='btn-inscreva-se'
-                onClick={() => handleInscrever(event.id)}
-              >
-                INSCREVA-SE
-              </button>
+              {event.coffeeValue && (
+                <p>
+                  <span>PREÇO DO COFFEE: </span>
+                  {event.coffeeValue}
+                </p>
+              )}
+              {event.link_coffee && (
+                <p>
+                  <span>LINK COFFEE: </span>
+                  <a href={event.link_coffee}>Clique aqui</a>
+                </p>
+              )}
+              {event.link_fotos && (
+                <p>
+                  <span>FOTOS: </span>
+                  <a href={event.link_fotos}>Clique aqui</a>
+                </p>
+              )}
             </div>
-            <h1 id='title-inscricoes'>
-              INSCRIÇÕES ABERTAS ATÉ {formatDate(event.finalDate)}!
-            </h1>
+            {!isMobile && <div className='line-between'></div>}
+            <div className='column' id='second-column'>
+              <h1>SELECIONE AS ATIVIDADES QUE DESEJA PARTICIPAR</h1>
+              <ul className='activities-ul'>
+                {event.activities.map((activity, index) => (
+                  <li key={index} className='activity-li'>
+                    <input
+                      type='checkbox'
+                      id={`checkbox-${activity.activityId}`}
+                      // Controla se a caixinha tá marcada baseado no nosso estado
+                      checked={atividadesSelecionadas.includes(
+                        activity.activityId,
+                      )}
+                      // Chama a função toda vez que clica
+                      onChange={() => handleCheckboxChange(activity.activityId)}
+                    />
+                    {/* O label com htmlFor faz com que clicar no texto também marque a caixinha! */}
+                    <label htmlFor={`checkbox-${activity.activityId}`}>
+                      {activity.activityName}
+                      <button
+                        type='button'
+                        className='info-btn'
+                        onClick={() => setActivityForPopup(activity)}
+                        // aria-label ajuda leitores de tela para pessoas com deficiência visual
+                        aria-label={`Ver detalhes sobre ${activity.activityName}`}
+                      >
+                        <img src={InfoBtn} alt='' />
+                      </button>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              {/* BOTÃO QUE ENVIA AS INFORMAÇÕES */}
+              <div className='btn-container'>
+                <button
+                  className='btn-inscreva-se'
+                  onClick={() =>
+                    handleInscrever(event.id, registrationState.isOpen)
+                  }
+                  disabled={!registrationState.isOpen}
+                >
+                  INSCREVA-SE
+                </button>
+              </div>
+              <h1 id='title-inscricoes'>{registrationState.text}</h1>
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
 
       {activityForPopup && (
         <PopupActivity
@@ -153,16 +216,15 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
               ? [activityForPopup.responsible]
               : undefined
           }
-          tipoAtividade={activityForPopup.local || 'Atividade'}
+          tipoAtividade={formatActivityType(activityForPopup.activityType)}
           dataAtividade={formatDate(activityForPopup.startTime)}
-          horaAtividade={formatTime(activityForPopup.startTime)}
+          horaAtividade={`${formatTime(activityForPopup.startTime)} às ${formatTime(activityForPopup.endTime)}`}
         />
       )}
       {showSubscribeForm && currentEventId !== null && (
         <PopupForm
           eventId={currentEventId}
-          // Pegando a primeira atividade da lista para satisfazer a tipagem do seu componente
-          activityId={atividadesSelecionadas[0]}
+          activityIds={atividadesSelecionadas}
           onClose={() => setShowSubscribeForm(false)}
         />
       )}

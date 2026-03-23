@@ -1,10 +1,10 @@
 import { styled } from 'styled-components'
-import { ReactComponent as LogoSVG } from '../../../assets/icons/logos/logo.svg'
 import menuIcon from '../../../assets/icons/general/btn-menu-hamburguer.svg'
+import { ReactComponent as LogoSVG } from '../../../assets/icons/logos/logo.svg'
 
 export const Container = styled.header<{
-  backgroundColor: string
-  textColor: string
+  $backgroundColor: string
+  $textColor: string
 }>`
   display: flex;
   height: 100px;
@@ -12,14 +12,14 @@ export const Container = styled.header<{
   justify-content: space-between;
   align-items: center;
   padding: 0 5vw;
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  color: ${({ textColor }) => textColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  color: ${({ $textColor }) => $textColor};
   /* Posição relativa para que o menu mobile possa ser posicionado em relação ao header */
   position: relative;
   z-index: 10;
 `
 
-export const Menu = styled.nav<{ isOpen: boolean; backgroundColor: string }>`
+export const Menu = styled.nav<{ $isOpen: boolean; $backgroundColor: string }>`
   /* --- Estilos de Desktop (sem alterações) --- */
   display: flex;
   align-items: center;
@@ -56,7 +56,7 @@ export const Menu = styled.nav<{ isOpen: boolean; backgroundColor: string }>`
     transition:
       transform 0.3s ease-in-out,
       opacity 0.3s ease-in-out;
-    visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
 
     ul {
       /* Ajuste para o conteúdo começar do topo do menu dropdown */
@@ -76,7 +76,7 @@ export const Menu = styled.nav<{ isOpen: boolean; backgroundColor: string }>`
   }
 `
 
-export const Hamburger = styled.button<{ isOpen: boolean }>`
+export const Hamburger = styled.button<{ $isOpen: boolean }>`
   display: none; // Escondido no desktop
   position: absolute;
   top: 35px;
@@ -98,9 +98,9 @@ export const Hamburger = styled.button<{ isOpen: boolean }>`
   }
 `
 
-export const StyledLogo = styled(LogoSVG)<{ logoColor: string }>`
+export const StyledLogo = styled(LogoSVG)<{ $logoColor: string }>`
   width: 80px;
-  color: ${({ logoColor }) => logoColor};
+  color: ${({ $logoColor }) => $logoColor};
 
   &:hover {
     cursor: pointer;

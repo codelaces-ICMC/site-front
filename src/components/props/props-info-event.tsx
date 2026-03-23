@@ -3,12 +3,14 @@ import Activities from './props-info-activity'
 interface InfoProps {
   id: number
   eventName: string
-  // link_image: string;
-  beginDate: Date
+  description?: string
+  startDate: Date
+  endDate: Date
+  registrationStart?: Date
+  registrationEnd?: Date
   link_coffee?: string
   coffeeValue?: string
   link_fotos?: string
-  finalDate: Date
   activities: Activities[]
 }
 

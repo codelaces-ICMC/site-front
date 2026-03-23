@@ -3,8 +3,8 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 
 import MyButton from '../../../components/admin-components/btn'
 
-import iconFinish from '../../../assets/img/icons/icon-finish.png'
-import iconReturn from '../../../assets/img/icons/icon-return.png'
+import iconFinish from '../../../assets/icons/general/btn-info.svg'
+import iconReturn from '../../../assets/icons/general/btn-return.svg'
 
 import { Container } from './style'
 
