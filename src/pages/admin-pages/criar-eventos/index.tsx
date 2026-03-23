@@ -70,7 +70,9 @@ const CreateEventAdmin: React.FC = () => {
       formValues.inscricaoFim &&
       new Date(formValues.inscricaoFim) < new Date(formValues.inscricaoInicio)
     ) {
-      toast.warning('O fim das inscrições deve ser maior que o início das inscrições.')
+      toast.warning(
+        'O fim das inscrições deve ser maior que o início das inscrições.',
+      )
       return false
     }
 
@@ -79,7 +81,9 @@ const CreateEventAdmin: React.FC = () => {
       (!Number.isInteger(Number(formValues.maxParticipantes)) ||
         Number(formValues.maxParticipantes) <= 0)
     ) {
-      toast.warning('Máximo de participantes deve ser um número inteiro maior que 0.')
+      toast.warning(
+        'Máximo de participantes deve ser um número inteiro maior que 0.',
+      )
       return false
     }
 
