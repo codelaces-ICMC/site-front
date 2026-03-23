@@ -25,8 +25,8 @@ FROM nginx:alpine
 # Copiar configuração do Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copiar arquivos compilados do stage anterior
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copiar arquivos compilados do stage anterior (Create React App gera 'build', não 'dist')
+COPY --from=builder /app/build /usr/share/nginx/html
 
 # Expor porta 80
 EXPOSE 80
