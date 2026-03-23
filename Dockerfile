@@ -1,6 +1,10 @@
 # Stage 1: Build
 FROM node:22-alpine AS builder
 
+# Aceitar variáveis de ambiente do build
+ARG REACT_APP_BASE_URL_BACK_API=http://localhost:3001
+ENV REACT_APP_BASE_URL_BACK_API=$REACT_APP_BASE_URL_BACK_API
+
 WORKDIR /app
 
 # Instalar pnpm globalmente
