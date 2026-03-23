@@ -3,19 +3,22 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 
 import MyButton from '../../../components/admin-components/btn'
 
-import iconFinish from '../../../assets/img/icons/icon-finish.png'
-import iconReturn from '../../../assets/img/icons/icon-return.png'
+import iconFinish from '../../../assets/icons/general/btn-info.svg'
+import iconReturn from '../../../assets/icons/general/btn-return.svg'
 
 import { getAdminEventById } from 'api/admin/events/{eventId}/get'
 import { updateAdminEventById } from 'api/admin/events/{eventId}/put'
 import { useNavigate, useParams } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import { toast } from 'react-toastify'
 import { Container } from './style'
 
 interface FormValues {
   nomeEvento: string
   inicio: string
   fim: string
+  inscricaoInicio: string
+  inscricaoFim: string
+  maxParticipantes: string
   descricao: string
   banner: File | null
   valor: number
@@ -28,10 +31,27 @@ const EventosAdmin: React.FC = () => {
   const navigate = useNavigate()
   const { eventId } = useParams()
 
+  const toDateTimeLocal = (value?: string | null) => {
+    if (!value) return ''
+    const date = new Date(value)
+    if (Number.isNaN(date.getTime())) return ''
+
+    const year = date.getFullYear()
+    const month = `${date.getMonth() + 1}`.padStart(2, '0')
+    const day = `${date.getDate()}`.padStart(2, '0')
+    const hours = `${date.getHours()}`.padStart(2, '0')
+    const minutes = `${date.getMinutes()}`.padStart(2, '0')
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`
+  }
+
   const [formValues, setFormValues] = useState<FormValues>({
     nomeEvento: '',
     inicio: '',
     fim: '',
+    inscricaoInicio: '',
+    inscricaoFim: '',
+    maxParticipantes: '',
     descricao: '',
     banner: null,
     valor: 0,
@@ -46,8 +66,14 @@ const EventosAdmin: React.FC = () => {
         const eventData = await getAdminEventById(eventId)
         setFormValues({
           nomeEvento: eventData.eventName,
-          inicio: eventData.startDate,
-          fim: eventData.endDate,
+          inicio: toDateTimeLocal(eventData.startDate),
+          fim: toDateTimeLocal(eventData.endDate),
+          inscricaoInicio: toDateTimeLocal(eventData.registrationStart),
+          inscricaoFim: toDateTimeLocal(eventData.registrationEnd),
+          maxParticipantes:
+            eventData.maxParticipants != null
+              ? String(eventData.maxParticipants)
+              : '',
           descricao: eventData.description,
           banner: eventData.hasCover,
           valor: eventData.coffeeValue,
@@ -80,6 +106,33 @@ const EventosAdmin: React.FC = () => {
 
   const handleSubmission = async (event: React.FormEvent) => {
     event.preventDefault() // Evita o comportamento padrão de envio de formulário
+
+    if (
+      formValues.inscricaoInicio &&
+      formValues.inscricaoFim &&
+      new Date(formValues.inscricaoFim) < new Date(formValues.inscricaoInicio)
+    ) {
+      toast.warning('O fim das inscrições deve ser maior que o início das inscrições.')
+      return
+    }
+
+    if (
+      formValues.maxParticipantes.trim() !== '' &&
+      (!Number.isInteger(Number(formValues.maxParticipantes)) ||
+        Number(formValues.maxParticipantes) <= 0)
+    ) {
+      toast.warning('Máximo de participantes deve ser um número inteiro maior que 0.')
+      return
+    }
+
+    const parsedMaxParticipants = Number.parseInt(
+      formValues.maxParticipantes,
+      10,
+    )
+    const maxParticipants = Number.isNaN(parsedMaxParticipants)
+      ? undefined
+      : parsedMaxParticipants
+
     try {
       if (eventId) {
         await updateAdminEventById({
@@ -88,23 +141,25 @@ const EventosAdmin: React.FC = () => {
           eventName: formValues.nomeEvento,
           startDate: formValues.inicio,
           endDate: formValues.fim,
+          registrationStart: formValues.inscricaoInicio || undefined,
+          registrationEnd: formValues.inscricaoFim || undefined,
+          maxParticipants,
           description: formValues.descricao,
           coffeeValue: formValues.valor,
           driveGalleryLink: formValues.linkDrive,
         })
+        toast.success('Evento atualizado com sucesso!')
       }
 
-      navigate(`/admin/events`)
+      setTimeout(() => {
+        navigate(`/admin/events`)
+      }, 1500)
     } catch (error: any) {
       console.error('Erro ao enviar a solicitação PUT:', error)
       const err = error?.response?.data?.error
 
       if (err) {
-        Swal.fire({
-          title: err.title,
-          text: err.message,
-          confirmButtonText: 'OK',
-        })
+        toast.error(err.message || 'Não foi possível atualizar o evento.')
       }
     }
   }
@@ -139,21 +194,54 @@ const EventosAdmin: React.FC = () => {
             <label id='label-inicio' className='label-event'>
               Inicio:
               <input
-                type='text'
+                type='datetime-local'
                 name='inicio'
                 value={formValues.inicio}
                 onChange={handleInputChange}
-                placeholder='DD/MM/AA XX:XX'
               />
             </label>
             <label id='label-fim' className='label-event'>
               Fim:
               <input
-                type='text'
+                type='datetime-local'
                 name='fim'
                 value={formValues.fim}
                 onChange={handleInputChange}
-                placeholder='DD/MM/AA XX:XX'
+              />
+            </label>
+          </div>
+
+          <h2 className='title-section'>Inscrições</h2>
+          <div className='linha-data'>
+            <label id='label-inscricao-inicio' className='label-event'>
+              Início das inscrições:
+              <input
+                type='datetime-local'
+                name='inscricaoInicio'
+                value={formValues.inscricaoInicio}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label id='label-inscricao-fim' className='label-event'>
+              Fim das inscrições:
+              <input
+                type='datetime-local'
+                name='inscricaoFim'
+                value={formValues.inscricaoFim}
+                onChange={handleInputChange}
+              />
+            </label>
+
+            <label id='label-max-participantes' className='label-event'>
+              Máximo de participantes:
+              <input
+                type='number'
+                min='1'
+                step='1'
+                name='maxParticipantes'
+                value={formValues.maxParticipantes}
+                onChange={handleInputChange}
+                placeholder='Ex.: 120'
               />
             </label>
           </div>

@@ -1,14 +1,14 @@
+import EventCard from 'components/user-components/card-event'
+import NewsCard from 'components/user-components/card-news'
 import React, { useState } from 'react'
 import GlobalStyles from '../styles/GlobalStyles'
-import NewsCard from 'components/user-components/card-news'
-import EventCard from 'components/user-components/card-event'
 import { Container } from './style-teste'
 // import PopupForm from '../components/user-components/computer-window/popup-forms'
-import Highlights from 'components/user-components/highlights'
-import PopupActivity from 'components/user-components/popup-activity'
-import Header from 'components/user-components/header'
 import Footer from 'components/user-components/footer'
+import Header from 'components/user-components/header'
+import Highlights from 'components/user-components/highlights'
 import InfoEvent from 'components/user-components/info-event'
+import PopupActivity from 'components/user-components/popup-activity'
 
 const Teste: React.FC = () => {
   const newsData = {
@@ -46,8 +46,11 @@ const Teste: React.FC = () => {
     {
       id: 1,
       eventName: 'Winx Club Experience',
-      beginDate: new Date(2030, 10, 25, 18, 0),
-      finalDate: new Date(2030, 10, 25, 20, 0),
+      description: 'Evento teste para validar a tela de detalhes.',
+      startDate: new Date(2030, 10, 25, 18, 0),
+      endDate: new Date(2030, 10, 25, 20, 0),
+      registrationStart: new Date(2030, 10, 20, 8, 0),
+      registrationEnd: new Date(2030, 10, 24, 23, 59),
       coffeeValue: 'R$ 15,00',
       link_coffee: 'https://forms.gle/exemplo',
       link_fotos: 'https://drive.google.com/exemplo',

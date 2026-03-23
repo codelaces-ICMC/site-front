@@ -53,6 +53,14 @@ export const Container = styled.div`
     padding: 0.5em;
   }
 
+  select {
+    border: 1px solid var(--cor-roxo-escuro);
+    border-radius: 20px;
+    height: auto;
+    padding: 0.5em;
+    background: var(--cor-branco);
+  }
+
   textarea {
     border: 1px solid var(--cor-roxo-escuro);
     border-radius: 20px;
@@ -91,15 +99,19 @@ export const Container = styled.div`
   }
 
   #label-evento {
-    width: 50%;
+    width: 30%;
+  }
+
+  #label-tipo-atividade {
+    width: 30%;
   }
 
   #label-data-final {
-    width: 15%;
+    width: 30%;
   }
 
   #label-responsavel {
-    width: 25%;
+    width: 30%;
   }
 
   .title-section {

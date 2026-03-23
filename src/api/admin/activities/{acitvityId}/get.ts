@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { getAdminAuthHeaders } from '../../../_shared/auth'
+import { mapBackendActivityToFront } from '../../../_shared/mappers'
+import { buildApiUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -7,9 +10,10 @@ const getAdminActivityById = async (activityId: number) => {
 
   try {
     const response = await axios.get(
-      baseURL + `/admin/activities/${activityId}`,
+      buildApiUrl(baseURL, `/admin/activities/${activityId}`),
+      { headers: getAdminAuthHeaders() },
     )
-    return response.data
+    return mapBackendActivityToFront(response.data)
   } catch (error) {
     console.error('[getAdminActivityById] error: ', error)
     throw error

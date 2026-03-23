@@ -1,7 +1,7 @@
-import { Container } from './style'
 import fotoHome from '../../../assets/imgs/general/fotoHome.png'
-import DefaultButton from '../default-button'
 import HighlightsProps from '../../props/props-highlights'
+import DefaultButton from '../default-button'
+import { Container } from './style'
 
 export default function Highlights({
   subtitle,
@@ -13,7 +13,7 @@ export default function Highlights({
 }: HighlightsProps) {
   return (
     <Container>
-      <h1>VEM Aí. PARTICIPE!</h1>
+      <h1>VEM AÍ. PARTICIPE!</h1>
       <div className='highlights'>
         <div className='hightlights-left'>
           <h2>{subtitle}</h2>

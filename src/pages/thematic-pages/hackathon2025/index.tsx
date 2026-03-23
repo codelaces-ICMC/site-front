@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
-import ToggleButton from 'components/thematic-components/quest&answer'
 import ButtonProps from 'components/props/button-props'
+import ToggleButton from 'components/thematic-components/quest&answer'
+import React from 'react'
+import GlobalStyles from '../../../styles/GlobalStyles'
 
-import BannerImage from '../../../assets/img/hackathon2025/banner.png'
-import lineTimeImage from '../../../assets/img/hackathon2025/linha_tempo.png'
+import BannerImage from '../../../assets/imgs/hackathon2025/banner.png'
+import lineTimeImage from '../../../assets/imgs/hackathon2025/linha_tempo.png'
 
-import Amdocs from '../../../assets/img/patrocinadores/amdocs.png'
-import Alura from '../../../assets/img/patrocinadores/alura.png'
-import ICMC from '../../../assets/img/patrocinadores/ICMC.png'
-import EESC from '../../../assets/img/patrocinadores/EESC.png'
+import Alura from '../../../assets/icons/patrocinadores/alura.png'
+import Amdocs from '../../../assets/icons/patrocinadores/amdocs.png'
+import EESC from '../../../assets/icons/patrocinadores/EESC.png'
+import ICMC from '../../../assets/icons/patrocinadores/ICMC.png'
 
-import { Container, HeaderContainer } from './style'
+import { Container } from './style'
 
 const HomeHackathon: React.FC = () => {
   const questionsAndAnswers: ButtonProps[] = [
@@ -43,20 +43,6 @@ const HomeHackathon: React.FC = () => {
       answer: 'Sim : )',
     },
   ]
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   return (
     <Container>

@@ -38,7 +38,9 @@ const Card: React.FC<CardEventProps & { onClick: () => void }> = ({
           </div>
         </div>
         <div className='div-show-more'>
-          <span className='span-show-more'>Clique para saber mais</span>
+          <span className='span-show-more'>
+            {isEventPassed ? 'Evento encerrado' : 'Clique para saber mais'}
+          </span>
         </div>
       </div>
     </Container>

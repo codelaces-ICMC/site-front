@@ -77,6 +77,18 @@ export const Container = styled.div`
     width: 47.5%;
   }
 
+  #label-inscricao-inicio {
+    width: 30%;
+  }
+
+  #label-inscricao-fim {
+    width: 30%;
+  }
+
+  #label-max-participantes {
+    width: 30%;
+  }
+
   #label-descricao {
     width: 100%;
   }

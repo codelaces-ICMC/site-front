@@ -17,13 +17,17 @@ export const Container = styled.div`
     width: auto;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     margin: 0.5em 1em 0.5em 0;
-    background: var(--degrade-roxo-rosa);
+    background: var(--cor-roxo-escuro);
     color: var(--cor-branco);
     align-items: center;
-    font-weight: 700;
+    font-weight: 800;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    letter-spacing: 0.01em;
   }
 
   .dynamic-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+    filter: brightness(1.08);
   }
 `

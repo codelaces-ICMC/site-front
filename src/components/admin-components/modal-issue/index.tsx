@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import Table from '../../../components/admin-components/table'
 import MyButton from '../../../components/admin-components/btn'
+import Table from '../../../components/admin-components/table'
 
-import iconIssue from '../../../assets/img/icons/icon-issue.png'
+import iconIssue from '../../../assets/icons/general/btn-info.svg'
 
 import { Container } from './style'
 

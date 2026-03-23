@@ -17,9 +17,9 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
   const ref = useRef<HTMLDivElement>(null)
 
   const handleSelectOption = (option: Option) => {
-    console.log('[handleSelectOption] fui chamada')
     setSelectedOption(option)
     onSelect(option.eventId)
+    closeDropdown()
   }
 
   const toggleDropdown = () => {
@@ -32,23 +32,26 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 
   useEffect(() => {
     function handleOutsideClick(e: MouseEvent) {
-      e.stopImmediatePropagation()
-      const [target] = e.composedPath()
-      if (!ref.current?.contains(target as Node) && isOpen) {
+      const target = e.target as Node
+      if (!ref.current?.contains(target) && isOpen) {
         closeDropdown()
       }
     }
 
-    document.body.addEventListener('click', handleOutsideClick, false)
+    document.addEventListener('mousedown', handleOutsideClick)
 
     return () => {
-      document.body.removeEventListener('click', handleOutsideClick, false)
+      document.removeEventListener('mousedown', handleOutsideClick)
     }
   }, [isOpen])
 
   return (
     <Container className={`dropdown relative`} ref={ref}>
-      <button className='dropdown-toggle' onClick={toggleDropdown}>
+      <button
+        type='button'
+        className='dropdown-toggle'
+        onClick={toggleDropdown}
+      >
         {selectedOption
           ? selectedOption.eventName
           : 'Clique aqui para escolher uma opção'}

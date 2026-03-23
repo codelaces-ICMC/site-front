@@ -1,7 +1,6 @@
 // src/components/Pagination.tsx
 
 import React from 'react'
-import PropTypes from 'prop-types'
 
 interface PaginationProps {
   currentPage: number
@@ -32,12 +31,6 @@ const Pagination: React.FC<PaginationProps> = ({
       ))}
     </div>
   )
-}
-
-Pagination.propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
 }
 
 export default Pagination
