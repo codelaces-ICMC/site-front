@@ -11,7 +11,7 @@ export const Container = styled.div`
   .dynamic-button {
     display: flex;
     font-size: 1.5em;
-    padding: 0.1em 0.5em;
+    padding: 0.5em 1em;
     border-radius: 20px;
     height: auto;
     width: auto;

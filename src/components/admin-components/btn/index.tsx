@@ -3,7 +3,7 @@ import { Container } from './style'
 
 interface DynamicTagProps extends HTMLProps<HTMLDivElement> {
   text: string
-  img_path: string
+  img_path?: string
   onAction?: () => void
 }
 
@@ -15,7 +15,7 @@ const DynamicButton: FC<DynamicTagProps> = ({ onAction, text, img_path }) => {
   return (
     <Container>
       <div className='dynamic-button' onClick={handleButtonAction}>
-        <img className='img-btn' src={img_path}></img>
+        {img_path && <img className='img-btn' src={img_path} />}
         {text}
       </div>
     </Container>

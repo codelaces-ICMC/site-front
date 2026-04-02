@@ -4,9 +4,6 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 import MyButton from '../../../components/admin-components/btn'
 import Dropdown from '../../../components/admin-components/dropdown'
 
-import iconFinish from '../../../assets/icons/general/btn-info.svg'
-import iconReturn from '../../../assets/icons/general/btn-return.svg'
-
 import { getAdminActivitiesDropdown } from 'api/admin/activities/dropdown-events/get'
 import { getAdminActivityTypesDropdown } from 'api/admin/activities/dropdown-types/get'
 import { postAdminActivities } from 'api/admin/activities/post'
@@ -145,15 +142,8 @@ const ActivityAdmin: React.FC = () => {
       <GlobalStyles />
       <div className='header'>
         <a href='/admin/activities'>
-          <MyButton text='Atividades' img_path={iconReturn} />
+          <MyButton text='Voltar' />
         </a>
-        <div className='logo'>
-          <a href='/'>
-            <h1>
-              W<span>i</span>T
-            </h1>
-          </a>
-        </div>
       </div>
       <div className='forms-event'>
         <form onSubmit={handleSubmission}>
@@ -251,7 +241,7 @@ const ActivityAdmin: React.FC = () => {
             </label>
           </div>
           <button type='submit' className='btn-finish'>
-            <MyButton text='Finalizar' img_path={iconFinish} />
+            <MyButton text='Finalizar' />
           </button>
         </form>
       </div>

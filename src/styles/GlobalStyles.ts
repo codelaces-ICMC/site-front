@@ -38,7 +38,7 @@ export default createGlobalStyle`
     }
 
     #root {
-        min-height: 100vh; 
+        min-height: 100vh;
         width: 100%;
     }
 
@@ -49,7 +49,7 @@ export default createGlobalStyle`
     a {
         color: inherit;
         text-decoration: none;
-      }      
+      }
 
     body {
         background-color: var(--cor-branco);
@@ -66,5 +66,9 @@ export default createGlobalStyle`
         height: 3px;
         width:50%;
         background-color: var(--cor-rosa);
+    }
+
+    .swal2-container {
+      font-family: var(--font-titles) !important;
     }
 `

@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 export const Container = styled.div`
   background: var(--cor-roxo-claro);
   height: 100vh;
+  font-family: var(--font-titles);
 
   .btn-area {
     display: flex;

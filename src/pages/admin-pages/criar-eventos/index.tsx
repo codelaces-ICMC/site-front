@@ -4,7 +4,6 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 import MyButton from '../../../components/admin-components/btn'
 
 import iconFinish from '../../../assets/icons/general/btn-info.svg'
-import iconReturn from '../../../assets/icons/general/btn-return.svg'
 
 import { postAdminEvents } from 'api/admin/events/post'
 import { useNavigate } from 'react-router-dom'
@@ -140,15 +139,8 @@ const CreateEventAdmin: React.FC = () => {
       <GlobalStyles />
       <div className='header'>
         <a href='/admin/events'>
-          <MyButton text='Eventos' img_path={iconReturn} />
+          <MyButton text='Voltar' />
         </a>
-        <div className='logo'>
-          <a href='/'>
-            <h1>
-              W<span>i</span>T
-            </h1>
-          </a>
-        </div>
       </div>
       <div className='forms-event'>
         <form onSubmit={handleSubmission}>

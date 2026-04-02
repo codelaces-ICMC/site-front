@@ -2,6 +2,7 @@ import { styled } from 'styled-components'
 
 export const Container = styled.div`
   background: var(--degrade-roxo-rosa);
+  font-family: var(--font-titles);
 
   .header {
     background: var(--cor-branco);

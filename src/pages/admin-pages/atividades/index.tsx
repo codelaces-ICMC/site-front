@@ -2,17 +2,13 @@ import Header from '../../../components/admin-components/header'
 import Filter from '../../../components/admin-components/search-bar'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
-import iconAdd from '../../../assets/icons/general/action-add.svg'
-import iconDelete from '../../../assets/icons/general/action-delete.svg'
-import iconEdit from '../../../assets/icons/general/action-edit.svg'
-
 import { getAdminActivities } from 'api/admin/activities/get'
 import { deleteAdminActivityById } from 'api/admin/activities/{acitvityId}/delete'
 import CardsSet from 'components/admin-components/cards-set'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
 import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 import DynamicButton from '../../../components/admin-components/btn'
 import { Container } from './style'
 
@@ -141,21 +137,9 @@ export default function AtividadesAdmin() {
             <h2 className='text'>Atividades Criadas:</h2>
           </div>
           <div className='buttons'>
-            <DynamicButton
-              text='Deletar'
-              img_path={iconDelete}
-              onAction={handleDeleteActivity}
-            />
-            <DynamicButton
-              text='Editar'
-              img_path={iconEdit}
-              onAction={handleEditActivity}
-            />
-            <DynamicButton
-              text='Nova Atividade'
-              img_path={iconAdd}
-              onAction={handleNewActivity}
-            />
+            <DynamicButton text='Deletar' onAction={handleDeleteActivity} />
+            <DynamicButton text='Editar' onAction={handleEditActivity} />
+            <DynamicButton text='Nova Atividade' onAction={handleNewActivity} />
           </div>
         </div>
         <div className='cards'>

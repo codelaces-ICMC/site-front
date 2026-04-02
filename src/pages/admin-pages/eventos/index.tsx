@@ -2,10 +2,6 @@ import Header from '../../../components/admin-components/header'
 import Filter from '../../../components/admin-components/search-bar'
 import GlobalStyles from '../../../styles/GlobalStyles'
 
-import iconAdd from '../../../assets/icons/general/action-add.svg'
-import iconDelete from '../../../assets/icons/general/action-delete.svg'
-import iconEdit from '../../../assets/icons/general/action-edit.svg'
-
 import { getAdminEvents } from 'api/admin/events/get'
 import { deleteAdminEventById } from 'api/admin/events/{eventId}/delete'
 import { useEffect, useState } from 'react'
@@ -140,21 +136,9 @@ export default function EventosAdmin() {
             <h2 className='text'>Eventos Criados:</h2>
           </div>
           <div className='buttons'>
-            <DynamicButton
-              text='Deletar'
-              img_path={iconDelete}
-              onAction={handleDeleteEvent}
-            />
-            <DynamicButton
-              text='Editar'
-              img_path={iconEdit}
-              onAction={handleEditEvent}
-            />
-            <DynamicButton
-              text='Novo Evento'
-              img_path={iconAdd}
-              onAction={handleNewEvent}
-            />
+            <DynamicButton text='Deletar' onAction={handleDeleteEvent} />
+            <DynamicButton text='Editar' onAction={handleEditEvent} />
+            <DynamicButton text='Novo Evento' onAction={handleNewEvent} />
           </div>
         </div>
         <div className='cards'>

@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 export const Container = styled.div`
   background: var(--degrade-roxo-rosa);
   height: 100vh;
+  font-family: var(--font-titles);
 
   .header {
     background: var(--cor-branco);
