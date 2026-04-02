@@ -4,13 +4,12 @@ import { Container } from './style'
 
 import CardEventProps from '../../props/props-card-event'
 
-import cardImage from '../../../assets/imgs/general/membras.png'
-
 const Card: React.FC<CardEventProps & { onClick: () => void }> = ({
   eventName,
   startDate,
   endDate,
   eventPlace,
+  imageUrl,
   onClick,
 }) => {
   const isEventPassed = endDate && endDate < new Date()
@@ -18,7 +17,7 @@ const Card: React.FC<CardEventProps & { onClick: () => void }> = ({
     <Container>
       <div className='card-event' onClick={isEventPassed ? undefined : onClick}>
         <div className='div-img-card'>
-          <img src={cardImage} className='img-card' />
+          <img src={imageUrl} className='img-card' />
           {isEventPassed && <div className='overlay' />}
         </div>
         <div className='div-content-card'>

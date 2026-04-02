@@ -40,6 +40,7 @@ const CardsSet: React.FC<{ cards: CardPropsEvent[] }> = ({ cards }) => {
                     endDate={card.endDate}
                     eventPlace={card.eventPlace}
                     coffeeLink={card.coffeeLink}
+                    imageUrl={card.imageUrl}
                     onClick={() => handleClick(card.cardNumber)}
                   />
                 </div>
@@ -58,6 +59,7 @@ const CardsSet: React.FC<{ cards: CardPropsEvent[] }> = ({ cards }) => {
                   endDate={card.endDate}
                   eventPlace={card.eventPlace}
                   coffeeLink={card.coffeeLink}
+                  imageUrl={card.imageUrl}
                   onClick={() => handleClick(card.cardNumber)}
                 />
               </div>

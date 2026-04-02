@@ -8,6 +8,12 @@ import GlobalStyles from '../../../styles/GlobalStyles'
 
 import { Container } from './style'
 
+// Dicionário com os IDs dos eventos e seus respectivos links convertidos do Drive
+const mapaDeFotos: Record<number | string, string> = {
+  1: 'https://drive.google.com/uc?export=view&id=1hDETiAb1dFaS-kJ0UvnYKwSY8OYztqVk',
+  2: 'https://drive.google.com/uc?export=view&id=1Aw9-O9_xfarODFPrZpKEqTwMQ-CD1rSI',
+}
+
 const Events: React.FC = () => {
   const [events, setEvents] = useState<any[]>([])
   const [search, setSearch] = useState('')
@@ -28,6 +34,7 @@ const Events: React.FC = () => {
     endDate: new Date(event?.end_date ?? event?.endDate),
     eventPlace: event?.location ?? event?.eventPlace ?? '',
     coffeeLink: event?.coffeePaymentLink ?? event?.link_coffee ?? '',
+    imageUrl: event?.id ? mapaDeFotos[event.id] : undefined,
   }))
 
   return (

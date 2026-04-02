@@ -8,6 +8,7 @@ interface CardEventProps extends HTMLProps<HTMLDivElement> {
   eventPlace: string
   coffeeLink: string
   onClick?: () => void
+  imageUrl?: string
 }
 
 export default CardEventProps
