@@ -79,10 +79,10 @@ export const Container = styled.div`
     text-align: center;
     font-weight: 800;
     font-size: 1.2em;
-    padding-top: 10vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    padding-bottom: 1em;
   }
 
   @media screen and (max-width: 1600px) {

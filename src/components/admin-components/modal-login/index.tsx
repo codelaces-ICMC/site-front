@@ -99,7 +99,7 @@ export default function ModalLogin() {
             </div>
 
             <button className='modal-btn' type='submit' disabled={isSubmitting}>
-              {isSubmitting ? 'Entrando...' : 'Log In'}
+              {isSubmitting ? 'Entrando...' : 'ENTRAR'}
             </button>
           </form>
 
