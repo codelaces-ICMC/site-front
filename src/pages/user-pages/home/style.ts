@@ -33,14 +33,15 @@ export const Container = styled.div`
     }
   }
 
-  .temp-p {
+  .news-status-message {
     font-family: var(--font-titles);
     font-size: 2.5em;
     display: flex;
     color: var(--cor-roxo-escuro);
     font-weight: 700;
     justify-content: center;
-    padding: 30vh 0;
+    padding: 4rem 1rem 6rem;
+    text-align: center;
 
     @media (max-width: 520px) {
       font-size: 2em;

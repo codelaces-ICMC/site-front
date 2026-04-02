@@ -28,8 +28,8 @@ const NewsCarousel: React.FC<CarouselProps> = ({ newsList }) => {
 
       {/* Container que sofre a rolagem */}
       <ScrollContainer ref={carouselRef}>
-        {newsList.map((news, index) => (
-          <div className='carousel-item' key={index}>
+        {newsList.map(news => (
+          <div className='carousel-item' key={news.linkArticle}>
             <NewsCard {...news} />
           </div>
         ))}
