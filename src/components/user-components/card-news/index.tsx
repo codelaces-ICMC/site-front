@@ -16,7 +16,14 @@ const NewsCard: React.FC<CardNewsProps> = ({
     <Container>
       <a className='card-news' href={linkArticle}>
         <div className='div-img-news'>
-          <img src={imageUrl} alt={imageAlt} className='img-news' />
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            className='img-news'
+            loading='lazy'
+            decoding='async'
+            referrerPolicy='no-referrer'
+          />
         </div>
         <div className='div-content-news'>
           <h2 className='title-news'>{title}</h2>

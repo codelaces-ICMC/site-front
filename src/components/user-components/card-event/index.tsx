@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
+import defaultCoverFallback from '../../../assets/icons/logos/logo-fundo-branco.png'
 import { Container } from './style'
 
 import CardEventProps from '../../props/props-card-event'
@@ -10,18 +11,29 @@ const Card: React.FC<CardEventProps & { onClick: () => void }> = ({
   endDate,
   eventPlace,
   imageUrl,
+  fallbackImageUrl,
   onClick,
 }) => {
+  const fallback = fallbackImageUrl ?? defaultCoverFallback
+  const [coverSrc, setCoverSrc] = useState(() => imageUrl ?? fallback)
+
+  useEffect(() => {
+    setCoverSrc(imageUrl ?? fallback)
+  }, [imageUrl, fallback])
+
   const isEventPassed = endDate && endDate < new Date()
   return (
     <Container>
       <div className='card-event' onClick={isEventPassed ? undefined : onClick}>
         <div className='div-img-card'>
           <img
-            src={imageUrl}
+            src={coverSrc}
             className='img-card'
             alt=''
             referrerPolicy='no-referrer'
+            loading='lazy'
+            decoding='async'
+            onError={() => setCoverSrc(fallback)}
           />
           {isEventPassed && <div className='overlay' />}
         </div>

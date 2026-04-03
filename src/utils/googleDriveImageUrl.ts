@@ -1,6 +1,12 @@
 /**
- * Extrai o ID de arquivo de URLs públicas do Google Drive.
- * Cobre `uc?export=view&id=`, `/file/d/{id}/`, `open?id=`, etc.
+ * Largura pedida ao endpoint de thumbnail (`sz=w{n}`).
+ * Cards ~300px: 720 cobre retina sem forçar `w2000` (menos carga; ajuda em rate limit 429).
+ */
+export const DEFAULT_DRIVE_THUMBNAIL_MAX_WIDTH = 720
+
+/**
+ * Extrai o ID de arquivo de URLs do Drive ou do CDN `*.googleusercontent.com`
+ * (ex.: após redirect de `drive.google.com/thumbnail`).
  */
 export function extractGoogleDriveFileId(url: string): string | null {
   const trimmed = url.trim()
@@ -8,7 +14,18 @@ export function extractGoogleDriveFileId(url: string): string | null {
 
   try {
     const u = new URL(trimmed)
-    if (!/^drive\.google\.com$/i.test(u.hostname)) return null
+    const host = u.hostname.toLowerCase()
+
+    if (host.endsWith('.googleusercontent.com')) {
+      const fromPath = u.pathname.match(/^\/d\/([^/]+)/)
+      if (fromPath?.[1]) {
+        const segment = fromPath[1]
+        return segment.includes('=') ? segment.split('=')[0] : segment
+      }
+      return null
+    }
+
+    if (host !== 'drive.google.com') return null
 
     if (u.pathname.includes('/thumbnail')) {
       return u.searchParams.get('id')
@@ -34,20 +51,27 @@ export function extractGoogleDriveFileId(url: string): string | null {
  */
 export function googleDriveThumbnailUrl(
   fileId: string,
-  maxWidth = 2000,
+  maxWidth: number = DEFAULT_DRIVE_THUMBNAIL_MAX_WIDTH,
 ): string {
   return `https://drive.google.com/thumbnail?id=${encodeURIComponent(fileId)}&sz=w${maxWidth}`
 }
 
 /**
- * Se a URL for do Google Drive, devolve a URL de thumbnail; caso contrário, a string original.
+ * Se a URL for do Drive ou do CDN do Google (lh3…), devolve URL de thumbnail com `sz` controlado;
+ * caso contrário, a string original.
+ *
+ * Nota: 429 no `lh3.googleusercontent.com` costuma ser rate limit por muitas requisições paralelas.
+ * Use `loading="lazy"` nas tags `<img>` e, em escala, proxy/cache no backend.
  */
-export function normalizeGoogleDriveEmbedUrl(url: string): string {
+export function normalizeGoogleDriveEmbedUrl(
+  url: string,
+  maxWidth: number = DEFAULT_DRIVE_THUMBNAIL_MAX_WIDTH,
+): string {
   const trimmed = url.trim()
   if (!trimmed) return trimmed
 
   const id = extractGoogleDriveFileId(trimmed)
   if (!id) return trimmed
 
-  return googleDriveThumbnailUrl(id)
+  return googleDriveThumbnailUrl(id, maxWidth)
 }

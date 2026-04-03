@@ -9,6 +9,8 @@ interface CardEventProps extends HTMLProps<HTMLDivElement> {
   coffeeLink: string
   onClick?: () => void
   imageUrl?: string
+  /** Se a capa falhar (429, link inválido, etc.); padrão: logo do projeto no card. */
+  fallbackImageUrl?: string
 }
 
 export default CardEventProps
