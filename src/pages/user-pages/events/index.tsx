@@ -1,12 +1,12 @@
 import { getWebEvents, type WebEvent } from '@api/web/events/get'
+import defaultEventCover from '@assets/icons/logos/logo-fundo-branco.png'
 import CardSkeleton from '@components/shared/card-skeleton'
 import CardsSet from '@components/user-components/cards-set'
 import Footer from '@components/user-components/footer'
-import SearchBar from '@components/user-components/search-bar'
-import React, { useEffect, useRef, useState } from 'react'
-import defaultEventCover from '@assets/icons/logos/logo-fundo-branco.png'
 import Header from '@components/user-components/header'
+import SearchBar from '@components/user-components/search-bar'
 import GlobalStyles from '@styles/GlobalStyles'
+import React, { useEffect, useRef, useState } from 'react'
 
 import CardEventProps from '@components/props/props-card-event'
 import { normalizeGoogleDriveEmbedUrl } from '@utils/googleDriveImageUrl'
@@ -84,8 +84,7 @@ const Events: React.FC = () => {
 
   const showSkeleton = isFetching || !coversReady
 
-  /** Com lista já carregada (ou lista antiga durante novo fetch), bate com N cards; antes da 1ª resposta usa padrão. */
-  const skeletonCount = events.length > 0 ? events.length : 6
+  const skeletonCount = 4
 
   return (
     <Container>
