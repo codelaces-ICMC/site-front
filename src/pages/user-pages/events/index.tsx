@@ -84,6 +84,9 @@ const Events: React.FC = () => {
 
   const showSkeleton = isFetching || !coversReady
 
+  /** Com lista já carregada (ou lista antiga durante novo fetch), bate com N cards; antes da 1ª resposta usa padrão. */
+  const skeletonCount = events.length > 0 ? events.length : 6
+
   return (
     <Container>
       <GlobalStyles />
@@ -93,7 +96,7 @@ const Events: React.FC = () => {
       />
       <SearchBar onSearch={setSearch} />
       {showSkeleton ? (
-        <CardSkeleton variant='event' count={3} layout='grid' />
+        <CardSkeleton variant='event' count={skeletonCount} layout='grid' />
       ) : (
         <CardsSet cards={cards as CardEventProps[]} />
       )}

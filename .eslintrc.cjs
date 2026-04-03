@@ -1,25 +1,10 @@
+/**
+ * Uma única fonte de config (evita conflito "Plugin react was conflicted" entre
+ * eslintConfig no package.json e este ficheiro).
+ */
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  extends: ['react-app', 'react-app/jest', 'plugin:prettier/recommended'],
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
