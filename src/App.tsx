@@ -1,9 +1,4 @@
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import HomeHackathon from '@pages/thematic-pages/hackathon2025'
 import ActivitiesAdmin from '@pages/admin-pages/atividades'
@@ -21,6 +16,7 @@ import ActivityInfo from '@pages/user-pages/activity-info'
 import EventInfo from '@pages/user-pages/event-info'
 import Events from '@pages/user-pages/events'
 import Home from '@pages/user-pages/home'
+import { NotFoundRedirect } from '@components/routing/NotFoundRedirect'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import GlobalStyles from '@styles/GlobalStyles'
@@ -63,7 +59,7 @@ function App() {
             element={<CreateCertificateAdmin />}
           />
           <Route path='/teste/' element={<Teste />} />
-          <Route path='*' element={<Navigate to='/' replace />} />
+          <Route path='*' element={<NotFoundRedirect />} />
         </Routes>
       </div>
     </Router>

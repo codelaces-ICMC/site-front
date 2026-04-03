@@ -1,6 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+
+import { registerAdmin401Redirect } from '@api/_shared/axiosAdminAuthInterceptor'
 import App from './App'
+
+registerAdmin401Redirect()
 
 // import reportWebVitals from './reportWebVitals';
 
