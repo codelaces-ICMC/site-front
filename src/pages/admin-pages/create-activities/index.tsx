@@ -4,6 +4,7 @@ import GlobalStyles from '@styles/GlobalStyles'
 import MyButton from '@components/admin-components/btn'
 import Dropdown from '@components/admin-components/dropdown'
 
+import { getApiErrorMessage, isApiUnauthorized } from '@api/_shared/httpError'
 import { getAdminActivitiesDropdown } from '@api/admin/activities/dropdown-events/get'
 import { getAdminActivityTypesDropdown } from '@api/admin/activities/dropdown-types/get'
 import { postAdminActivities } from '@api/admin/activities/post'
@@ -93,13 +94,13 @@ const ActivityAdmin: React.FC = () => {
 
       toast.success('Atividade criada com sucesso!')
       navigate(`/admin/activities`)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação POST:', error)
-      const message = 'Não foi possível criar a atividade.'
+      toast.error(
+        getApiErrorMessage(error, 'Não foi possível criar a atividade.'),
+      )
 
-      toast.error(String(message))
-
-      if (error?.response?.status === 401) {
+      if (isApiUnauthorized(error)) {
         navigate('/admin/login')
       }
     }
@@ -110,7 +111,7 @@ const ActivityAdmin: React.FC = () => {
       try {
         const data = await getAdminActivitiesDropdown()
         setOptions(data)
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(error)
       }
     }
@@ -129,7 +130,7 @@ const ActivityAdmin: React.FC = () => {
             tipoAtividade: current.tipoAtividade || data[0].activityTypeName,
           }))
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(error)
       }
     }

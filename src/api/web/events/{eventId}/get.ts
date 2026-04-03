@@ -1,17 +1,15 @@
 import axios from 'axios'
-import { buildApiUrl } from '../../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../../_shared/url'
 import { normalizeWebEvent, type WebEvent } from '../normalizeWebEvent'
 
 const getWebEvent = async (eventId: number): Promise<WebEvent> => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.get(
       buildApiUrl(baseURL, `/web/events/${eventId}`),
     )
-    const event = normalizeWebEvent(
-      response.data as Record<string, unknown>,
-    )
+    const event = normalizeWebEvent(response.data as Record<string, unknown>)
     if (!event) {
       throw new Error('Resposta de evento inválida')
     }

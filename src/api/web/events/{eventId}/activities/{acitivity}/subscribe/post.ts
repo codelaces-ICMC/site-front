@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { buildApiUrl } from '../../../../../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../../../../../_shared/url'
 
 interface User {
   email: string
@@ -11,7 +11,7 @@ const postSubscribeUser = async (
   activityId: number,
   user: User,
 ) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.post(

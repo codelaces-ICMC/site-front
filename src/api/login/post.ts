@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { setAdminAuthToken } from '../_shared/auth'
-import { buildApiUrl } from '../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -10,7 +10,7 @@ interface User {
 }
 
 const postAdminLogin = async (user: User) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.post(buildApiUrl(baseURL, '/auth/login'), {

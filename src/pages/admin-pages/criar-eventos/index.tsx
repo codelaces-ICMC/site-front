@@ -5,6 +5,7 @@ import MyButton from '@components/admin-components/btn'
 
 import iconFinish from '@assets/icons/general/btn-info.svg'
 
+import { getApiErrorMessage } from '@api/_shared/httpError'
 import { postAdminEvents } from '@api/admin/events/post'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -128,12 +129,9 @@ const CreateEventAdmin: React.FC = () => {
       setTimeout(() => {
         navigate('/admin/events')
       }, 1500)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação POST:', error)
-      const err = error?.response?.data?.error
-
-      const errorMessage = err?.message || 'Não foi possível criar o evento.'
-      toast.error(errorMessage)
+      toast.error(getApiErrorMessage(error, 'Não foi possível criar o evento.'))
     }
   }
 

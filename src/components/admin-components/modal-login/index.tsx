@@ -1,4 +1,5 @@
 import { postAdminLogin } from '@api/login/post'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -31,19 +32,27 @@ export default function ModalLogin() {
       // Aguarda um pouco para o usuário ver o toast antes de navegar
       setTimeout(() => {
         navigate('/admin/events')
-      }, 1500)
-    } catch (error: any) {
+      }, 500)
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação POST:', error)
-      const err = error?.response?.data?.error
+      if (!axios.isAxiosError(error)) {
+        toast.error('Algo deu errado. Tente novamente.')
+        return
+      }
+      const err = error.response?.data as
+        | { error?: { code?: number; message?: string } }
+        | undefined
+      const nested = err?.error
 
-      if (err?.code === 401) {
+      if (nested?.code === 401) {
         setError('senha', {
           type: 'manual',
           message: 'E-mail ou senha incorretos. Tente novamente.',
         })
         toast.error('E-mail ou senha incorretos.')
       } else {
-        const errorMessage = err?.message || 'Algo deu errado. Tente novamente.'
+        const errorMessage =
+          nested?.message || 'Algo deu errado. Tente novamente.'
         toast.error(errorMessage)
       }
     }

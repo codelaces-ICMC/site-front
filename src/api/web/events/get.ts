@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { buildApiUrl } from '../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../_shared/url'
 import { normalizeWebEvent, type WebEvent } from './normalizeWebEvent'
 
 export type { WebEvent }
 
 export const getWebEvents = async (search?: string): Promise<WebEvent[]> => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.get(

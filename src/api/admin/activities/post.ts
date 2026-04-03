@@ -4,7 +4,7 @@ import {
   mapBackendActivityToFront,
   mapFrontActivityToBackend,
 } from '../../_shared/mappers'
-import { buildApiUrl } from '../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -20,12 +20,12 @@ interface Activity {
 }
 
 const postAdminActivities = async (activity: Activity) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.post(
       buildApiUrl(baseURL, '/admin/activities'),
-      mapFrontActivityToBackend(activity),
+      mapFrontActivityToBackend(activity as unknown as Record<string, unknown>),
       { headers: getAdminAuthHeaders() },
     )
     return mapBackendActivityToFront(response.data)

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { buildApiUrl } from '../../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../../_shared/url'
 
 export interface MediumPostApiItem {
   title: string
@@ -34,7 +34,7 @@ export const mapMediumPostToCardNews = (post: MediumPostApiItem) => ({
 })
 
 export const getMediumPosts = async () => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.get<MediumPostsApiResponse>(

@@ -55,7 +55,7 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
   const [showSubscribeForm, setShowSubscribeForm] = useState(false)
   const [currentEventId, setCurrentEventId] = useState<number | null>(null)
 
-  const isValidDate = (date?: Date) => {
+  const isValidDate = (date?: Date): date is Date => {
     return Boolean(date && !Number.isNaN(date.getTime()))
   }
 
@@ -87,7 +87,7 @@ const InfoEvent: React.FC<{ infos: InfoProps[] }> = ({ infos }) => {
 
     return {
       isOpen: true,
-      text: `INSCRIÇÕES ABERTAS ATÉ ${formatDate(end!)}!`,
+      text: `INSCRIÇÕES ABERTAS ATÉ ${formatDate(end)}!`,
     }
   }
 

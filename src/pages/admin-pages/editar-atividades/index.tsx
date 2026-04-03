@@ -6,6 +6,7 @@ import Dropdown from '@components/admin-components/dropdown'
 
 import iconFinish from '@assets/icons/general/btn-info.svg'
 
+import { getApiErrorMessage, isApiUnauthorized } from '@api/_shared/httpError'
 import { getAdminActivitiesDropdown } from '@api/admin/activities/dropdown-events/get'
 import { getAdminActivityTypesDropdown } from '@api/admin/activities/dropdown-types/get'
 import { getAdminActivityById } from '@api/admin/activities/{acitvityId}/get'
@@ -139,13 +140,13 @@ const ActivityAdmin: React.FC = () => {
 
       toast.success('Atividade atualizada com sucesso!')
       navigate(`/admin/activities`)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação PUT:', error)
-      const message = 'Não foi possível atualizar a atividade.'
+      toast.error(
+        getApiErrorMessage(error, 'Não foi possível atualizar a atividade.'),
+      )
 
-      toast.error(String(message))
-
-      if (error?.response?.status === 401) {
+      if (isApiUnauthorized(error)) {
         navigate('/admin/login')
       }
     }
@@ -156,7 +157,7 @@ const ActivityAdmin: React.FC = () => {
       try {
         const data = await getAdminActivitiesDropdown()
         setOptions(data)
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(error)
       }
     }
@@ -175,7 +176,7 @@ const ActivityAdmin: React.FC = () => {
             tipoAtividade: current.tipoAtividade || data[0].activityTypeName,
           }))
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(error)
       }
     }

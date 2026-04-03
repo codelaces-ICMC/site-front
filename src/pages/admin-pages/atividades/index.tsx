@@ -2,6 +2,7 @@ import Header from '@components/admin-components/header'
 import Filter from '@components/admin-components/search-bar'
 import GlobalStyles from '@styles/GlobalStyles'
 
+import { getApiErrorMessage, isApiUnauthorized } from '@api/_shared/httpError'
 import { getAdminActivities } from '@api/admin/activities/get'
 import { deleteAdminActivityById } from '@api/admin/activities/{acitvityId}/delete'
 import CardsSet from '@components/admin-components/cards-set'
@@ -37,18 +38,14 @@ export default function AtividadesAdmin() {
         const data = await getAdminActivities(search)
         console.log('activities: ', data)
         setAdminActivities(data)
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(error)
 
-        const message =
-          error?.response?.data?.message?.[0] ??
-          error?.response?.data?.error?.message ??
-          error?.response?.data?.error ??
-          'Não foi possível carregar as atividades.'
+        toast.error(
+          getApiErrorMessage(error, 'Não foi possível carregar as atividades.'),
+        )
 
-        toast.error(String(message))
-
-        if (error?.response?.status === 401) {
+        if (isApiUnauthorized(error)) {
           navigate('/admin/login')
         }
       }
@@ -110,17 +107,13 @@ export default function AtividadesAdmin() {
       )
       setActivityId(-1)
       toast.success('Atividade apagada com sucesso!')
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação DELETE:', error)
-      const message =
-        error?.response?.data?.message?.[0] ??
-        error?.response?.data?.error?.message ??
-        error?.response?.data?.error ??
-        'Não foi possível apagar a atividade.'
+      toast.error(
+        getApiErrorMessage(error, 'Não foi possível apagar a atividade.'),
+      )
 
-      toast.error(String(message))
-
-      if (error?.response?.status === 401) {
+      if (isApiUnauthorized(error)) {
         navigate('/admin/login')
       }
     }

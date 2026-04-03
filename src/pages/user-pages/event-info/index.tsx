@@ -7,11 +7,12 @@ import { useParams } from 'react-router-dom'
 import Header from '@components/user-components/header'
 import GlobalStyles from '@styles/GlobalStyles'
 
+import InfoProps from '@components/props/props-info-event'
 import { Container } from './style'
 
 const EventInfo: React.FC = () => {
   const { eventId } = useParams()
-  const [infoEventData, setInfoEventData] = useState<any[]>([])
+  const [infoEventData, setInfoEventData] = useState<InfoProps[]>([])
 
   useEffect(() => {
     const fetchEventInfo = async () => {
@@ -23,9 +24,12 @@ const EventInfo: React.FC = () => {
         getWebActivities(numericEventId),
       ])
 
-      const activities = Array.isArray(activitiesPayload)
+      const rawActivities = Array.isArray(activitiesPayload)
         ? activitiesPayload
-        : (activitiesPayload?.activities ?? [])
+        : (activitiesPayload as Record<string, unknown> | null)?.activities
+      const activities: Record<string, unknown>[] = Array.isArray(rawActivities)
+        ? (rawActivities as Record<string, unknown>[])
+        : []
 
       setInfoEventData([
         {
@@ -43,21 +47,32 @@ const EventInfo: React.FC = () => {
           coffeeValue: undefined,
           link_coffee: undefined,
           link_fotos: undefined,
-          activities: activities.map((activity: any) => ({
-            activityId: activity?.id,
-            activityName: activity?.name ?? activity?.activityName ?? '',
-            activityType:
-              activity?.activity_type ?? activity?.activityType ?? 'other',
-            responsible: activity?.speaker ?? activity?.responsible ?? '',
-            subject: activity?.description,
-            local: activity?.location,
-            startTime: new Date(activity?.start_time ?? activity?.startTime),
-            endTime: new Date(activity?.end_time ?? activity?.endTime),
+          activities: activities.map(activity => ({
+            activityId: Number(activity.id ?? activity.activityId),
+            activityName: String(activity.name ?? activity.activityName ?? ''),
+            activityType: String(
+              activity.activity_type ?? activity.activityType ?? 'other',
+            ),
+            responsible: String(activity.speaker ?? activity.responsible ?? ''),
+            subject:
+              activity.description != null
+                ? String(activity.description)
+                : undefined,
+            local:
+              activity.location != null ? String(activity.location) : undefined,
+            startTime: new Date(
+              String(activity.start_time ?? activity.startTime ?? ''),
+            ),
+            endTime: new Date(
+              String(activity.end_time ?? activity.endTime ?? ''),
+            ),
             registrationAt: new Date(
-              activity?.registration_at ??
-                activity?.registrationAt ??
-                event.registrationEnd ??
-                event.endDate,
+              String(
+                activity.registration_at ??
+                  activity.registrationAt ??
+                  event.registrationEnd ??
+                  event.endDate,
+              ),
             ),
           })),
         },

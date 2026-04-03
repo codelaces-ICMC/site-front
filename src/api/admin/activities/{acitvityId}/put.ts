@@ -4,7 +4,7 @@ import {
   mapBackendActivityToFront,
   mapFrontActivityToBackend,
 } from '../../../_shared/mappers'
-import { buildApiUrl } from '../../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -21,12 +21,12 @@ interface ActivityParams {
 }
 
 const updateAdminActivityById = async (event: ActivityParams) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.put(
       buildApiUrl(baseURL, `/admin/activities/${event.activityId}`),
-      mapFrontActivityToBackend(event),
+      mapFrontActivityToBackend(event as unknown as Record<string, unknown>),
       { headers: getAdminAuthHeaders() },
     )
     return mapBackendActivityToFront(response.data)

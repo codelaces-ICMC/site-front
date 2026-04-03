@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { getAdminAuthHeaders } from '../../../_shared/auth'
-import { buildApiUrl } from '../../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../../_shared/url'
 
 axios.defaults.withCredentials = true
 
 const deleteAdminEventById = async (eventId: number) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.delete(

@@ -4,7 +4,7 @@ import {
   mapBackendEventToFront,
   mapFrontEventToBackend,
 } from '../../_shared/mappers'
-import { buildApiUrl } from '../../_shared/url'
+import { buildApiUrl, resolveApiBaseUrl } from '../../_shared/url'
 
 axios.defaults.withCredentials = true
 
@@ -24,12 +24,12 @@ interface Event {
 }
 
 const postAdminEvents = async (event: Event) => {
-  const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
+  const baseURL = resolveApiBaseUrl()
 
   try {
     const response = await axios.post(
       buildApiUrl(baseURL, '/admin/events'),
-      mapFrontEventToBackend(event),
+      mapFrontEventToBackend(event as unknown as Record<string, unknown>),
       { headers: getAdminAuthHeaders() },
     )
     return mapBackendEventToFront(response.data)

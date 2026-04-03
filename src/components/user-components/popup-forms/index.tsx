@@ -8,6 +8,7 @@ import {
   ModalContainer,
   ModalContent,
 } from './style'
+import { getApiErrorMessage } from '@api/_shared/httpError'
 import { postSubscribeUser } from '@api/web/events/{eventId}/activities/{acitivity}/subscribe/post'
 
 interface PopupFormProps {
@@ -83,12 +84,12 @@ const PopupForm: React.FC<PopupFormProps> = ({
               duplicateCount++
             }
           }
-        } catch (err: any) {
+        } catch (err: unknown) {
           errorCount++
           results.push({
             activityId,
             success: false,
-            message: err?.response?.data?.message || 'Erro ao se inscrever',
+            message: getApiErrorMessage(err, 'Erro ao se inscrever'),
           })
         }
       }

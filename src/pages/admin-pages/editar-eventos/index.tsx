@@ -3,6 +3,7 @@ import GlobalStyles from '@styles/GlobalStyles'
 
 import MyButton from '@components/admin-components/btn'
 
+import { getApiErrorMessage } from '@api/_shared/httpError'
 import { getAdminEventById } from '@api/admin/events/{eventId}/get'
 import { updateAdminEventById } from '@api/admin/events/{eventId}/put'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -73,9 +74,9 @@ const EventosAdmin: React.FC = () => {
               : '',
           descricao: eventData.description,
           cover: eventData.cover ?? '',
-          valor: eventData.coffeeValue,
+          valor: eventData.coffeeValue ?? 0,
           linkPagamento: '',
-          linkDrive: eventData.driveGalleryLink,
+          linkDrive: eventData.driveGalleryLink ?? '',
           lugar: eventData.local,
         })
       } catch (error) {
@@ -149,13 +150,11 @@ const EventosAdmin: React.FC = () => {
       setTimeout(() => {
         navigate(`/admin/events`)
       }, 1500)
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação PUT:', error)
-      const err = error?.response?.data?.error
-
-      if (err) {
-        toast.error(err.message || 'Não foi possível atualizar o evento.')
-      }
+      toast.error(
+        getApiErrorMessage(error, 'Não foi possível atualizar o evento.'),
+      )
     }
   }
 

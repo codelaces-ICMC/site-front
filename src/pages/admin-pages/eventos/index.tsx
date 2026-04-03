@@ -2,6 +2,7 @@ import Header from '@components/admin-components/header'
 import Filter from '@components/admin-components/search-bar'
 import GlobalStyles from '@styles/GlobalStyles'
 
+import { getApiErrorMessage, isApiUnauthorized } from '@api/_shared/httpError'
 import { getAdminEvents } from '@api/admin/events/get'
 import { deleteAdminEventById } from '@api/admin/events/{eventId}/delete'
 import { useEffect, useState } from 'react'
@@ -35,17 +36,13 @@ export default function EventosAdmin() {
       try {
         const data = await getAdminEvents(search)
         adminWebEvents(data)
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error(error)
-        const message =
-          error?.response?.data?.message?.[0] ??
-          error?.response?.data?.error?.message ??
-          error?.response?.data?.error ??
-          'Não foi possível carregar os eventos.'
+        toast.error(
+          getApiErrorMessage(error, 'Não foi possível carregar os eventos.'),
+        )
 
-        toast.error(String(message))
-
-        if (error?.response?.status === 401) {
+        if (isApiUnauthorized(error)) {
           navigate('/admin/login')
         }
       }
@@ -109,17 +106,13 @@ export default function EventosAdmin() {
       adminWebEvents(prev => prev.filter(event => event.eventId !== eventId))
       setEventId(-1)
       toast.success('Evento apagado com sucesso!')
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Erro ao enviar a solicitação DELETE:', error)
-      const message =
-        error?.response?.data?.message?.[0] ??
-        error?.response?.data?.error?.message ??
-        error?.response?.data?.error ??
-        'Não foi possível apagar o evento.'
+      toast.error(
+        getApiErrorMessage(error, 'Não foi possível apagar o evento.'),
+      )
 
-      toast.error(String(message))
-
-      if (error?.response?.status === 401) {
+      if (isApiUnauthorized(error)) {
         navigate('/admin/login')
       }
     }
