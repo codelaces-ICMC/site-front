@@ -17,7 +17,12 @@ const Card: React.FC<CardEventProps & { onClick: () => void }> = ({
     <Container>
       <div className='card-event' onClick={isEventPassed ? undefined : onClick}>
         <div className='div-img-card'>
-          <img src={imageUrl} className='img-card' />
+          <img
+            src={imageUrl}
+            className='img-card'
+            alt=''
+            referrerPolicy='no-referrer'
+          />
           {isEventPassed && <div className='overlay' />}
         </div>
         <div className='div-content-card'>
