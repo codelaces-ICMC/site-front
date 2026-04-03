@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import bgSvg from '../../../assets/icons/general/background.svg'
+import bgSvg from '@assets/icons/general/background.svg'
 
 export const Container = styled.div`
   background-image: url(${bgSvg});

@@ -1,14 +1,14 @@
-import EventCard from 'components/user-components/card-event'
-import NewsCard from 'components/user-components/card-news'
+import EventCard from '@components/user-components/card-event'
+import NewsCard from '@components/user-components/card-news'
 import React, { useState } from 'react'
-import GlobalStyles from '../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 import { Container } from './style-teste'
-// import PopupForm from '../components/user-components/computer-window/popup-forms'
-import Footer from 'components/user-components/footer'
-import Header from 'components/user-components/header'
-import Highlights from 'components/user-components/highlights'
-import InfoEvent from 'components/user-components/info-event'
-import PopupActivity from 'components/user-components/popup-activity'
+// import PopupForm from '@components/user-components/computer-window/popup-forms'
+import Footer from '@components/user-components/footer'
+import Header from '@components/user-components/header'
+import Highlights from '@components/user-components/highlights'
+import InfoEvent from '@components/user-components/info-event'
+import PopupActivity from '@components/user-components/popup-activity'
 
 const Teste: React.FC = () => {
   const newsData = {

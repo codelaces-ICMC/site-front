@@ -1,4 +1,4 @@
-import fotoHome from '../../../assets/imgs/general/fotoHome.png'
+import fotoHome from '@assets/imgs/general/fotoHome.png'
 import HighlightsProps from '../../props/props-highlights'
 import DefaultButton from '../default-button'
 import { Container } from './style'

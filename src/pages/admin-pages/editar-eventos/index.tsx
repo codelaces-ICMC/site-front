@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import MyButton from '../../../components/admin-components/btn'
+import MyButton from '@components/admin-components/btn'
 
-import { getAdminEventById } from 'api/admin/events/{eventId}/get'
-import { updateAdminEventById } from 'api/admin/events/{eventId}/put'
+import { getAdminEventById } from '@api/admin/events/{eventId}/get'
+import { updateAdminEventById } from '@api/admin/events/{eventId}/put'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Container } from './style'

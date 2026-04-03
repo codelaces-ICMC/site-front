@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import MyButton from '../../../components/admin-components/btn'
+import MyButton from '@components/admin-components/btn'
 
-import iconFinish from '../../../assets/icons/general/btn-info.svg'
-import iconReturn from '../../../assets/icons/general/btn-return.svg'
+import iconFinish from '@assets/icons/general/btn-info.svg'
+import iconReturn from '@assets/icons/general/btn-return.svg'
 
 import { Container } from './style'
 

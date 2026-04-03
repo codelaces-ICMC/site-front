@@ -1,5 +1,5 @@
 import React from 'react'
-import thumbnail from '../../../assets/img/hackathon2024/thumb-entrevista.png'
+import thumbnail from '@assets/img/hackathon2024/thumb-entrevista.png'
 import { Container } from './style'
 
 const VideoThumbnail: React.FC = () => {

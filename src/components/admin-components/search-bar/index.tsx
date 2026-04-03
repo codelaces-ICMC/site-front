@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Container } from './style'
 
-import btnSearch from '../../../assets/icons/general/btn-search.svg'
+import btnSearch from '@assets/icons/general/btn-search.svg'
 
 interface SearchBarProps {
   onSearch: (searchText: string) => void

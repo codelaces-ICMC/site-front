@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import MyButton from '../../../components/admin-components/btn'
-import Dropdown from '../../../components/admin-components/dropdown'
+import MyButton from '@components/admin-components/btn'
+import Dropdown from '@components/admin-components/dropdown'
 
-import { getAdminActivitiesDropdown } from 'api/admin/activities/dropdown-events/get'
-import { getAdminActivityTypesDropdown } from 'api/admin/activities/dropdown-types/get'
-import { postAdminActivities } from 'api/admin/activities/post'
+import { getAdminActivitiesDropdown } from '@api/admin/activities/dropdown-events/get'
+import { getAdminActivityTypesDropdown } from '@api/admin/activities/dropdown-types/get'
+import { postAdminActivities } from '@api/admin/activities/post'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Container } from './style'

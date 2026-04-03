@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { Container } from './style'
 
-import InfoBtn from '../../../assets/icons/general/btn-info.svg'
+import InfoBtn from '@assets/icons/general/btn-info.svg'
 import InfoProps from '../../props/props-info-event'
 import PopupActivity from '../popup-activity'
 import PopupForm from '../popup-forms'

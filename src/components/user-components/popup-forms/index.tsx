@@ -8,7 +8,7 @@ import {
   ModalContainer,
   ModalContent,
 } from './style'
-import { postSubscribeUser } from 'api/web/events/{eventId}/activities/{acitivity}/subscribe/post'
+import { postSubscribeUser } from '@api/web/events/{eventId}/activities/{acitivity}/subscribe/post'
 
 interface PopupFormProps {
   onClose: () => void

@@ -1,11 +1,11 @@
-import { getWebActivities } from 'api/web/events/{eventId}/activities/get'
-import { getWebEvent } from 'api/web/events/{eventId}/get'
-import Footer from 'components/user-components/footer'
-import InfoEvent from 'components/user-components/info-event'
+import { getWebActivities } from '@api/web/events/{eventId}/activities/get'
+import { getWebEvent } from '@api/web/events/{eventId}/get'
+import Footer from '@components/user-components/footer'
+import InfoEvent from '@components/user-components/info-event'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Header from '../../../components/user-components/header'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from '@components/user-components/header'
+import GlobalStyles from '@styles/GlobalStyles'
 
 import { Container } from './style'
 

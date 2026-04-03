@@ -1,15 +1,15 @@
-import Header from '../../../components/admin-components/header'
-import Filter from '../../../components/admin-components/search-bar'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from '@components/admin-components/header'
+import Filter from '@components/admin-components/search-bar'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import { getAdminEvents } from 'api/admin/events/get'
-import { deleteAdminEventById } from 'api/admin/events/{eventId}/delete'
+import { getAdminEvents } from '@api/admin/events/get'
+import { deleteAdminEventById } from '@api/admin/events/{eventId}/delete'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Swal from 'sweetalert2'
-import DynamicButton from '../../../components/admin-components/btn'
-import CardsSet from '../../../components/admin-components/cards-set'
+import DynamicButton from '@components/admin-components/btn'
+import CardsSet from '@components/admin-components/cards-set'
 import { Container } from './style'
 
 export default function EventosAdmin() {

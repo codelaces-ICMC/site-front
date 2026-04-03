@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchIcon from '../../../assets/icons/general/btn-search.svg'
+import SearchIcon from '@assets/icons/general/btn-search.svg'
 import { Container, SearchInput } from './style'
 
 interface SearchBarProps {

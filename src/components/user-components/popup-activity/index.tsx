@@ -1,5 +1,5 @@
 import { Container } from './style'
-import PopupActivityProps from 'components/props/props-popup-activity'
+import PopupActivityProps from '@components/props/props-popup-activity'
 import Modal from '../modal'
 
 export default function PopupActivity({

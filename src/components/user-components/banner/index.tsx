@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Container, ContentWrapper, FadeElement, DecorItem } from './style'
 
-import svgDevSimbols from '../../../assets/icons/general/dev-simbols.svg'
-import svgDarSparkle from '../../../assets/icons/general/dark-sparkle.svg'
-import svgBubbles from '../../../assets/icons/general/bubbles.svg'
-import svgVenusCircles from '../../../assets/icons/general/venus-circles.svg'
-import logoCodelaces from '../../../assets/icons/logos/logo-nome.svg'
+import svgDevSimbols from '@assets/icons/general/dev-simbols.svg'
+import svgDarSparkle from '@assets/icons/general/dark-sparkle.svg'
+import svgBubbles from '@assets/icons/general/bubbles.svg'
+import svgVenusCircles from '@assets/icons/general/venus-circles.svg'
+import logoCodelaces from '@assets/icons/logos/logo-nome.svg'
 
 const Banner: React.FC = () => {
   // Estado que controla o que está aparecendo: false = Texto, true = Logo

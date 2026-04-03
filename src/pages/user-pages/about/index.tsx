@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from 'components/user-components/header'
-import Footer from 'components/user-components/footer'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from '@components/user-components/header'
+import Footer from '@components/user-components/footer'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import DivasImg from '../../../assets/imgs/general/membras.png'
-import Logo from '../../../assets/icons/logos/logo-fundo-branco.png'
-import CCEXLogo from '../../../assets/icons/logos/CCEX-ICMC.png'
-import FAFQLogo from '../../../assets/icons/logos/fafq-logo.png'
+import DivasImg from '@assets/imgs/general/membras.png'
+import Logo from '@assets/icons/logos/logo-fundo-branco.png'
+import CCEXLogo from '@assets/icons/logos/CCEX-ICMC.png'
+import FAFQLogo from '@assets/icons/logos/fafq-logo.png'
 
 import { Container } from './style'
 

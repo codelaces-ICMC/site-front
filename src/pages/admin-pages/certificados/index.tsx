@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 
-import Filter from '../../../components/admin-components/search-bar'
-// import Table from '../../../components/admin-components/table'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import Filter from '@components/admin-components/search-bar'
+// import Table from '@components/admin-components/table'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import iconAdd from '../../../assets/icons/general/action-add.svg'
-import iconDelete from '../../../assets/icons/general/action-delete.svg'
-import iconEdit from '../../../assets/icons/general/action-edit.svg'
-import iconIssue from '../../../assets/icons/general/btn-info.svg'
+import iconAdd from '@assets/icons/general/action-add.svg'
+import iconDelete from '@assets/icons/general/action-delete.svg'
+import iconEdit from '@assets/icons/general/action-edit.svg'
+import iconIssue from '@assets/icons/general/btn-info.svg'
 
-import DynamicButton from '../../../components/admin-components/btn'
+import DynamicButton from '@components/admin-components/btn'
 import { Container } from './style'
 
 // import people from "../../../data/fakepeople.json";

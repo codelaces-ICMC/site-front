@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import MyButton from '../../../components/admin-components/btn'
-import Dropdown from '../../../components/admin-components/dropdown'
+import MyButton from '@components/admin-components/btn'
+import Dropdown from '@components/admin-components/dropdown'
 
-import iconFinish from '../../../assets/icons/general/btn-info.svg'
+import iconFinish from '@assets/icons/general/btn-info.svg'
 
-import { getAdminActivitiesDropdown } from 'api/admin/activities/dropdown-events/get'
-import { getAdminActivityTypesDropdown } from 'api/admin/activities/dropdown-types/get'
-import { getAdminActivityById } from 'api/admin/activities/{acitvityId}/get'
-import { updateAdminActivityById } from 'api/admin/activities/{acitvityId}/put'
+import { getAdminActivitiesDropdown } from '@api/admin/activities/dropdown-events/get'
+import { getAdminActivityTypesDropdown } from '@api/admin/activities/dropdown-types/get'
+import { getAdminActivityById } from '@api/admin/activities/{acitvityId}/get'
+import { updateAdminActivityById } from '@api/admin/activities/{acitvityId}/put'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Container } from './style'

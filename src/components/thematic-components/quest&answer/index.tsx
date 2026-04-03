@@ -1,6 +1,6 @@
-import ButtonProps from 'components/props/button-props'
+import ButtonProps from '@components/props/button-props'
 import React, { useState } from 'react'
-import setaIcon from '../../../assets/icons/general/arrow.svg'
+import setaIcon from '@assets/icons/general/arrow.svg'
 import { Container } from './style'
 
 const ToggleButton: React.FC<ButtonProps> = ({ question, answer }) => {

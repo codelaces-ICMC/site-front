@@ -15,6 +15,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "baseUrl": "./src",
+    "paths": {
+      "@api/*": ["api/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
+    },
     "jsx": "react-jsx"
   },
   "include": ["src"]

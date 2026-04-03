@@ -1,4 +1,4 @@
-import { postAdminLogin } from 'api/login/post'
+import { postAdminLogin } from '@api/login/post'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'

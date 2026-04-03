@@ -1,6 +1,6 @@
 import { Container } from './style'
 import ModalProps from '../../props/props-modal'
-import closeButton from '../../../assets/icons/general/close.svg'
+import closeButton from '@assets/icons/general/close.svg'
 
 export default function Modal({ isOpen, setModalOpen, children }: ModalProps) {
   if (isOpen) {

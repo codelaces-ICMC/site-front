@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import defaultCoverFallback from '../../../assets/icons/logos/logo-fundo-branco.png'
+import defaultCoverFallback from '@assets/icons/logos/logo-fundo-branco.png'
 import { Container } from './style'
 
 import CardEventProps from '../../props/props-card-event'

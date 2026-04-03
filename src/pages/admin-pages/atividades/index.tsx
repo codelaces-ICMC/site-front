@@ -1,15 +1,15 @@
-import Header from '../../../components/admin-components/header'
-import Filter from '../../../components/admin-components/search-bar'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import Header from '@components/admin-components/header'
+import Filter from '@components/admin-components/search-bar'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import { getAdminActivities } from 'api/admin/activities/get'
-import { deleteAdminActivityById } from 'api/admin/activities/{acitvityId}/delete'
-import CardsSet from 'components/admin-components/cards-set'
+import { getAdminActivities } from '@api/admin/activities/get'
+import { deleteAdminActivityById } from '@api/admin/activities/{acitvityId}/delete'
+import CardsSet from '@components/admin-components/cards-set'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Swal from 'sweetalert2'
-import DynamicButton from '../../../components/admin-components/btn'
+import DynamicButton from '@components/admin-components/btn'
 import { Container } from './style'
 
 export default function AtividadesAdmin() {

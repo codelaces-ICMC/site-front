@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import MyButton from '../../../components/admin-components/btn'
+import MyButton from '@components/admin-components/btn'
 
-import iconFinish from '../../../assets/icons/general/btn-info.svg'
+import iconFinish from '@assets/icons/general/btn-info.svg'
 
-import { postAdminEvents } from 'api/admin/events/post'
+import { postAdminEvents } from '@api/admin/events/post'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Container } from './style'

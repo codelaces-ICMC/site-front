@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { CarouselWrapper, ScrollContainer, ArrowButton } from './style'
 import NewsCard from '../card-news' // Ajuste o caminho conforme sua estrutura
-import CardNewsProps from 'components/props/props-card-news' // Ajuste o caminho
+import CardNewsProps from '@components/props/props-card-news' // Ajuste o caminho
 
 interface CarouselProps {
   newsList: CardNewsProps[]

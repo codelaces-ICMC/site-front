@@ -1,15 +1,15 @@
-import ButtonProps from 'components/props/button-props'
-import ToggleButton from 'components/thematic-components/quest&answer'
+import ButtonProps from '@components/props/button-props'
+import ToggleButton from '@components/thematic-components/quest&answer'
 import React from 'react'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import GlobalStyles from '@styles/GlobalStyles'
 
-import BannerImage from '../../../assets/imgs/hackathon2025/banner.png'
-import lineTimeImage from '../../../assets/imgs/hackathon2025/linha_tempo.png'
+import BannerImage from '@assets/imgs/hackathon2025/banner.png'
+import lineTimeImage from '@assets/imgs/hackathon2025/linha_tempo.png'
 
-import Alura from '../../../assets/icons/patrocinadores/alura.png'
-import Amdocs from '../../../assets/icons/patrocinadores/amdocs.png'
-import EESC from '../../../assets/icons/patrocinadores/EESC.png'
-import ICMC from '../../../assets/icons/patrocinadores/ICMC.png'
+import Alura from '@assets/icons/patrocinadores/alura.png'
+import Amdocs from '@assets/icons/patrocinadores/amdocs.png'
+import EESC from '@assets/icons/patrocinadores/EESC.png'
+import ICMC from '@assets/icons/patrocinadores/ICMC.png'
 
 import { Container } from './style'
 

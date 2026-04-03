@@ -1,6 +1,6 @@
 import React from 'react'
-import ModalLogin from '../../../components/admin-components/modal-login/index'
-import GlobalStyles from '../../../styles/GlobalStyles'
+import ModalLogin from '@components/admin-components/modal-login/index'
+import GlobalStyles from '@styles/GlobalStyles'
 import { Container } from './style'
 
 const Login: React.FC = () => {
