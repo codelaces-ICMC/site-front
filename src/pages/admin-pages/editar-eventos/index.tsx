@@ -17,7 +17,7 @@ interface FormValues {
   inscricaoFim: string
   maxParticipantes: string
   descricao: string
-  banner: File | null
+  cover: string
   valor: number
   linkPagamento: string
   linkDrive: string
@@ -50,7 +50,7 @@ const EventosAdmin: React.FC = () => {
     inscricaoFim: '',
     maxParticipantes: '',
     descricao: '',
-    banner: null,
+    cover: '',
     valor: 0,
     linkPagamento: '',
     linkDrive: '',
@@ -72,7 +72,7 @@ const EventosAdmin: React.FC = () => {
               ? String(eventData.maxParticipants)
               : '',
           descricao: eventData.description,
-          banner: eventData.hasCover,
+          cover: eventData.cover ?? '',
           valor: eventData.coffeeValue,
           linkPagamento: '',
           linkDrive: eventData.driveGalleryLink,
@@ -93,13 +93,6 @@ const EventosAdmin: React.FC = () => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
   }
-
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, files } = e.target
-  //   if (files && files.length > 0) {
-  //     setFormValues({ ...formValues, [name]: files[0] })
-  //   }
-  // }
 
   const handleSubmission = async (event: React.FormEvent) => {
     event.preventDefault() // Evita o comportamento padrão de envio de formulário
@@ -146,6 +139,7 @@ const EventosAdmin: React.FC = () => {
           registrationEnd: formValues.inscricaoFim || undefined,
           maxParticipants,
           description: formValues.descricao,
+          cover: formValues.cover,
           coffeeValue: formValues.valor,
           driveGalleryLink: formValues.linkDrive,
         })
@@ -255,6 +249,19 @@ const EventosAdmin: React.FC = () => {
               }}
             />
           </label>
+
+          <h2 className='title-section'>Capa</h2>
+          <label id='label-cover' className='label-event'>
+            Link da imagem de capa (URL):
+            <input
+              type='text'
+              name='cover'
+              value={formValues.cover}
+              onChange={handleInputChange}
+              placeholder='https://…'
+            />
+          </label>
+
           <label id='label-lugar' className='label-event'>
             Local:
             <input
@@ -264,16 +271,6 @@ const EventosAdmin: React.FC = () => {
               onChange={handleInputChange}
             />
           </label>
-          {/* <label id="label-banner" className="label-event">
-            Banner:
-            <input
-              id="input-banner"
-              type="file"
-              accept="image/*"
-              name="banner"
-              onChange={handleFileChange}
-            />
-          </label> */}
           <h2 className='title-section'>Coffee</h2>
           <div className='segunda-linha'>
             <label id='label-valor' className='label-event'>

@@ -16,6 +16,7 @@ interface EventParams {
   registrationEnd?: string
   maxParticipants?: number
   description?: string
+  cover?: string | null
   driveGalleryLink?: string
   coffeeValue?: number
   startDate?: string

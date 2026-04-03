@@ -1,7 +1,10 @@
 import axios from 'axios'
 import { buildApiUrl } from '../../_shared/url'
+import { normalizeWebEvent, type WebEvent } from './normalizeWebEvent'
 
-export const getWebEvents = async (search?: string) => {
+export type { WebEvent }
+
+export const getWebEvents = async (search?: string): Promise<WebEvent[]> => {
   const baseURL = process.env.REACT_APP_BASE_URL_BACK_API!
 
   try {
@@ -9,11 +12,13 @@ export const getWebEvents = async (search?: string) => {
       buildApiUrl(baseURL, `/web/events?searchParam=${search}`),
     )
 
-    console.log('[getWebEvents] response.data:', response.data)
-
-    return Array.isArray(response.data)
+    const list = Array.isArray(response.data)
       ? response.data
       : (response.data.events ?? [])
+
+    return list
+      .map((item: Record<string, unknown>) => normalizeWebEvent(item))
+      .filter((e: WebEvent | undefined): e is WebEvent => e != null)
   } catch (error) {
     console.error('[getWebEvents] error: ', error)
     return []

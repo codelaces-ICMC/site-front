@@ -1,4 +1,4 @@
-import { getWebEvents } from 'api/web/events/get'
+import { getWebEvents, type WebEvent } from 'api/web/events/get'
 import CardsSet from 'components/user-components/cards-set'
 import Footer from 'components/user-components/footer'
 import SearchBar from 'components/user-components/search-bar'
@@ -11,21 +11,7 @@ import CardEventProps from 'components/props/props-card-event'
 import { normalizeGoogleDriveEmbedUrl } from 'utils/googleDriveImageUrl'
 import { Container } from './style'
 
-/** Payload de evento na listagem pública (`/web/events`). */
-type WebListEvent = {
-  id?: number
-  name?: string
-  eventName?: string
-  startDate?: string
-  endDate?: string
-  location?: string
-  eventPlace?: string
-  coffeePaymentLink?: string
-  link_coffee?: string
-  cover?: string
-}
-
-function eventCoverUrl(event: WebListEvent | undefined): string {
+function eventCoverUrl(event: WebEvent | undefined): string {
   const raw = event?.cover
   const s = typeof raw === 'string' ? raw.trim() : ''
   if (!s) return defaultEventCover
@@ -33,7 +19,7 @@ function eventCoverUrl(event: WebListEvent | undefined): string {
 }
 
 const Events: React.FC = () => {
-  const [events, setEvents] = useState<WebListEvent[]>([])
+  const [events, setEvents] = useState<WebEvent[]>([])
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -46,12 +32,12 @@ const Events: React.FC = () => {
   }, [search])
 
   const cards = events.map(event => ({
-    cardNumber: event?.id,
-    eventName: event?.name ?? event?.eventName ?? '',
-    startDate: new Date(event?.startDate ?? ''),
-    endDate: new Date(event?.endDate ?? ''),
-    eventPlace: event?.location ?? event?.eventPlace ?? '',
-    coffeeLink: event?.coffeePaymentLink ?? event?.link_coffee ?? '',
+    cardNumber: event.id,
+    eventName: event.name,
+    startDate: new Date(event.startDate),
+    endDate: new Date(event.endDate),
+    eventPlace: event.location ?? '',
+    coffeeLink: '',
     imageUrl: eventCoverUrl(event),
   }))
 

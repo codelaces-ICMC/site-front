@@ -10,17 +10,21 @@ const asArray = <T = GenericRecord>(value: unknown): T[] => {
   return []
 }
 
-export const mapBackendEventToFront = (event: GenericRecord) => ({
+export const mapBackendEventToFront = (event: GenericRecord) => {
+  const coverUrl =
+    typeof event?.cover === 'string' ? event.cover.trim() : ''
+  return {
   eventId: event?.eventId ?? event?.event_id ?? event?.id,
   eventName: event?.eventName ?? event?.name ?? '',
   startDate: event?.startDate ?? event?.start_date ?? '',
   endDate: event?.endDate ?? event?.end_date ?? '',
   description: event?.description ?? '',
   local: event?.local ?? event?.location ?? '',
+  cover: coverUrl,
   hasCover:
     event?.hasCover ??
     event?.has_cover ??
-    Boolean(event?.cover ?? event?.banner_url ?? event?.bannerUrl),
+    Boolean(typeof coverUrl === 'string' && coverUrl.trim()),
   hasCoffee: event?.hasCoffee ?? event?.has_coffee ?? false,
   coffeeValue: event?.coffeeValue ?? event?.coffee_value,
   driveGalleryLink: event?.driveGalleryLink ?? event?.drive_gallery_link,
@@ -28,7 +32,8 @@ export const mapBackendEventToFront = (event: GenericRecord) => ({
     event?.registrationStart ?? event?.registration_start ?? null,
   registrationEnd: event?.registrationEnd ?? event?.registration_end ?? null,
   maxParticipants: event?.maxParticipants ?? event?.max_participants ?? null,
-})
+  }
+}
 
 export const mapBackendEventsListToFront = (
   payload: GenericRecord | GenericRecord[],
@@ -42,17 +47,25 @@ export const mapBackendEventsListToFront = (
   return list.map(mapBackendEventToFront)
 }
 
-export const mapFrontEventToBackend = (event: GenericRecord) => ({
-  name: event?.eventName,
-  start_date: event?.startDate,
-  end_date: event?.endDate,
-  registration_start: event?.registrationStart,
-  registration_end: event?.registrationEnd,
-  max_participants: event?.maxParticipants,
-  description: event?.description,
-  location: event?.local,
-  banner_url: event?.cover,
-})
+export const mapFrontEventToBackend = (event: GenericRecord) => {
+  const v = event?.cover
+  const cover =
+    v == null || (typeof v === 'string' && v.trim() === '')
+      ? null
+      : String(v).trim()
+
+  return {
+    name: event?.eventName,
+    start_date: event?.startDate,
+    end_date: event?.endDate,
+    registration_start: event?.registrationStart,
+    registration_end: event?.registrationEnd,
+    max_participants: event?.maxParticipants,
+    description: event?.description,
+    location: event?.local,
+    cover,
+  }
+}
 
 export const mapBackendActivityToFront = (activity: GenericRecord) => ({
   activityId: activity?.activityId ?? activity?.activity_id ?? activity?.id,

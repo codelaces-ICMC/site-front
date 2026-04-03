@@ -18,6 +18,7 @@ interface FormValues {
   inscricaoFim: string
   maxParticipantes: string
   descricao: string
+  cover: string
   valor: string
   linkPagamento: string
   linkDrive: string
@@ -35,6 +36,7 @@ const CreateEventAdmin: React.FC = () => {
     inscricaoFim: '',
     maxParticipantes: '',
     descricao: '',
+    cover: '',
     valor: '',
     linkPagamento: '',
     linkDrive: '',
@@ -116,6 +118,7 @@ const CreateEventAdmin: React.FC = () => {
         maxParticipants,
         description: formValues.descricao.trim() || undefined,
         local: formValues.lugar.trim() || undefined,
+        cover: formValues.cover.trim() || undefined,
         coffeeValue,
         coffeePaymentLink: formValues.linkPagamento.trim() || undefined,
         driveGalleryLink: formValues.linkDrive.trim() || undefined,
@@ -195,6 +198,18 @@ const CreateEventAdmin: React.FC = () => {
                   e.target.style.height = `${e.target.scrollHeight}px`
                 }
               }}
+            />
+          </label>
+
+          <h2 className='title-section'>Capa</h2>
+          <label id='label-cover' className='label-event'>
+            Link da imagem de capa (URL):
+            <input
+              type='text'
+              name='cover'
+              value={formValues.cover}
+              onChange={handleInputChange}
+              placeholder='https://…'
             />
           </label>
 

@@ -29,26 +29,20 @@ const EventInfo: React.FC = () => {
 
       setInfoEventData([
         {
-          id: event?.id,
-          eventName: event?.name ?? event?.eventName ?? '',
-          description: event?.description ?? '',
-          startDate: new Date(event?.start_date ?? event?.startDate),
-          endDate: new Date(event?.end_date ?? event?.endDate),
-          registrationStart: event?.registration_start
-            ? new Date(event.registration_start)
-            : event?.registrationStart
-              ? new Date(event.registrationStart)
-              : undefined,
-          registrationEnd: event?.registration_end
-            ? new Date(event.registration_end)
-            : event?.registrationEnd
-              ? new Date(event.registrationEnd)
-              : undefined,
-          coffeeValue: event?.coffeeValue
-            ? String(event.coffeeValue)
+          id: event.id,
+          eventName: event.name,
+          description: event.description ?? '',
+          startDate: new Date(event.startDate),
+          endDate: new Date(event.endDate),
+          registrationStart: event.registrationStart
+            ? new Date(event.registrationStart)
             : undefined,
-          link_coffee: event?.coffeePaymentLink,
-          link_fotos: event?.driveGalleryLink,
+          registrationEnd: event.registrationEnd
+            ? new Date(event.registrationEnd)
+            : undefined,
+          coffeeValue: undefined,
+          link_coffee: undefined,
+          link_fotos: undefined,
           activities: activities.map((activity: any) => ({
             activityId: activity?.id,
             activityName: activity?.name ?? activity?.activityName ?? '',
@@ -62,9 +56,8 @@ const EventInfo: React.FC = () => {
             registrationAt: new Date(
               activity?.registration_at ??
                 activity?.registrationAt ??
-                event?.registration_end ??
-                event?.registrationEnd ??
-                event?.end_date,
+                event.registrationEnd ??
+                event.endDate,
             ),
           })),
         },
