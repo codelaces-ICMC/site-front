@@ -15,7 +15,7 @@ export const Container = styled.div`
     border-radius: 20px;
     width: 100%;
     padding: 0 5.6em 0 1.2em;
-    fext-font: var(--font-family);
+    font-family: var(--font-family);
   }
 
   .search-btn {
