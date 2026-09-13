@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from 'styled-components'
 
 export const Container = styled.div`
   max-width: 1200px;
@@ -97,7 +97,6 @@ export const Container = styled.div`
         margin-bottom: 20px;
         letter-spacing: 0px;
         position: relative;
-
       }
 
       /* ===== INFO EXTRA (DATA E LOCAL) ===== */
@@ -338,4 +337,4 @@ export const Container = styled.div`
       }
     }
   }
-`;
+`
