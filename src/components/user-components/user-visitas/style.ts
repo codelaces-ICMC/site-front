@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from 'styled-components'
 
 export const CarrosselContainer = styled.div`
   width: 100%;
@@ -86,6 +86,7 @@ export const CarrosselContainer = styled.div`
       border-radius: 20px;
       font-size: 0.9rem;
       transition: all 0.3s ease;
+      font-family: var(--font-titles);
     }
   }
 
@@ -192,4 +193,4 @@ export const CarrosselContainer = styled.div`
       }
     }
   }
-`;
+`

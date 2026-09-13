@@ -94,7 +94,7 @@ const AboutUs: React.FC = () => {
       </section>
       <section id='visitas-tecnicas'>
         <h1>VISITAS TÉCNICAS / VIAGENS</h1>
-        <CarrosselVisitas /> {/* ← ADICIONE O COMPONENTE AQUI */}
+        <CarrosselVisitas />
       </section>
 
       <Footer
