@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  /* Cor de fundo roxa clara da imagem */
-  background-color: var(--cor-roxo-claro);
+  /* Cor de fundo cinza claro da imagem */
+  background-color: var(--cor-cinza-claro);
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14vh 0;
+  padding: 18vh 0;
   overflow: visible;
   z-index: 1; /* Garante que fique acima do fundo da próxima seção */
 `
@@ -17,66 +17,57 @@ export const ContentWrapper = styled.div`
   position: relative;
   width: 90%;
   max-width: 800px;
-  height: 450px;
+  height: 350px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+
+  h1 {
+    margin: 0;
+    font-family: var(--font-titles);
+    font-size: 2.3rem;
+    color: var(--cor-roxo-escuro);
+  }
+
+  .logo-centro {
+    width: 250px;
+    max-width: 70%;
+  }
+
+  p {
+    max-width: 1000px;
+    margin: 0;
+    font-family: var(--font-titles);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--cor-roxo-escuro);
+    span {
+      background-color: var(--cor-roxo-escuro);
+      color: var(--cor-branco);
+      padding: 0 4px;
+    }
+  }
+
+  .texto-codelaces {
+    margin: 0;
+    font-family: var(--font_titles);
+    font-size: 3rem;
+    color: var(--cor-roxo-escuro);
+  }
 
   @media (max-width: 520px) {
     height: 450px;
   }
 `
-
-export const FadeElement = styled.div<{ isActive: boolean }>`
-  position: absolute; /* Coloca os dois (texto e logo) no mesmo lugar sobrepostos */
-  transition:
-    opacity 1.2s ease-in-out,
-    visibility 1.2s;
-
-  /* Se estiver ativo, opacidade 1. Se não, opacidade 0 */
-  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  visibility: ${({ isActive }) => (isActive ? 'visible' : 'hidden')};
-  pointer-events: ${({ isActive }) => (isActive ? 'auto' : 'none')};
-
-  text-align: center;
-
-  .texto-destaque {
-    margin-top: 0rem;
-    font-family: var(--font-titles);
-    font-size: max(2rem, 2.8vw);
-    color: var(--cor-roxo-escuro);
-    font-weight: 500;
-    line-height: 1.6;
-    padding-bottom: 15px;
-
-    span {
-      background-color: var(--cor-roxo-escuro);
-      color: var(--cor-branco);
-      padding: 0 0.3em;
-      font-weight: 600;
-    }
-  }
-
-  .logo-centro {
-    max-width: 400px;
-    width: 100%;
-  }
-
-  @media (max-width: 720px) {
-    .texto-destaque {
-      font-size: 1.8rem;
-    }
-    .logo-centro {
-      max-width: 250px;
-    }
-  }
-`
-
 /* Posicionamento dos Grafismos */
-export const DecorItem = styled.img<{ showLogo: boolean }>`
+export const DecorItem = styled.img`
   position: absolute;
   transition: all 1.2s ease-in-out;
-  z-index: 2; /* Fica acima do fundo roxo e da próxima faixa branca */
+  z-index: 2; /* Fica acima do fundo cinza e da próxima faixa branca */
 
   &.top-left {
     top: -3vw;
@@ -92,51 +83,41 @@ export const DecorItem = styled.img<{ showLogo: boolean }>`
   }
 
   &.bottom-left {
-    bottom: -3%;
+    bottom: -10%;
     left: 1%;
     width: 20vw;
-    min-width: 200px;
+    min-width: 180px;
   }
 
   /* O SEGREDO DO VAZAMENTO: Usar bottom negativo! */
   &.bottom-right-venus {
     bottom: -10vw;
     right: 3%;
-    width: 25vw;
-    min-width: 220px;
+    width: 22vw;
+    min-width: 210px;
   }
 
   /* Responsividade: Diminuir os grafismos no celular para não cobrir o texto */
-  @media (max-width: 520px) {
+  @media (max-width: 320px) {
     &.top-left {
-      width: 50%;
-      min-width: 160px;
-      /* Se a logo estiver na tela, ele desce (25%). Se for o texto, ele sobe (5%) */
-      top: ${({ showLogo }) => (showLogo ? '20%' : '0%')};
-      left: ${({ showLogo }) => (showLogo ? '10%' : '5%')};
+      width: 20%;
+      min-width: 60px;
     }
 
     /* A Estrela Escura */
     &.top-right {
       width: 60px;
-      /* Aparece só com a logo, e viaja lá pra baixo na esquerda! */
-      opacity: ${({ showLogo }) => (showLogo ? '1' : '0')};
-      top: ${({ showLogo }) => (showLogo ? '70%' : '10%')};
-      left: ${({ showLogo }) => (showLogo ? '15%' : '80%')};
     }
 
     /* As Bolinhas */
     &.bottom-left {
-      width: 140px;
+      width: 120px;
       /* Aparece só com a logo, pendurada no teto à direita! */
-      opacity: ${({ showLogo }) => (showLogo ? '1' : '0')};
-      top: ${({ showLogo }) => (showLogo ? '-60px' : '80%')};
       bottom: auto;
       left: auto;
-      right: ${({ showLogo }) => (showLogo ? '-20px' : '80%')};
     }
     &.bottom-right-venus {
-      width: 100px;
+      width: 80px;
       bottom: -120px;
       right: 5%;
     }

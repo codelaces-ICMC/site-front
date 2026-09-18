@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import menuIcon from '@assets/icons/general/btn-menu-hamburguer.svg'
-import { ReactComponent as LogoSVG } from '@assets/icons/logos/logo.svg'
+import { ReactComponent as LogoSVG } from '@assets/icons/logos/nova-logo.svg'
 
 export const Container = styled.header<{
   $backgroundColor: string
@@ -99,7 +99,7 @@ export const Hamburger = styled.button<{ $isOpen: boolean }>`
 `
 
 export const StyledLogo = styled(LogoSVG)<{ $logoColor: string }>`
-  width: 80px;
+  width: 150px;
   color: ${({ $logoColor }) => $logoColor};
 
   &:hover {
@@ -107,6 +107,6 @@ export const StyledLogo = styled(LogoSVG)<{ $logoColor: string }>`
   }
 
   @media (max-width: 768px) {
-    width: 50px;
+    width: 130px;
   }
 `
