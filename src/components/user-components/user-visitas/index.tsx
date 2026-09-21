@@ -11,9 +11,9 @@ import programariaImg from '@assets/imgs/visitas/programaria.jpg'
 const visitasData = [
   {
     id: 1,
-    titulo: 'Uber She++ | 2024',
-    descricao: 'Networking e aprendizado sobre inclusão feminina na tecnologia',
-    imagem: uberImg,
+    titulo: 'Programaria Summit | 2024',
+    descricao: 'Participando de palestras e workshops',
+    imagem: programariaImg,
     link: '/visita/1',
   },
   {
@@ -32,9 +32,9 @@ const visitasData = [
   },
   {
     id: 4,
-    titulo: 'Programaria Summit | 2024',
-    descricao: 'Participando de palestras e workshops',
-    imagem: programariaImg,
+    titulo: 'Uber She++ | 2024',
+    descricao: 'Networking e aprendizado sobre inclusão feminina na tecnologia',
+    imagem: uberImg,
     link: '/visita/4',
   },
 ]

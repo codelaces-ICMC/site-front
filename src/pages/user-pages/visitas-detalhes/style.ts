@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 export const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 10px 20px 40px 20px;
   min-height: 70vh;
 
   /* ===== BOTÃO VOLTAR ===== */
@@ -11,21 +11,21 @@ export const Container = styled.div`
     background: var(--cor-roxo-escuro);
     color: var(--cor-branco);
     border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
+    padding: 8px 40px;
+    border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     transition: all 0.3s ease;
     font-family: var(--font-texts);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 
     &:hover {
       transform: scale(1.05);
       opacity: 1.5;
-      background: var(--cor-roxo-vibrante);
+      background: var(--cor-roxo-claro);
     }
 
     &:active {
@@ -71,7 +71,7 @@ export const Container = styled.div`
         position: absolute;
         top: 20px;
         right: 20px;
-        background: var(--cor-roxo-vibrante);
+        background: var(--cor-roxo-claro);
         color: var(--cor-branco);
         padding: 8px 16px;
         border-radius: 20px;
