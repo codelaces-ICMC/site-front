@@ -17,15 +17,17 @@ import programariaImg from '@assets/imgs/visitas/programaria.jpg'
 const visitasCompletas = [
   {
     id: 1,
-    titulo: 'Uber She++ | 2024',
-    imagem: uberImg,
-    data: '2 e 3 de Julho, 2024',
+    titulo: 'Programaria Summit | 2024',
+    imagem: programariaImg,
+    data: '9 de Novembro, 2024',
     local: 'São Paulo - SP',
     conteudo: `
         <h2>Sobre a Visita</h2>
-        <p>Nos dias 2 e 3 de julho de 2024, o Codelaces esteve no Tech Center da Uber Brasil em São Paulo para participar do evento She++ 2024.
-        O evento que visa promover a inclusão de meninas na área de tecnologia, proporcionou para as jovens do grupo e convidadas, palestras 
-        sobre processos seletivos e dicas de preparação para entrevistas na área de tecnologia, liderança e networking entre as jovens.</p>
+        <p>No dia 9 de novembro de 2024, o Codelaces esteve no Programaria Summit em São Paulo.
+        O Programaria Summit é o principal evento de tecnologia, carreira e inovação voltado para a inclusão de mulheres (cis e trans) e gêneros minorizados no Brasil.
+        No evento, as membras do Codelaces tiveram a oportunidade de participar de palestras e workshops que abordaram temas relevantes para o desenvolvimento profissional 
+        e acadêmico, ter contato com grandes empresas do mundo da tecnologia e aumentar o networking com diversas profissionais.
+        No final do evento também foi possível participar de um momento descontraído com as profissionais representantes das empresas e trocar experiências e contatos.</p>
         `,
   },
   {
@@ -63,17 +65,15 @@ const visitasCompletas = [
   },
   {
     id: 4,
-    titulo: 'Programaria Summit | 2024',
-    imagem: programariaImg,
-    data: '9 de Novembro, 2024',
+    titulo: 'uber She ++ | 2024',
+    imagem: uberImg,
+    data: '2 e 3 de Julho, 2024',
     local: 'São Paulo - SP',
     conteudo: `
         <h2>Sobre a Visita</h2>
-        <p>No dia 9 de novembro de 2024, o Codelaces esteve no Programaria Summit em São Paulo.
-        O Programaria Summit é o principal evento de tecnologia, carreira e inovação voltado para a inclusão de mulheres (cis e trans) e gêneros minorizados no Brasil.
-        No evento, as membras do Codelaces tiveram a oportunidade de participar de palestras e workshops que abordaram temas relevantes para o desenvolvimento profissional 
-        e acadêmico, ter contato com grandes empresas do mundo da tecnologia e aumentar o networking com diversas profissionais.
-        No final do evento também foi possível participar de um momento descontraído com as profissionais representantes das empresas e trocar experiências e contatos.</p>
+        <p>Nos dias 2 e 3 de julho de 2024, o Codelaces esteve no Tech Center da Uber Brasil em São Paulo para participar do evento She++ 2024.
+        O evento que visa promover a inclusão de meninas na área de tecnologia, proporcionou para as jovens do grupo e convidadas, palestras 
+        sobre processos seletivos e dicas de preparação para entrevistas na área de tecnologia, liderança e networking entre as jovens.</p>
         `,
   },
 ]
@@ -101,9 +101,13 @@ const VisitaDetalhe: React.FC = () => {
 
   return (
     <Container>
+      <Header
+        backgroundColor='var(--cor-roxo-escuro)'
+        textColor='var(--cor-branco)'
+      />
       <GlobalStyles />
       <button className='btn-voltar' onClick={() => navigate(-1)}>
-        ← Voltar
+        Voltar
       </button>
 
       <div className='detalhe-card'>
@@ -129,6 +133,10 @@ const VisitaDetalhe: React.FC = () => {
           <div dangerouslySetInnerHTML={{ __html: visita.conteudo }} />
         </div>
       </div>
+      <Footer
+              backgroundColor='var(--cor-roxo-escuro)'
+              textColor='var(--cor-branco)'
+            />
     </Container>
   )
 }

@@ -93,7 +93,7 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
       <section id='visitas-tecnicas'>
-        <h1>VISITAS TÉCNICAS / VIAGENS</h1>
+        <h1>VISITAS TÉCNICAS</h1>
         <CarrosselVisitas />
       </section>
 
