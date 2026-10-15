@@ -20,6 +20,7 @@ import { NotFoundRedirect } from '@components/routing/NotFoundRedirect'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import GlobalStyles from '@styles/GlobalStyles'
+import VisitaDetalhes from '@pages/user-pages/visitas-detalhes/visitaDetalhes'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/hackathon' element={<HomeHackathon />} />
           <Route path='/events' element={<Events />} />
           <Route path='/about' element={<About />} />
+          <Route path='/visita/:id' element={<VisitaDetalhes />} />
           <Route path='/events/info/:eventId' element={<EventInfo />} />
           <Route
             path='/events/info/:eventId/activities/:activityId'
