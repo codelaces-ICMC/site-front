@@ -1,62 +1,96 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CarrosselContainer } from './style'
 
-import uberImg from '@assets/imgs/visitas/uber.jpg'
-import cpImg from '@assets/imgs/visitas/cp-codelaces.jpg'
-import loftImg from '@assets/imgs/visitas/loft.jpg'
-import programariaImg from '@assets/imgs/visitas/programaria.jpg'
+// ===== TIPAGEM =====
+interface Visita {
+  id: number
+  title: string
+  date: string
+  local: string
+  description: string
+  image: string
+  content: string
+  status: string
+  created_at: string
+  updated_at: string
+}
 
-// Dados das visitas
-const visitasData = [
-  {
-    id: 1,
-    titulo: 'Programaria Summit | 2024',
-    descricao: 'Participando de palestras e workshops',
-    imagem: programariaImg,
-    link: '/visita/1',
-  },
-  {
-    id: 2,
-    titulo: 'Campus Party | 2024',
-    descricao: 'Explorando inovações tecnológicas e networking',
-    imagem: cpImg,
-    link: '/visita/2',
-  },
-  {
-    id: 3,
-    titulo: 'LOFT | 2024',
-    descricao: 'Conhecendo a cultura e os processos de desenvolvimento',
-    imagem: loftImg,
-    link: '/visita/3',
-  },
-  {
-    id: 4,
-    titulo: 'Uber She++ | 2024',
-    descricao: 'Networking e aprendizado sobre inclusão feminina na tecnologia',
-    imagem: uberImg,
-    link: '/visita/4',
-  },
-]
+// ===== URL DA API =====
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001'
 
 const CarrosselVisitas: React.FC = () => {
+  const [visitas, setVisitas] = useState<Visita[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const navigate = useNavigate()
 
+  // ===== BUSCAR DADOS DA API =====
+  useEffect(() => {
+    const fetchVisitas = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/web/visits`)
+
+        if (!response.ok) {
+          throw new Error('Erro ao buscar visitas')
+        }
+
+        const data = await response.json()
+        setVisitas(data.visits || [])
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Erro desconhecido')
+        console.error('Erro ao buscar visitas:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchVisitas()
+  }, [])
+
+  // ===== FUNÇÕES DO CARROSSEL =====
   const nextSlide = () => {
-    setCurrentIndex(prev => (prev === visitasData.length - 1 ? 0 : prev + 1))
+    setCurrentIndex(prev => (prev === visitas.length - 1 ? 0 : prev + 1))
   }
 
   const prevSlide = () => {
-    setCurrentIndex(prev => (prev === 0 ? visitasData.length - 1 : prev - 1))
+    setCurrentIndex(prev => (prev === 0 ? visitas.length - 1 : prev - 1))
   }
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
   }
 
-  const handleCardClick = (link: string) => {
-    navigate(link)
+  const handleCardClick = (id: number) => {
+    navigate(`/visita/${id}`)
+  }
+
+  // ===== ESTADOS DE LOADING/ERRO =====
+  if (loading) {
+    return (
+      <CarrosselContainer>
+        <div className='loading-message'>Carregando visitas...</div>
+      </CarrosselContainer>
+    )
+  }
+
+  if (error) {
+    return (
+      <CarrosselContainer>
+        <div className='error-message'>Erro ao carregar visitas: {error}</div>
+      </CarrosselContainer>
+    )
+  }
+
+  if (visitas.length === 0) {
+    return (
+      <CarrosselContainer>
+        <div className='empty-message'>
+          Nenhuma visita técnica cadastrada ainda.
+        </div>
+      </CarrosselContainer>
+    )
   }
 
   return (
@@ -71,17 +105,20 @@ const CarrosselVisitas: React.FC = () => {
             className='carousel-track'
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {visitasData.map(visita => (
+            {visitas.map(visita => (
               <div
                 key={visita.id}
                 className='carousel-card'
-                onClick={() => handleCardClick(visita.link)}
+                onClick={() => handleCardClick(visita.id)}
               >
                 <div className='card-image'>
-                  <img src={visita.imagem} alt={visita.titulo} />
+                  <img
+                    src={`${API_URL}/images/${visita.image}`}
+                    alt={visita.title}
+                  />
                   <div className='card-overlay'>
-                    <h3>{visita.titulo}</h3>
-                    <p>{visita.descricao}</p>
+                    <h3>{visita.title}</h3>
+                    <p>{visita.description}</p>
                     <span className='ver-mais'>Ver mais →</span>
                   </div>
                 </div>
@@ -96,7 +133,7 @@ const CarrosselVisitas: React.FC = () => {
       </div>
 
       <div className='carousel-indicators'>
-        {visitasData.map((_, index) => (
+        {visitas.map((_, index) => (
           <button
             key={index}
             className={`indicator ${index === currentIndex ? 'active' : ''}`}
