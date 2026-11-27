@@ -10,6 +10,8 @@ import FAFQLogo from '@assets/icons/logos/fafq-logo.png'
 
 import { Container } from './style'
 
+import CarrosselVisitas from '@components/user-components/user-visitas'
+
 const AboutUs: React.FC = () => {
   return (
     <Container>
@@ -90,6 +92,11 @@ const AboutUs: React.FC = () => {
           </div>
         </div>
       </section>
+      <section id='visitas-tecnicas'>
+        <h1>VISITAS TÉCNICAS</h1>
+        <CarrosselVisitas />
+      </section>
+
       <Footer
         backgroundColor='var(--cor-roxo-escuro)'
         textColor='var(--cor-branco)'
