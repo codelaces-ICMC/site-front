@@ -1,10 +1,12 @@
 import { styled } from 'styled-components'
 
 export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px 40px 20px;
-  min-height: 70vh;
+  .visita-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 40px 20px;
+    min-height: 70vh;
+  }
 
   /* ===== BOTÃO VOLTAR ===== */
   .btn-voltar {
@@ -75,12 +77,9 @@ export const Container = styled.div`
         color: var(--cor-branco);
         padding: 8px 16px;
         border-radius: 20px;
-        font-family: var(--font-texts);
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        opacity: 0.9;
+        font-family: var(--font-titles);
+        font-size: 1rem;
+        font-weight: 700;
       }
     }
 
@@ -116,10 +115,6 @@ export const Container = styled.div`
           font-family: var(--font-texts);
           color: #555;
           font-size: 1rem;
-
-          .info-icon {
-            font-size: 1.3rem;
-          }
 
           strong {
             color: var(--cor-roxo-escuro);
