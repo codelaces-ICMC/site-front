@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getWebVisits, type WebVisit } from '@api/web/visits/get'
+import { getApiErrorMessage } from '@api/_shared/httpError'
 import { CarrosselContainer } from './style'
 
-// ===== TIPAGEM =====
-interface Visita {
-  id: number
-  title: string
-  date: string
-  local: string
-  description: string
-  image: string
-  content: string
-  status: string
-  created_at: string
-  updated_at: string
-}
-
-// ===== URL DA API =====
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001'
-
 const CarrosselVisitas: React.FC = () => {
-  const [visitas, setVisitas] = useState<Visita[]>([])
+  const [visitas, setVisitas] = useState<WebVisit[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -30,17 +15,9 @@ const CarrosselVisitas: React.FC = () => {
   useEffect(() => {
     const fetchVisitas = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/web/visits`)
-
-        if (!response.ok) {
-          throw new Error('Erro ao buscar visitas')
-        }
-
-        const data = await response.json()
-        setVisitas(data.visits || [])
+        setVisitas(await getWebVisits())
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erro desconhecido')
-        console.error('Erro ao buscar visitas:', err)
+        setError(getApiErrorMessage(err, 'Erro ao buscar visitas'))
       } finally {
         setLoading(false)
       }
@@ -113,7 +90,9 @@ const CarrosselVisitas: React.FC = () => {
               >
                 <div className='card-image'>
                   <img
-                    src={`${API_URL}/images/${visita.image}`}
+                    src={visita.image}
+                    loading='lazy'
+                    decoding='async'
                     alt={visita.title}
                   />
                   <div className='card-overlay'>
