@@ -24,7 +24,7 @@ export const Container = styled.div`
 
     p {
       font-family: var(--font-texts);
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin: 5vh 10vw;
     }
 
@@ -113,23 +113,23 @@ export const Container = styled.div`
   }
 
   #visitas-tecnicas {
-  padding: 5vh 10vw;
-  background-color: var(--cor-branco);
-  text-align: center;
-
-  h1 {
-    font-family: var(--font-titles-alt);
-    color: var(--cor-roxo-escuro);
-    font-size: 2em;
-    margin-bottom: 2vh;
-  }
-
-  @media (max-width: 768px) {
-    padding: 3vh 5vw;
+    padding: 5vh 10vw;
+    background-color: var(--cor-branco);
+    text-align: center;
 
     h1 {
-      font-size: 1.5em;
+      font-family: var(--font-titles-alt);
+      color: var(--cor-roxo-escuro);
+      font-size: 2em;
+      margin-bottom: 2vh;
+    }
+
+    @media (max-width: 768px) {
+      padding: 3vh 5vw;
+
+      h1 {
+        font-size: 1.5em;
+      }
     }
   }
-}
 `
